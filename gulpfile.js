@@ -63,3 +63,5 @@ gulp.task('watch', ['server', 'javascript', 'sass', 'css'], function (){
   gulp.watch(sass_src, ['sass']);
   gulp.watch(css_src, ['css', browserSync.reload]);
 });
+
+gulp.task('default', ['watch'], function() {});
