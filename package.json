@@ -1,32 +1,13 @@
 {
   "name": "_s",
-  "scripts": {
-    "javascript:concatenate" : "bash -O extglob -c 'cat content/themes/_s/js/!(customizer).js content/themes/_s-child/js/!(javascript).js > content/themes/_s-child/js/javascript.js'",
-    "javascript:compress" : "uglifyjs content/themes/_s-child/js/javascript.js --output content/themes/_s-child/js/javascript.js",
-    "javascript:build" : "npm run javascript:concatenate && npm run javascript:compress",
-    "postjavascript:build" : "npm run server:reload",
-    "javascript:watch" : "onchange 'content/themes/_s-child/js/**/*.js' -- npm run javascript:build",
-    "css:compile" : "node-sass content/themes/_s-child/sass/ --output content/themes/_s-child/",
-    "css:concatenate" : "bash -O extglob -c 'cat content/themes/_s/*.css content/themes/_s-child/!(stylesheet).css > content/themes/_s-child/stylesheet.css'",
-    "css:prefix" : "postcss --use autoprefixer --output content/themes/_s-child/stylesheet.css content/themes/_s-child/stylesheet.css",
-    "css:compress" : "cleancss --s0 content/themes/_s-child/stylesheet.css --output content/themes/_s-child/stylesheet.css",
-    "css:build" : "npm run css:compile && npm run css:concatenate && npm run css:prefix && npm run css:compress",
-    "postcss:build" : "npm run server:reload",
-    "css:watch" : "onchange 'content/themes/_s-child/sass/**/*.scss' -- npm run css:build",
-    "php:watch" : "onchange 'content/themes/_s-child/**/*.php' -- npm run server:reload",
-    "server:start" : "browser-sync start --proxy localhost/_s",
-    "server:reload" : "browser-sync reload",
-    "prewatch" : "npm run javascript:build && npm run css:build",
-    "watch" : "npm run server:start | parallelshell 'npm run javascript:watch' 'npm run css:watch' 'npm run php:watch'"
-  },
   "devDependencies": {
-    "uglify-js" : "latest",
-    "node-sass" : "latest",
-    "postcss-cli" : "latest",
-    "autoprefixer" : "latest",
-    "clean-css" : "latest",
     "browser-sync" : "latest",
-    "onchange" : "latest",
-    "parallelshell" : "latest"
+    "gulp" : "latest",
+    "gulp-autoprefixer" : "latest",
+    "gulp-compass" : "latest",
+    "gulp-concat" : "latest",
+    "gulp-cssnano" : "latest",
+    "gulp-minify-css" : "latest",
+    "gulp-uglify" : "latest",
   }
 }
