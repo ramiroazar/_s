@@ -1,0 +1,5 @@
+// Container
+%container {
+	@include container;
+	width: 100% - ( gutters() * 2 );
+}

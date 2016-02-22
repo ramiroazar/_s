@@ -1,14 +1,33 @@
 <?php
 
 /**
- * Normalize
+ * Normalize.
  */
 require get_stylesheet_directory() . '/inc/normalize.php';
 
 /**
- * Enqueue scripts and styles.
+ * Add Sidebar Classes.
+ *
+ * @link https://codex.wordpress.org/Function_Reference/body_class#Add_Sidebar_Classes
  */
-function _s_scripts_child() {
-  wp_enqueue_script( '_s-javascript', get_stylesheet_directory_uri() . '/js/javascript.js', array('jquery'), false, true );
+add_action( 'wp_head', create_function( '', 'ob_start();' ) );
+add_action( 'get_sidebar', '_s_sidebar_class' );
+add_action( 'wp_footer', '_s_sidebar_class_replace' );
+
+function _s_sidebar_class( $name = '' ) {
+	static $class = 'sidebar';
+	if ( ! empty( $name ) ) {
+		$class .= ' sidebar-' . $name;
+	}
+	_s_sidebar_class_replace( $class );
 }
-add_action( 'wp_enqueue_scripts', '_s_scripts_child' );
+
+function _s_sidebar_class_replace( $c = '' ) {
+	static $class = '';
+	if ( ! empty( $c ) ) {
+		$class = $c;
+	} else {
+		echo str_replace( '<body class="', '<body class="' . $class . ' ', ob_get_clean() );
+		ob_start();
+	}
+}

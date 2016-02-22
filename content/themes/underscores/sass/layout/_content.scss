@@ -1,0 +1,22 @@
+#content {
+
+	> div {
+		@extend %container;
+	}
+
+	#primary {
+		body.sidebar & {
+			@include susy-breakpoint($breakpoint__medium) {
+				@include span(8);
+			}
+		}
+	}
+
+	#secondary {
+		body.sidebar & {
+			@include susy-breakpoint($breakpoint__medium) {
+				@include span(4 last);
+			}
+		}
+	}
+}

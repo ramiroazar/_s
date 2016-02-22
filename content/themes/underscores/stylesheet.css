@@ -21,4 +21,4 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
-*/
+*/#colophon>div,#content>div,#masthead>div{max-width:64em;margin-left:auto;margin-right:auto;width:94.28571%}#colophon>div:after,#content>div:after,#masthead>div:after{content:" ";display:block;clear:both}@media (min-width:64em){body.sidebar #content #primary{width:65.71429%;float:left;margin-right:2.85714%}}@media (min-width:64em){body.sidebar #content #secondary{width:31.42857%;float:right;margin-right:0}}
