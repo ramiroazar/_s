@@ -23,21 +23,59 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
+# Typography
 # Layout
+# Media
+# Modules
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 # Susy
 --------------------------------------------------------------*/
-#masthead > div, #content > div, #colophon > div {
+#masthead > div, body:not(.home) #content > div, #colophon > div, .slider .slides .slide figcaption > div, .slider ol, .slider ul {
   max-width: 64em;
   margin-left: auto;
   margin-right: auto;
   width: 94.28571%;
 }
-#masthead > div:after, #content > div:after, #colophon > div:after {
+#masthead > div:after, body:not(.home) #content > div:after, #colophon > div:after, .slider .slides .slide figcaption > div:after, .slider ol:after, .slider ul:after {
   content: " ";
   display: block;
   clear: both;
+}
+
+.slider ul li a span {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+.slider ul li a span:focus {
+  background-color: black;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: white;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar. */
+}
+
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+p {
+  margin: 1.5em 0;
 }
 
 /*--------------------------------------------------------------
@@ -55,5 +93,133 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
     width: 31.42857%;
     float: right;
     margin-right: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+.slider {
+  overflow: hidden;
+  position: relative;
+}
+.slider .slides {
+  margin: 0;
+}
+.slider .slides:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+html[xmlns] .slider .slides {
+  display: block;
+}
+* html .slider .slides {
+  height: 1%;
+}
+.slider .slides .slide {
+  margin: 0;
+  display: none;
+  backface-visibility: hidden;
+}
+.slider .slides .slide:first-child {
+  display: block;
+}
+.slider .slides .slide img {
+  display: block;
+  width: 100%;
+  margin: auto;
+}
+.slider .slides .slide figcaption {
+  position: absolute;
+  bottom: 4.5em;
+  width: 100%;
+}
+.slider .slides .slide figcaption > div > div {
+  overflow: auto;
+  float: left;
+  width: 50%;
+  padding: 0 2.85714%;
+  background-color: white;
+}
+.slider .slides .slide figcaption > div > div p:first-of-type {
+  font-weight: bold;
+}
+.slider ol {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 1.5em;
+  left: 0;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+.slider ol li {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 1.5em;
+}
+.slider ol li:last-of-type {
+  margin-right: auto;
+}
+.slider ol li a {
+  overflow: hidden;
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  text-indent: 1.5em;
+  background-color: white;
+  border-radius: 50%;
+}
+.slider ol li a.slider-active {
+  opacity: 0.5;
+}
+.slider ul {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: 0;
+  left: 0;
+  margin: -2.25em auto 0 auto;
+  padding: 0;
+  list-style: none;
+}
+.slider ul li.slider-nav-prev {
+  float: left;
+}
+.slider ul li.slider-nav-next {
+  float: right;
+}
+.slider ul li a {
+  display: block;
+  color: white;
+  text-decoration: none;
+}
+.slider ul li a:hover, .slider ul li a:focus {
+  opacity: 0.5;
+}
+.slider ul li a.slider-prev:before {
+  vertical-align: middle;
+  font-family: fontawesome;
+  font-size: 48px;
+  font-size: 3rem;
+  content: "\f053";
+}
+.slider ul li a.slider-next:after {
+  vertical-align: middle;
+  font-family: fontawesome;
+  font-size: 48px;
+  font-size: 3rem;
+  content: "\f054";
+}
+
+/*--------------------------------------------------------------
+# Modules
+--------------------------------------------------------------*/
+@media (max-width: 64em) {
+  .featured {
+    display: none;
   }
 }

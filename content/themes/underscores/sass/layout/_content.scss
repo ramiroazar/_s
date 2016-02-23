@@ -1,7 +1,10 @@
 #content {
 
 	> div {
-		@extend %container;
+
+		body:not(.home) & {
+			@extend %container;
+		}
 	}
 
 	#primary {

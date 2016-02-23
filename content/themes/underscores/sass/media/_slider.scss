@@ -1,0 +1,158 @@
+.slider {
+  overflow: hidden;
+  position: relative;
+
+  .slides {
+    margin: 0;
+
+    // Start clearfix
+    @include susy-clearfix;
+
+    html[xmlns] & {
+      display: block;
+    }
+
+    * html & {
+      height: 1%;
+    }
+    // End clearfix
+
+    .slide {
+      margin: 0;
+
+      // Start no javascript fallback
+      display: none;
+      backface-visibility: hidden;
+
+      &:first-child{
+        display: block;
+      }
+      // End no javascript fallback
+
+      img {
+        display: block;
+        width: 100%;
+        margin: auto;
+      }
+
+      figcaption {
+        position: absolute;
+        bottom: 4.5em;
+        width: 100%;
+
+        > div {
+          @extend %container;
+
+          > div {
+            overflow: auto;
+            float: left;
+            width: 50%;
+            padding: 0 gutters();
+            background-color: $color__background-body;
+
+            p {
+
+              &:first-of-type {
+                font-weight: bold;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  ol {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    bottom: 1.5em;
+    left: 0;
+    margin: 0 auto;
+    padding: 0;
+    @extend %container;
+    list-style: none;
+    text-align: center;
+
+    li {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 1.5em;
+
+      &:last-of-type {
+        margin-right: auto;
+      }
+
+      a {
+        overflow: hidden;
+        display: block;
+        width: 1.5em;
+        height: 1.5em;
+        text-indent: 1.5em;
+        background-color: $color__background-body;
+        border-radius: 50%;
+
+        &.slider-active {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+
+  ul {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    right: 0;
+    left: 0;
+    margin: -2.25em auto 0 auto;
+    padding: 0;
+    @extend %container;
+    list-style: none;
+
+    li {
+
+      &.slider-nav-prev {
+        float: left;
+      }
+
+      &.slider-nav-next {
+        float: right;
+      }
+
+      a {
+        display: block;
+        color: $color__background-body;
+        text-decoration: none;
+
+        &:hover, &:focus {
+          opacity: 0.5;
+        }
+
+        &.slider-prev {
+
+          &:before {
+            vertical-align: middle;
+            font-family: $font__icon;
+            @include font-size(3);
+            content: "\f053";
+          }
+        }
+
+        &.slider-next {
+
+          &:after {
+            vertical-align: middle;
+            font-family: $font__icon;
+            @include font-size(3);
+            content: "\f054";
+          }
+        }
+
+        span {
+          @extend %screen-reader-text;
+        }
+      }
+    }
+  }
+}

@@ -9,7 +9,7 @@ function _s_setup_normalize() {
 add_action( 'after_setup_theme', '_s_setup_normalize', 15 );
 
 function _s_scripts_normalize() {
-  wp_enqueue_style( '_s-stylesheet', get_stylesheet_directory_uri() . '/stylesheet.css' );
+  wp_enqueue_style( '_s-stylesheet', get_stylesheet_directory_uri() . '/stylesheet.css', array('font-awesome'));
 
   wp_enqueue_script( '_s-javascript', get_stylesheet_directory_uri() . '/js/javascript.js', array('jquery'), false, true );
 

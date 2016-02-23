@@ -1,5 +1,8 @@
-// Container
 %container {
 	@include container;
 	width: 100% - ( gutters() * 2 );
+}
+
+%screen-reader-text {
+	@include screen-reader-text;
 }

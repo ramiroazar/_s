@@ -47,7 +47,10 @@ gulp.task('css', function() {
   return gulp.src(css_src)
     .pipe(concat('stylesheet.css'))
     .pipe(autoprefixer())
-    .pipe(cssnano())
+    .pipe(cssnano({
+      discardComments: {removeAll: true},
+      zindex: false,
+    }))
     .pipe(gulp.dest(child_theme_directory))
 });
 

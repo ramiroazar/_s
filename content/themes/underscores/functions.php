@@ -6,28 +6,19 @@
 require get_stylesheet_directory() . '/inc/normalize.php';
 
 /**
- * Add Sidebar Classes.
- *
- * @link https://codex.wordpress.org/Function_Reference/body_class#Add_Sidebar_Classes
+ * Enqueue scripts and styles.
  */
-add_action( 'wp_head', create_function( '', 'ob_start();' ) );
-add_action( 'get_sidebar', '_s_sidebar_class' );
-add_action( 'wp_footer', '_s_sidebar_class_replace' );
-
-function _s_sidebar_class( $name = '' ) {
-	static $class = 'sidebar';
-	if ( ! empty( $name ) ) {
-		$class .= ' sidebar-' . $name;
-	}
-	_s_sidebar_class_replace( $class );
+function _s_scripts_enqueue() {
+	wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
 }
+add_action( 'wp_enqueue_scripts', '_s_scripts_enqueue' );
 
-function _s_sidebar_class_replace( $c = '' ) {
-	static $class = '';
-	if ( ! empty( $c ) ) {
-		$class = $c;
-	} else {
-		echo str_replace( '<body class="', '<body class="' . $class . ' ', ob_get_clean() );
-		ob_start();
-	}
-}
+/**
+ * Custom functions that act independently of the theme templates.
+ */
+require get_stylesheet_directory() . '/inc/extras.php';
+
+/**
+ * Modules.
+ */
+require get_stylesheet_directory() . '/modules/slider.php';
