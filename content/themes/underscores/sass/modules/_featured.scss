@@ -1,4 +1,4 @@
-.featured {
+.featured.section {
   @include susy-breakpoint(max-width $breakpoint__medium) {
     display: none;
   }

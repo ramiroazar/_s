@@ -104,7 +104,7 @@
   }
 }
 
-.services {
+.services.section {
 
   @if $module__services-layout == grid {
     @include module__services-layout-grid;

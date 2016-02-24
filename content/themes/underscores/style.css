@@ -38,26 +38,26 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 # Susy
 --------------------------------------------------------------*/
-#masthead > div, body:not(.home) #content > div, #colophon > div, .slider .slides .slide figcaption > div, .slider ol, .slider ul, .services > div, .introduction > div {
+#masthead > div, body:not(.home) #content > div, .slider .slides .slide figcaption > div, .slider ol, .slider ul, .introduction.section > div, .services.section > div, .map.section > div {
   max-width: 64em;
   margin-left: auto;
   margin-right: auto;
   width: 94.28571%;
 }
-#masthead > div:after, body:not(.home) #content > div:after, #colophon > div:after, .slider .slides .slide figcaption > div:after, .slider ol:after, .slider ul:after, .services > div:after, .introduction > div:after {
+#masthead > div:after, body:not(.home) #content > div:after, .slider .slides .slide figcaption > div:after, .slider ol:after, .slider ul:after, .introduction.section > div:after, .services.section > div:after, .map.section > div:after {
   content: " ";
   display: block;
   clear: both;
 }
 
-.introduction article .entry-footer .toggle span {
+.introduction.section article .entry-footer .toggle span {
   clip: rect(1px, 1px, 1px, 1px);
   position: absolute !important;
   height: 1px;
   width: 1px;
   overflow: hidden;
 }
-.introduction article .entry-footer .toggle span:focus {
+.introduction.section article .entry-footer .toggle span:focus {
   background-color: black;
   border-radius: 3px;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
@@ -229,66 +229,89 @@ html[xmlns] .slider .slides {
 # Modules
 --------------------------------------------------------------*/
 @media (max-width: 64em) {
-  .featured {
+  .featured.section {
     display: none;
   }
 }
 
-@media (min-width: 30em) and (max-width: 48em) {
-  .services article {
+.introduction.section {
+  overflow: auto;
+}
+.introduction.section article .entry-summary:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+@media (min-width: 48em) {
+  .introduction.section article .entry-summary > div:first-of-type {
     width: 48.57143%;
     float: left;
     margin-right: 2.85714%;
   }
 }
 @media (min-width: 48em) {
-  .services article {
+  .introduction.section article .entry-summary > div:last-of-type {
+    width: 48.57143%;
+    float: right;
+    margin-right: 0;
+  }
+}
+.introduction.section article .entry-footer .toggle[aria-pressed="false"]:after {
+  content: "More About";
+}
+.introduction.section article .entry-footer .toggle[aria-pressed="true"]:after {
+  content: "Less About";
+}
+
+@media (min-width: 30em) and (max-width: 48em) {
+  .services.section article {
+    width: 48.57143%;
+    float: left;
+    margin-right: 2.85714%;
+  }
+}
+@media (min-width: 48em) {
+  .services.section article {
     width: 22.85714%;
     float: left;
     margin-right: 2.85714%;
   }
 }
 @media (min-width: 30em) and (max-width: 48em) {
-  .services article:nth-of-type(2n) {
+  .services.section article:nth-of-type(2n) {
     float: right;
     margin-right: 0;
   }
 }
 @media (min-width: 48em) {
-  .services article:nth-of-type(4n) {
+  .services.section article:nth-of-type(4n) {
     float: right;
     margin-right: 0;
   }
 }
-.services article .entry-header .entry-title {
+.services.section article .entry-header .entry-title {
   margin-top: 0;
 }
 
-.introduction {
-  overflow: auto;
+.map.section .map-container {
+  position: relative;
+  width: 100%;
+  height: 320px;
 }
-.introduction article .entry-summary:after {
-  content: " ";
+.map.section .map-container iframe {
   display: block;
-  clear: both;
+  width: 100%;
+  height: 100%;
 }
-@media (min-width: 48em) {
-  .introduction article .entry-summary > div:first-of-type {
-    width: 48.57143%;
-    float: left;
-    margin-right: 2.85714%;
-  }
+.map.section .map-container:focus:after {
+  display: none;
 }
-@media (min-width: 48em) {
-  .introduction article .entry-summary > div:last-of-type {
-    width: 48.57143%;
-    float: right;
-    margin-right: 0;
-  }
-}
-.introduction article .entry-footer .toggle[aria-pressed="false"]:after {
-  content: "More About";
-}
-.introduction article .entry-footer .toggle[aria-pressed="true"]:after {
-  content: "Less About";
+.map.section .map-container:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
