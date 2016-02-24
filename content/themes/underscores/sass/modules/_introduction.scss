@@ -1,0 +1,53 @@
+.introduction {
+  overflow: auto;
+
+  > div {
+    @extend %container;
+  }
+
+  .section-title {}
+
+  article {
+
+    .entry-summary {
+      @include susy-clearfix;
+
+      > div {
+
+        &:first-of-type {
+          @include susy-breakpoint($breakpoint__small) {
+            @include span(6);
+          }
+        }
+
+        &:last-of-type {
+          @include susy-breakpoint($breakpoint__small) {
+            @include span(6 last);
+          }
+        }
+      }
+    }
+
+    .entry-footer {
+
+      .toggle {
+
+        &[aria-pressed="false"] {
+          &:after {
+            content: "More About";
+          }
+        }
+
+        &[aria-pressed="true"] {
+          &:after {
+            content: "Less About";
+          }
+        }
+
+        span {
+          @extend %screen-reader-text;
+        }
+      }
+    }
+  }
+}

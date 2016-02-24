@@ -13,3 +13,13 @@
     nextText: "<span>Next</span>",
   });
 });
+
+/**
+ * Tab Panel
+ *
+ * @link http://oaa-accessibility.org/examplep/tabpanel1/
+ */
+
+jQuery(document).ready(function() {
+  var panel1 = new tabpanel("tabs", false);
+});

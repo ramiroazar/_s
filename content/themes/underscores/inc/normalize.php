@@ -18,6 +18,13 @@ function _s_scripts_normalize() {
 	wp_dequeue_script( '_s-navigation' );
 
 	wp_dequeue_script( '_s-skip-link-focus-fix' );
+
+	// 1) Deregister local copy of jQuery (wp_enqueue_script( 'jquery' );)
+	wp_deregister_script('jquery');
+	// 2) Replace with Google CDN
+	wp_enqueue_script('jquery', ("//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"));
+	// 3) Load jQuery backup script (http://stackoverflow.com/a/1014251)
+	// wp_enqueue_script('jquery-backup', (get_template_directory_uri() . "/js/jquery-backup.js"), false, '', true);
 }
 add_action( 'wp_enqueue_scripts', '_s_scripts_normalize', 15 );
 

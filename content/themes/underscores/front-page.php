@@ -64,11 +64,42 @@ get_header(); ?>
 
 			<?php endif; ?>
 
+			<section id="introduction" class="section introduction">
+
+				<div>
+
+					<h2 class="section-title"><?php _e( 'About', '_s' ); ?></h2>
+
+						<?php
+						  $args = array(
+								'post_type' => 'page',
+								'pagename' => 'home',
+						  );
+						?>
+
+						<?php $query = new WP_Query( $args ); ?>
+
+						<?php if ( $query->have_posts() ) : ?>
+
+						  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+
+						    <?php get_template_part( 'template-parts/content', 'toggle' ); ?>
+
+						  <?php endwhile; ?>
+
+						<?php endif; ?>
+
+						<?php wp_reset_postdata(); ?>
+
+				</div>
+
+			</section><!-- #introduction -->
+
 			<section id="services" class="section services">
 
 				<div>
 
-					<h2 class="section-title"><?php bloginfo('description'); ?></h2>
+					<h2 class="section-title"><?php _e( 'Services', '_s' ); ?></h2>
 
 						<?php
 						  $args = array(

@@ -38,16 +38,44 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 # Susy
 --------------------------------------------------------------*/
-#masthead > div, body:not(.home) #content > div, #colophon > div, .slider .slides .slide figcaption > div, .slider ol, .slider ul, .services > div {
+#masthead > div, body:not(.home) #content > div, #colophon > div, .slider .slides .slide figcaption > div, .slider ol, .slider ul, .services > div, .introduction > div {
   max-width: 64em;
   margin-left: auto;
   margin-right: auto;
   width: 94.28571%;
 }
-#masthead > div:after, body:not(.home) #content > div:after, #colophon > div:after, .slider .slides .slide figcaption > div:after, .slider ol:after, .slider ul:after, .services > div:after {
+#masthead > div:after, body:not(.home) #content > div:after, #colophon > div:after, .slider .slides .slide figcaption > div:after, .slider ol:after, .slider ul:after, .services > div:after, .introduction > div:after {
   content: " ";
   display: block;
   clear: both;
+}
+
+.introduction article .entry-footer .toggle span {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+.introduction article .entry-footer .toggle span:focus {
+  background-color: black;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: white;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar. */
 }
 
 /*--------------------------------------------------------------
@@ -234,4 +262,33 @@ html[xmlns] .slider .slides {
 }
 .services article .entry-header .entry-title {
   margin-top: 0;
+}
+
+.introduction {
+  overflow: auto;
+}
+.introduction article .entry-summary:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+@media (min-width: 48em) {
+  .introduction article .entry-summary > div:first-of-type {
+    width: 48.57143%;
+    float: left;
+    margin-right: 2.85714%;
+  }
+}
+@media (min-width: 48em) {
+  .introduction article .entry-summary > div:last-of-type {
+    width: 48.57143%;
+    float: right;
+    margin-right: 0;
+  }
+}
+.introduction article .entry-footer .toggle[aria-pressed="false"]:after {
+  content: "More About";
+}
+.introduction article .entry-footer .toggle[aria-pressed="true"]:after {
+  content: "Less About";
 }

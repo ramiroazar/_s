@@ -25,13 +25,14 @@ var css_src = [
 ];
 var javascript_src = [
   parent_theme_directory + '/js/**/!(customizer).js',
-  child_theme_directory + '/js/**/!(javascript).js'
+  child_theme_directory + '/js/**/!(javascript|scripts).js',
+  child_theme_directory + '/js/**/scripts.js'
 ];
 
 gulp.task('javascript', function() {
   return gulp.src(javascript_src)
     .pipe(concat('javascript.js'))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest(child_theme_directory + '/js'))
 });
 
