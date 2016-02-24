@@ -1,0 +1,33 @@
+/**
+ * Featured
+ */
+
+// grid
+
+// viewport
+$featured-slider-width: auto !default; // auto | fixed
+$featured-slider-height: auto !default; // auto | fixed | full
+$featured-slider-minimum-height: 48em !default;
+$featured-slider-image-size: width !default; // width | height | cover
+$featured-slider-caption-alignment: left !default; // left | center | right
+$featured-slider-navigation-color: $color__link !default;
+$featured-slider-navigation-pagination: numbered !default; // number | bullet
+$featured-slider-navigation-direction: text !default; // text | icon
+$featured-slider-caption-text-color: $color__text !default;
+$featured-slider-caption-background-color: $color__background !default;
+
+/**
+ * Services
+ */
+$module__services-layout: grid !default; // grid | viewport
+$module__services-caption-text-color: $color__text;
+$module__services-caption-text-link: $color__link;
+
+// grid
+$module__services-layout-grid-columns-small: 4 !default;
+$module__services-layout-grid-columns-xsmall: 2 !default;
+
+// viewport
+$module__services-layout-viewport-caption-vertical-alignment: middle !default; // top | middle | bottom
+$module__services-layout-viewport-caption-horizontal-alignment: odd !default; // left | center | right | odd | even
+$module__services-caption-background-color: $color__background;

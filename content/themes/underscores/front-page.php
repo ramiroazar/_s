@@ -18,12 +18,88 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 			<?php if ( !wp_is_mobile() ) : ?>
-			<section id="featured" class="featured">
+
+			<section id="featured" class="section featured">
+
 				<div>
-					<?php echo do_shortcode('[slider]'); ?>
+
+					<?php
+					  $args = array(
+							'post_type' => 'slider',
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'category_slider',
+									'field'    => 'slug',
+									'terms'    => 'front-page',
+								),
+							),
+					  );
+					?>
+
+					<?php $query = new WP_Query( $args ); ?>
+
+					<?php if ( $query->have_posts() ) : ?>
+
+					  <div class="slider">
+
+						  <figure class="slides">
+
+							  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+
+							    <?php get_template_part( 'template-parts/content', 'slide' ); ?>
+
+							  <?php endwhile; ?>
+
+						  </figure>
+
+					  </div>
+
+					<?php endif; ?>
+
+					<?php wp_reset_postdata(); ?>
+
 				</div>
+
 			</section><!-- #featured -->
+
 			<?php endif; ?>
+
+			<section id="services" class="section services">
+
+				<div>
+
+					<h2 class="section-title"><?php bloginfo('description'); ?></h2>
+
+						<?php
+						  $args = array(
+								'post_type' => 'page',
+								'tax_query' => array(
+									array(
+										'taxonomy' => 'category_page',
+										'field'    => 'slug',
+										'terms'    => 'services',
+									),
+								),
+						  );
+						?>
+
+						<?php $query = new WP_Query( $args ); ?>
+
+						<?php if ( $query->have_posts() ) : ?>
+
+						  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+
+						    <?php get_template_part( 'template-parts/content', 'service' ); ?>
+
+						  <?php endwhile; ?>
+
+						<?php endif; ?>
+
+						<?php wp_reset_postdata(); ?>
+
+				</div>
+
+			</section><!-- #services -->
 
 		</main><!-- #main -->
 	</div><!-- #primary -->

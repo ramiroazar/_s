@@ -1,0 +1,136 @@
+@mixin module__services-layout-grid {
+
+  > div {
+    @extend %container;
+  }
+
+  article {
+    @include susy-breakpoint($breakpoint__xsmall $breakpoint__small) {
+      @include span( 12 / $module__services-layout-grid-columns-xsmall);
+    }
+    @include susy-breakpoint($breakpoint__small) {
+      @include span( 12 / $module__services-layout-grid-columns-small);
+    }
+
+    &:nth-of-type(#{$module__services-layout-grid-columns-xsmall}n) {
+      @include susy-breakpoint($breakpoint__xsmall $breakpoint__small) {
+        @include last;
+      }
+    }
+
+    &:nth-of-type(#{$module__services-layout-grid-columns-small}n) {
+      @include susy-breakpoint($breakpoint__small) {
+        @include last;
+      }
+    }
+  }
+}
+
+@mixin module__services-layout-viewport {
+
+  article {
+    position: relative;
+    height: 100vh;
+    margin-bottom: 0;
+
+    &:nth-of-type(even) {
+
+      > div {
+
+        > div {
+
+          > div {
+            @if $module__services-layout-viewport-caption-horizontal-alignment == even {
+              float: left;
+            } @else if $module__services-layout-viewport-caption-horizontal-alignment == odd {
+              float: right;
+            }
+          }
+        }
+      }
+    }
+
+    &:nth-of-type(odd) {
+
+      > div {
+
+        > div {
+
+          > div {
+            @if $module__services-layout-viewport-caption-horizontal-alignment == odd {
+              float: left;
+            } @else if $module__services-layout-viewport-caption-horizontal-alignment == even {
+              float: right;
+            }
+          }
+        }
+      }
+    }
+
+    > div {
+      display: table;
+      @extend %container;
+      height: 100%;
+
+      > div {
+        display: table-cell;
+        vertical-align: $module__services-layout-viewport-caption-vertical-alignment;
+        height: 100%;
+
+        > div {
+          width: 50%;
+          padding: 1.5em gutters();
+          background-color: $module__services-caption-background-color;
+          @if $module__services-layout-viewport-caption-horizontal-alignment == left or $module__services-layout-viewport-caption-horizontal-alignment == right {
+            float: $module__services-layout-viewport-caption-horizontal-alignment;
+          } @else if $module__services-layout-viewport-caption-horizontal-alignment == center {
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+
+    .entry-image {
+      img {
+        object-fit: cover;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.services {
+
+  @if $module__services-layout == grid {
+    @include module__services-layout-grid;
+  } @else if $module__services-layout == viewport {
+    @include module__services-layout-viewport;
+  }
+
+  > div {
+  }
+
+  article {
+    @if $module__services-caption-text-color != $color__text {
+      color: $module__services-caption-text-color;
+    }
+
+    > div {
+
+      > div {
+      }
+    }
+
+    .entry-header {
+
+      .entry-title {
+        margin-top: 0;
+      }
+    }
+  }
+}

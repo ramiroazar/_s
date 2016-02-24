@@ -25,50 +25,29 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 ----------------------------------------------------------------
 # Typography
 # Layout
+# Navigation
 # Media
 # Modules
 --------------------------------------------------------------*/
+/**
+ * Featured
+ */
+/**
+ * Services
+ */
 /*--------------------------------------------------------------
 # Susy
 --------------------------------------------------------------*/
-#masthead > div, body:not(.home) #content > div, #colophon > div, .slider .slides .slide figcaption > div, .slider ol, .slider ul {
+#masthead > div, body:not(.home) #content > div, #colophon > div, .slider .slides .slide figcaption > div, .slider ol, .slider ul, .services > div {
   max-width: 64em;
   margin-left: auto;
   margin-right: auto;
   width: 94.28571%;
 }
-#masthead > div:after, body:not(.home) #content > div:after, #colophon > div:after, .slider .slides .slide figcaption > div:after, .slider ol:after, .slider ul:after {
+#masthead > div:after, body:not(.home) #content > div:after, #colophon > div:after, .slider .slides .slide figcaption > div:after, .slider ol:after, .slider ul:after, .services > div:after {
   content: " ";
   display: block;
   clear: both;
-}
-
-.slider ul li a span {
-  clip: rect(1px, 1px, 1px, 1px);
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-}
-.slider ul li a span:focus {
-  background-color: black;
-  border-radius: 3px;
-  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-  clip: auto !important;
-  color: white;
-  display: block;
-  font-size: 14px;
-  font-size: 0.875rem;
-  font-weight: bold;
-  height: auto;
-  left: 5px;
-  line-height: normal;
-  padding: 15px 23px 14px;
-  text-decoration: none;
-  top: 5px;
-  width: auto;
-  z-index: 100000;
-  /* Above WP toolbar. */
 }
 
 /*--------------------------------------------------------------
@@ -94,6 +73,28 @@ p {
     float: right;
     margin-right: 0;
   }
+}
+
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Links
+--------------------------------------------------------------*/
+a {
+  color: blue;
+}
+a:visited {
+  color: purple;
+}
+a:hover, a:focus, a:active {
+  color: darkblue;
+}
+a:focus {
+  outline: thin dotted;
+}
+a:hover, a:active {
+  outline: 0;
 }
 
 /*--------------------------------------------------------------
@@ -169,9 +170,6 @@ html[xmlns] .slider .slides {
   display: block;
   width: 1.5em;
   height: 1.5em;
-  text-indent: 1.5em;
-  background-color: white;
-  border-radius: 50%;
 }
 .slider ol li a.slider-active {
   opacity: 0.5;
@@ -194,25 +192,9 @@ html[xmlns] .slider .slides {
 }
 .slider ul li a {
   display: block;
-  color: white;
-  text-decoration: none;
 }
 .slider ul li a:hover, .slider ul li a:focus {
   opacity: 0.5;
-}
-.slider ul li a.slider-prev:before {
-  vertical-align: middle;
-  font-family: fontawesome;
-  font-size: 48px;
-  font-size: 3rem;
-  content: "\f053";
-}
-.slider ul li a.slider-next:after {
-  vertical-align: middle;
-  font-family: fontawesome;
-  font-size: 48px;
-  font-size: 3rem;
-  content: "\f054";
 }
 
 /*--------------------------------------------------------------
@@ -222,4 +204,34 @@ html[xmlns] .slider .slides {
   .featured {
     display: none;
   }
+}
+
+@media (min-width: 30em) and (max-width: 48em) {
+  .services article {
+    width: 48.57143%;
+    float: left;
+    margin-right: 2.85714%;
+  }
+}
+@media (min-width: 48em) {
+  .services article {
+    width: 22.85714%;
+    float: left;
+    margin-right: 2.85714%;
+  }
+}
+@media (min-width: 30em) and (max-width: 48em) {
+  .services article:nth-of-type(2n) {
+    float: right;
+    margin-right: 0;
+  }
+}
+@media (min-width: 48em) {
+  .services article:nth-of-type(4n) {
+    float: right;
+    margin-right: 0;
+  }
+}
+.services article .entry-header .entry-title {
+  margin-top: 0;
 }

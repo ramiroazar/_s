@@ -19,6 +19,11 @@ add_action( 'wp_enqueue_scripts', '_s_scripts_enqueue' );
 require get_stylesheet_directory() . '/inc/extras.php';
 
 /**
- * Modules.
+ * Custom post types.
  */
-require get_stylesheet_directory() . '/modules/slider.php';
+require get_stylesheet_directory() . '/inc/post-types.php';
+
+/**
+ * Shortcodes.
+ */
+require get_stylesheet_directory() . '/inc/shortcodes.php';

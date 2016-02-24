@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var compass = require('gulp-compass');
@@ -41,6 +42,10 @@ gulp.task('sass', function() {
       css: child_theme_directory,
       require: ['susy']
     }))
+    .on('error', function(err) {
+        gutil.log(err);
+        this.emit('end');
+    });
 });
 
 gulp.task('css', function() {

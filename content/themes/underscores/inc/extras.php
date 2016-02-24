@@ -51,9 +51,6 @@ function _s_mce_before_init_insert_formats( $init_array ) {
             'title' => 'Button',
             'selector' => 'a',
             'classes' => 'button',
-            'attributes' => array(
-							'role' => 'button',
-            )
         )
     );
     // Insert the array, JSON ENCODED, into 'style_formats'

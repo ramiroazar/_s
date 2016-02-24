@@ -30,6 +30,9 @@
           } @else if $featured-slider-image-size == cover {
         		object-fit: cover;
         		position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
         		width: 100%;
         		height: 100%;
           }
@@ -47,11 +50,11 @@
                 float: right;
               }
 
-              @if $featured-slider-caption-text-color != $color__text-body {
+              @if $featured-slider-caption-text-color != $color__text {
                 color: $featured-slider-caption-text-color;
               }
 
-              @if $featured-slider-caption-background-color != $color__background-body {
+              @if $featured-slider-caption-background-color != $color__background {
                 background-color: $featured-slider-caption-background-color;
               }
             }
@@ -66,8 +69,15 @@
 
         a {
 
-          @if $featured-slider-controls-color != $color__background-body {
-            background-color: $featured-slider-controls-color;
+          @if $featured-slider-navigation-color != $color__link {
+            color: $featured-slider-navigation-color;
+          }
+
+          @if $featured-slider-navigation-pagination == bullet {
+            text-indent: 1.5em;
+            background-color: $color__link;
+            border-radius: 50%;
+            background-color: $featured-slider-navigation-color;
           }
         }
       }
@@ -79,8 +89,35 @@
 
         a {
 
-          @if $featured-slider-controls-color != $color__background-body {
-            color: $featured-slider-controls-color;
+          @if $featured-slider-navigation-color != $color__link {
+            color: $featured-slider-navigation-color;
+          }
+
+          @if $featured-slider-navigation-direction == icon {
+
+            &.slider-prev {
+
+              &:before {
+                vertical-align: middle;
+                font-family: $font__icon;
+                @include font-size(3);
+                content: "\f104";
+              }
+            }
+
+            &.slider-next {
+
+              &:after {
+                vertical-align: middle;
+                font-family: $font__icon;
+                @include font-size(3);
+                content: "\f105";
+              }
+            }
+
+            span {
+              @extend %screen-reader-text;
+            }
           }
         }
       }
