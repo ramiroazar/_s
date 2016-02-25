@@ -60,3 +60,54 @@ function _s_mce_before_init_insert_formats( $init_array ) {
 }
 // Attach callback to 'tiny_mce_before_init'
 add_filter( 'tiny_mce_before_init', '_s_mce_before_init_insert_formats' );
+
+/**
+ * Truncate gallery
+ *
+ * @link
+ */
+
+function _s_truncate_gallery($atts) {
+
+	$atts = shortcode_atts(
+		array(
+			'total' => -1,
+		),
+		$atts
+	);
+
+	$args = array(
+		'p' => get_the_id(),
+	);
+
+	$query = new WP_Query( $args );
+		if ( $query->have_posts() ) :
+			$gallery_image_ids_array = array();
+			while ($query->have_posts()) : $query->the_post();
+				if ( get_post_gallery() ) :
+					$gallery = get_post_gallery( get_the_ID(), false );
+					$gallery_image_ids = explode(",", $gallery['ids']);
+					$c = 0;
+					foreach( $gallery_image_ids AS $gallery_image_id ) :
+						array_push($gallery_image_ids_array, $gallery_image_id);
+						if (++$c == $atts['total']) break;
+					endforeach;
+				endif;
+			endwhile;
+		endif;
+	$query->reset_postdata();
+	return implode(',', $gallery_image_ids_array);
+}
+
+/**
+ * Filter attributes for the current gallery image tag.
+ *
+ * @param array   $atts       Gallery image tag attributes.
+ * @param WP_Post $attachment WP_Post object for the attachment.
+ * @return array (maybe) filtered gallery image tag attributes.
+ */
+function _s_filter_gallery_img_atts( $atts, $attachment, $size ) {
+		$atts['data-media-file'] = wp_get_attachment_image_src( $attachment->ID, 'large' )[0];
+    return $atts;
+}
+add_filter( 'wp_get_attachment_image_attributes', '_s_filter_gallery_img_atts', 10, 3 );

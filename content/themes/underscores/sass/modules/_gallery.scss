@@ -1,0 +1,34 @@
+.gallery.section {
+
+  > div {}
+
+  .section-header {
+    @extend %container;
+
+    .section-title {}
+  }
+
+  article {
+
+    .entry-header {
+      @extend %container;
+    }
+
+    .entry-content {
+
+      > *:not(.gallery) {
+        display: none;
+      }
+
+      .gallery {
+        figure {
+          margin: 0;
+        }
+      }
+    }
+
+    .entry-footer {
+      @extend %container;
+    }
+  }
+}

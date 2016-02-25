@@ -34,7 +34,7 @@
 				</div><!-- .entry-summary -->
 
 				<footer class="entry-footer">
-					<a class="button" href="<?php the_permalink(); ?>" itemprop="url">More</a>
+					<?php _s_entry_footer_child(); ?>
 					<?php _s_entry_footer(); ?>
 				</footer><!-- .entry-footer -->
 			</div>

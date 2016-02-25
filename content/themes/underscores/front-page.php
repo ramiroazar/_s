@@ -70,26 +70,26 @@ get_header(); ?>
 
 					<h2 class="section-title"><?php _e( 'About', '_s' ); ?></h2>
 
-						<?php
-						  $args = array(
-								'post_type' => 'page',
-								'pagename' => 'home',
-						  );
-						?>
+					<?php
+					  $args = array(
+							'post_type' => 'page',
+							'pagename' => 'home',
+					  );
+					?>
 
-						<?php $query = new WP_Query( $args ); ?>
+					<?php $query = new WP_Query( $args ); ?>
 
-						<?php if ( $query->have_posts() ) : ?>
+					<?php if ( $query->have_posts() ) : ?>
 
-						  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+					  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
-						    <?php get_template_part( 'template-parts/content', 'toggle' ); ?>
+					    <?php get_template_part( 'template-parts/content', 'toggle' ); ?>
 
-						  <?php endwhile; ?>
+					  <?php endwhile; ?>
 
-						<?php endif; ?>
+					<?php endif; ?>
 
-						<?php wp_reset_postdata(); ?>
+					<?php wp_reset_postdata(); ?>
 
 				</div>
 
@@ -101,32 +101,32 @@ get_header(); ?>
 
 					<h2 class="section-title"><?php _e( 'Services', '_s' ); ?></h2>
 
-						<?php
-						  $args = array(
-								'post_type' => 'page',
-								'tax_query' => array(
-									array(
-										'taxonomy' => 'category_page',
-										'field'    => 'slug',
-										'terms'    => 'services',
-									),
+					<?php
+					  $args = array(
+							'post_type' => 'page',
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'category_page',
+									'field'    => 'slug',
+									'terms'    => 'services',
 								),
-						  );
-						?>
+							),
+					  );
+					?>
 
-						<?php $query = new WP_Query( $args ); ?>
+					<?php $query = new WP_Query( $args ); ?>
 
-						<?php if ( $query->have_posts() ) : ?>
+					<?php if ( $query->have_posts() ) : ?>
 
-						  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+					  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
-						    <?php get_template_part( 'template-parts/content', 'service' ); ?>
+					    <?php get_template_part( 'template-parts/content', 'service' ); ?>
 
-						  <?php endwhile; ?>
+					  <?php endwhile; ?>
 
-						<?php endif; ?>
+					<?php endif; ?>
 
-						<?php wp_reset_postdata(); ?>
+					<?php wp_reset_postdata(); ?>
 
 				</div>
 
