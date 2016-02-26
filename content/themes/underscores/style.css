@@ -456,13 +456,87 @@ img.mfp-img {
     padding-right: 6px;
   }
 }
-#masthead > div, body:not(.home) #content > div, .slider .slides .slide figcaption > div, .slider ol, .slider ul, .introduction.section > div, .services.section > div, .map.section > div, .gallery.section .section-header, .gallery.section article .entry-header, .gallery.section article .entry-footer, .cta.section > div, .credentials.section > div, .contact.section > div, #copyright > div {
+/*--------------------------------------------------------------
+# Odometer
+--------------------------------------------------------------*/
+.odometer.odometer-auto-theme, .odometer.odometer-theme-default {
+  position: relative;
+}
+.odometer.odometer-auto-theme .odometer-digit, .odometer.odometer-theme-default .odometer-digit {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-spacer, .odometer.odometer-theme-default .odometer-digit .odometer-digit-spacer {
+  display: inline-block;
+  vertical-align: middle;
+  visibility: hidden;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner, .odometer.odometer-theme-default .odometer-digit .odometer-digit-inner {
+  text-align: left;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-ribbon, .odometer.odometer-theme-default .odometer-digit .odometer-ribbon {
+  display: block;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-ribbon-inner, .odometer.odometer-theme-default .odometer-digit .odometer-ribbon-inner {
+  display: block;
+  -webkit-backface-visibility: hidden;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-value, .odometer.odometer-theme-default .odometer-digit .odometer-value {
+  display: block;
+  -webkit-transform: translateZ(0);
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-value.odometer-last-value, .odometer.odometer-theme-default .odometer-digit .odometer-value.odometer-last-value {
+  position: absolute;
+}
+.odometer.odometer-auto-theme.odometer-animating-up .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-up .odometer-ribbon-inner {
+  -webkit-transition: -webkit-transform 2s;
+  -moz-transition: -moz-transform 2s;
+  -ms-transition: -ms-transform 2s;
+  -o-transition: -o-transform 2s;
+  transition: transform 2s;
+}
+.odometer.odometer-auto-theme.odometer-animating-up.odometer-animating .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-up.odometer-animating .odometer-ribbon-inner {
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+.odometer.odometer-auto-theme.odometer-animating-down .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-down .odometer-ribbon-inner {
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+.odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+  -webkit-transition: -webkit-transform 2s;
+  -moz-transition: -moz-transform 2s;
+  -ms-transition: -ms-transform 2s;
+  -o-transition: -o-transform 2s;
+  transition: transform 2s;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+}
+
+#masthead > div, body:not(.home) #content > div, .slider .slides .slide figcaption > div, .slider ol, .slider ul, .introduction.section > div, .services.section > div, .map.section > div, .gallery.section .section-header, .gallery.section article .entry-header, .gallery.section article .entry-footer, .cta.section > div, .credentials.section > div, .counter.section > div, .contact.section > div, #copyright > div {
   max-width: 64em;
   margin-left: auto;
   margin-right: auto;
   width: 94.28571%;
 }
-#masthead > div:after, body:not(.home) #content > div:after, .slider .slides .slide figcaption > div:after, .slider ol:after, .slider ul:after, .introduction.section > div:after, .services.section > div:after, .map.section > div:after, .gallery.section .section-header:after, .gallery.section article .entry-header:after, .gallery.section article .entry-footer:after, .cta.section > div:after, .credentials.section > div:after, .contact.section > div:after, #copyright > div:after {
+#masthead > div:after, body:not(.home) #content > div:after, .slider .slides .slide figcaption > div:after, .slider ol:after, .slider ul:after, .introduction.section > div:after, .services.section > div:after, .map.section > div:after, .gallery.section .section-header:after, .gallery.section article .entry-header:after, .gallery.section article .entry-footer:after, .cta.section > div:after, .credentials.section > div:after, .counter.section > div:after, .contact.section > div:after, #copyright > div:after {
   content: " ";
   display: block;
   clear: both;

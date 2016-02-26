@@ -117,7 +117,7 @@
 
 					<header class="section-header">
 
-						<h2 class="section-title"><?php _e( 'Call to Action', '_s' ); ?></h2>
+						<h2 class="section-title"><?php _e( 'Credentials', '_s' ); ?></h2>
 
 					</header>
 
@@ -145,6 +145,41 @@
 				</div>
 
 			</section><!-- #credentials -->
+
+			<section id="counter" class="section counter">
+
+				<div>
+
+					<header class="section-header">
+
+						<h2 class="section-title"><?php _e( 'Counter', '_s' ); ?></h2>
+
+					</header>
+
+					<?php
+					  $args = array(
+							'post_type' => 'section',
+							'p' => 214
+					  );
+					?>
+
+					<?php $query = new WP_Query( $args ); ?>
+
+					<?php if ( $query->have_posts() ) : ?>
+
+					  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+
+					    <?php the_content(); ?>
+
+					  <?php endwhile; ?>
+
+					<?php endif; ?>
+
+					<?php wp_reset_postdata(); ?>
+
+				</div>
+
+			</section><!-- #counter -->
 
 			<section id="contact" class="section contact">
 

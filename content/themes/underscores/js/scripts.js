@@ -49,3 +49,13 @@ $('.gallery').each(function() {
     }
    });
 });
+
+/**
+ * Odometer
+ *
+ * @link http://github.hubspot.com/odometer/
+ */
+
+setTimeout(function(){
+    $('.odometer').html(100000);
+});

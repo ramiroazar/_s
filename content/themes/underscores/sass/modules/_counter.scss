@@ -1,0 +1,6 @@
+.counter.section {
+
+  > div {
+    @extend %container;
+  }
+}
