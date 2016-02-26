@@ -6,6 +6,24 @@
 require get_stylesheet_directory() . '/inc/normalize.php';
 
 /**
+ * Register widget area.
+ *
+ * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+ */
+function _s_widgets_init_child() {
+	register_sidebar( array(
+		'name'          => esc_html__( 'Sidebar', '_s' ),
+		'id'            => 'sidebar',
+		'description'   => '',
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+}
+add_action( 'widgets_init', '_s_widgets_init_child' );
+
+/**
  * Enqueue scripts and styles.
  */
 function _s_scripts_enqueue() {
