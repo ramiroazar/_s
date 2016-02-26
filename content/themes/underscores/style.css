@@ -456,13 +456,13 @@ img.mfp-img {
     padding-right: 6px;
   }
 }
-#masthead > div, body:not(.home) #content > div, .slider .slides .slide figcaption > div, .slider ol, .slider ul, .introduction.section > div, .services.section > div, .map.section > div, .gallery.section .section-header, .gallery.section article .entry-header, .gallery.section article .entry-footer, #copyright > div {
+#masthead > div, body:not(.home) #content > div, .slider .slides .slide figcaption > div, .slider ol, .slider ul, .introduction.section > div, .services.section > div, .map.section > div, .gallery.section .section-header, .gallery.section article .entry-header, .gallery.section article .entry-footer, .contact.section > div, #copyright > div {
   max-width: 64em;
   margin-left: auto;
   margin-right: auto;
   width: 94.28571%;
 }
-#masthead > div:after, body:not(.home) #content > div:after, .slider .slides .slide figcaption > div:after, .slider ol:after, .slider ul:after, .introduction.section > div:after, .services.section > div:after, .map.section > div:after, .gallery.section .section-header:after, .gallery.section article .entry-header:after, .gallery.section article .entry-footer:after, #copyright > div:after {
+#masthead > div:after, body:not(.home) #content > div:after, .slider .slides .slide figcaption > div:after, .slider ol:after, .slider ul:after, .introduction.section > div:after, .services.section > div:after, .map.section > div:after, .gallery.section .section-header:after, .gallery.section article .entry-header:after, .gallery.section article .entry-footer:after, .contact.section > div:after, #copyright > div:after {
   content: " ";
   display: block;
   clear: both;
@@ -779,4 +779,19 @@ html[xmlns] .slider .slides {
 }
 .gallery.section article .entry-content .gallery figure {
   margin: 0;
+}
+
+@media (min-width: 48em) {
+  .contact.section section:first-of-type {
+    width: 48.57143%;
+    float: left;
+    margin-right: 2.85714%;
+  }
+}
+@media (min-width: 48em) {
+  .contact.section section:last-of-type {
+    width: 48.57143%;
+    float: right;
+    margin-right: 0;
+  }
 }

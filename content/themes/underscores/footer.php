@@ -76,6 +76,62 @@
 
 			</section><!-- #gallery -->
 
+			<section id="contact" class="section contact">
+
+				<div>
+
+					<header class="section-header">
+
+						<h2 class="section-title"><?php _e( 'Contact', '_s' ); ?></h2>
+
+					</header>
+
+					<?php
+					  $args = array(
+							'post_type' => 'section',
+							'p' => 213
+					  );
+					?>
+
+					<?php $query = new WP_Query( $args ); ?>
+
+					<?php if ( $query->have_posts() ) : ?>
+
+					  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+
+					    <?php get_template_part( 'template-parts/content', 'section' ); ?>
+
+					  <?php endwhile; ?>
+
+					<?php endif; ?>
+
+					<?php wp_reset_postdata(); ?>
+
+					<?php
+					  $args = array(
+							'post_type' => 'section',
+							'p' => 203
+					  );
+					?>
+
+					<?php $query = new WP_Query( $args ); ?>
+
+					<?php if ( $query->have_posts() ) : ?>
+
+					  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+
+					    <?php get_template_part( 'template-parts/content', 'section' ); ?>
+
+					  <?php endwhile; ?>
+
+					<?php endif; ?>
+
+					<?php wp_reset_postdata(); ?>
+
+				</div>
+
+			</section><!-- #contact -->
+
 			<div id="copyright" class="site-info">
 
 				<div>

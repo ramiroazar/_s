@@ -15,42 +15,42 @@ function _s_customize_register_child( $wp_customize ) {
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
-	// Contact
+	// Pages
 
-	$wp_customize->add_section( '_s_page_displays', array(
-		'title'          => 'Page displays',
+	$wp_customize->add_section( '_s_pages', array(
+		'title'          => 'Pages',
 		'priority'       => 35,
 	) );
 
-	$wp_customize->add_setting( 'page_display_contact', array() );
-	$wp_customize->add_control( 'page_display_contact', array(
+	$wp_customize->add_setting( 'page_contact', array() );
+	$wp_customize->add_control( 'page_contact', array(
 		'label'   => 'Contact',
-		'section' => '_s_page_displays',
+		'section' => '_s_pages',
 		'type'    => 'dropdown-pages',
 	) );
 
-	$wp_customize->add_setting( 'page_display_about', array() );
-	$wp_customize->add_control( 'page_display_about', array(
+	$wp_customize->add_setting( 'page_about', array() );
+	$wp_customize->add_control( 'page_about', array(
 		'label'   => 'About',
-		'section' => '_s_page_displays',
+		'section' => '_s_pages',
 		'type'    => 'dropdown-pages',
 	) );
 
-	$wp_customize->add_setting( 'page_display_faqs', array() );
-	$wp_customize->add_control( 'page_display_faqs', array(
+	$wp_customize->add_setting( 'page_faqs', array() );
+	$wp_customize->add_control( 'page_faqs', array(
 		'label'   => 'FAQs',
-		'section' => '_s_page_displays',
+		'section' => '_s_pages',
 		'type'    => 'dropdown-pages',
 	) );
 
-	$wp_customize->add_setting( 'page_display_gallery', array() );
-	$wp_customize->add_control( 'page_display_gallery', array(
+	$wp_customize->add_setting( 'page_gallery', array() );
+	$wp_customize->add_control( 'page_gallery', array(
 		'label'   => 'Gallery',
-		'section' => '_s_page_displays',
+		'section' => '_s_pages',
 		'type'    => 'dropdown-pages',
 	) );
 
-	// Contact
+	// Contact Details
 
 	$wp_customize->add_section( '_s_contact', array(
 		'title'          => 'Contact',
@@ -106,7 +106,7 @@ function _s_customize_register_child( $wp_customize ) {
 		'type'    => 'text',
 	) );
 
-	// Social Media
+	// Social Media Profiles
 
 	$wp_customize->add_section( '_s_social_media', array(
 		'title'          => 'Social Media',

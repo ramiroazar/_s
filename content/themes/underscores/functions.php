@@ -32,6 +32,11 @@ function _s_scripts_enqueue() {
 add_action( 'wp_enqueue_scripts', '_s_scripts_enqueue' );
 
 /**
+ * Dequeue scripts and styles.
+ */
+ add_filter( 'wpcf7_load_css', '__return_false' );
+
+/**
  * Custom template tags for this theme.
  */
 require get_stylesheet_directory() . '/inc/template-tags.php';

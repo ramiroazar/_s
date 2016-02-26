@@ -1,0 +1,21 @@
+.contact.section {
+
+  > div {
+    @extend %container;
+  }
+
+  section {
+
+    &:first-of-type {
+      @include susy-breakpoint($breakpoint__small) {
+        @include span(6);
+      }
+    }
+
+    &:last-of-type {
+      @include susy-breakpoint($breakpoint__small) {
+        @include span(6 last);
+      }
+    }
+  }
+}
