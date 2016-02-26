@@ -111,6 +111,41 @@
 
 			</section><!-- #cta -->
 
+			<section id="credentials" class="section credentials">
+
+				<div>
+
+					<header class="section-header">
+
+						<h2 class="section-title"><?php _e( 'Call to Action', '_s' ); ?></h2>
+
+					</header>
+
+					<?php
+					  $args = array(
+							'post_type' => 'section',
+							'p' => 204
+					  );
+					?>
+
+					<?php $query = new WP_Query( $args ); ?>
+
+					<?php if ( $query->have_posts() ) : ?>
+
+					  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+
+					    <?php the_content(); ?>
+
+					  <?php endwhile; ?>
+
+					<?php endif; ?>
+
+					<?php wp_reset_postdata(); ?>
+
+				</div>
+
+			</section><!-- #credentials -->
+
 			<section id="contact" class="section contact">
 
 				<div>
