@@ -76,13 +76,12 @@
 
 			</section><!-- #gallery -->
 
-			<div class="site-info">
+			<div id="copyright" class="site-info">
 
 				<div>
 
-					<a href="<?php echo esc_url( __( 'https://wordpress.org/', '_s' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', '_s' ), 'WordPress' ); ?></a>
-					<span class="sep"> | </span>
-					<?php printf( esc_html__( 'Theme: %1$s by %2$s.', '_s' ), '_s', '<a href="http://automattic.com/" rel="designer">Automattic</a>' ); ?>
+					<?php printf( esc_html__( '%1$s %2$s %3$s.', '_s' ), '&copy;', date('Y'), '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home" itemprop="url">' . get_bloginfo( 'name' ) . '</a>' ); ?>
+					<?php printf( esc_html__( '%1$s %2$s.', '_s' ), 'Website Designed & Developed by', '<a href="http://www.insightdigital.com.au" target="_blank">Insight Digital Marketing</a>' ); ?>
 
 				</div>
 
