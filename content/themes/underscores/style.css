@@ -542,14 +542,14 @@ img.mfp-img {
   clear: both;
 }
 
-.introduction.section article .entry-footer .toggle span {
+#masthead .site-branding .site-title, #masthead .site-branding .site-description, .menu-toggle span, .introduction.section article .entry-footer .toggle span {
   clip: rect(1px, 1px, 1px, 1px);
   position: absolute !important;
   height: 1px;
   width: 1px;
   overflow: hidden;
 }
-.introduction.section article .entry-footer .toggle span:focus {
+#masthead .site-branding .site-title:focus, #masthead .site-branding .site-description:focus, .menu-toggle span:focus, .introduction.section article .entry-footer .toggle span:focus {
   background-color: black;
   border-radius: 3px;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
@@ -606,6 +606,45 @@ body:before:after {
 /*--------------------------------------------------------------
 # Layout
 --------------------------------------------------------------*/
+#masthead {
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  left: 0;
+  top: 0;
+  background-color: white;
+}
+#masthead.headroom {
+  transition: transform 200ms linear;
+}
+#masthead.headroom--pinned {
+  transform: translateY(0%);
+}
+#masthead.headroom--unpinned {
+  transform: translateY(-100%);
+}
+#masthead > div {
+  padding: .75em 0;
+}
+@media (min-width: 64em) {
+  #masthead .site-branding {
+    float: left;
+  }
+}
+#masthead .site-branding .site-logo img {
+  vertical-align: bottom;
+  max-height: 3em;
+}
+#masthead .site-branding .site-description {
+  margin: 0;
+}
+@media (min-width: 64em) {
+  #masthead .site-contact {
+    float: right;
+    margin-left: 2.85714%;
+  }
+}
+
 @media (min-width: 64em) {
   body.sidebar #content #primary {
     width: 65.71429%;
@@ -641,6 +680,153 @@ a:focus {
 }
 a:hover, a:active {
   outline: 0;
+}
+
+/*--------------------------------------------------------------
+## Menus
+--------------------------------------------------------------*/
+.main-navigation {
+  clear: none;
+  display: block;
+  float: none;
+  width: auto;
+}
+.main-navigation ul {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+@media (min-width: 64em) {
+  .main-navigation ul {
+    float: right;
+  }
+}
+.main-navigation ul ul {
+  box-shadow: none;
+  float: none;
+  position: inherit;
+  top: inherit;
+  left: inherit;
+  z-index: inherit;
+}
+@media (max-width: 64em) {
+  .main-navigation ul ul {
+    margin-left: 1.5em;
+  }
+}
+@media (min-width: 64em) {
+  .main-navigation ul ul {
+    position: absolute;
+    display: none;
+    padding: 0.75em;
+    background-color: white;
+  }
+}
+.main-navigation ul ul ul {
+  left: inherit;
+  top: inherit;
+}
+@media (min-width: 64em) {
+  .main-navigation ul ul li {
+    float: none;
+    margin-left: 0;
+  }
+}
+.main-navigation ul ul a {
+  width: auto;
+}
+@media (min-width: 64em) {
+  .main-navigation ul ul a {
+    width: auto;
+    white-space: nowrap;
+  }
+}
+.main-navigation ul li:hover > ul,
+.main-navigation ul li.focus > ul {
+  left: inherit;
+}
+@media (min-width: 64em) {
+  .main-navigation ul li:hover > ul,
+  .main-navigation ul li.focus > ul {
+    left: -0.75em;
+    display: block;
+  }
+}
+.main-navigation li {
+  float: none;
+  position: inherit;
+}
+@media (min-width: 64em) {
+  .main-navigation li {
+    float: left;
+    position: relative;
+    margin-left: 0.75em;
+  }
+}
+.main-navigation a {
+  display: block;
+  text-decoration: none;
+}
+.main-navigation .current_page_item > a,
+.main-navigation .current-menu-item > a,
+.main-navigation .current_page_ancestor > a,
+.main-navigation .current-menu-ancestor > a {
+  font-weight: bold;
+}
+@media (min-width: 64em) {
+  .main-navigation .menu-item-has-children > a:after {
+    font-family: fontawesome;
+    content: " \f107";
+  }
+}
+
+/* Small menu. */
+.menu-toggle,
+.main-navigation.toggled ul {
+  display: block;
+}
+
+@media (min-width: 64em) {
+  .main-navigation.toggled ul ul {
+    display: none;
+  }
+}
+
+@media (min-width: 64em) {
+  .menu-toggle {
+    display: none;
+  }
+}
+.menu-toggle:before {
+  font-family: fontawesome;
+  content: "\f0c9";
+}
+
+@media (min-width: 64em) {
+  .main-navigation ul {
+    display: block;
+  }
+}
+
+.site-main .comment-navigation, .site-main
+.posts-navigation, .site-main
+.post-navigation {
+  margin: 0 0 1.5em;
+  overflow: hidden;
+}
+.comment-navigation .nav-previous,
+.posts-navigation .nav-previous,
+.post-navigation .nav-previous {
+  float: left;
+  width: 50%;
+}
+.comment-navigation .nav-next,
+.posts-navigation .nav-next,
+.post-navigation .nav-next {
+  float: right;
+  text-align: right;
+  width: 50%;
 }
 
 /*--------------------------------------------------------------

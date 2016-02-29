@@ -1,0 +1,169 @@
+.main-navigation {
+	clear: none;
+	display: block;
+	float: none;
+	width: auto;
+
+	ul {
+		display: none;
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+		@include susy-breakpoint($breakpoint__medium) {
+			float: right;
+		}
+
+		ul {
+			box-shadow: none;
+			float: none;
+			position: inherit;
+			top: inherit;
+			left: inherit;
+			z-index: inherit;
+
+			@include susy-breakpoint(max-width $breakpoint__medium) {
+				margin-left: 1.5em;
+			}
+
+			@include susy-breakpoint($breakpoint__medium) {
+				position: absolute;
+				display: none;
+				padding: 0.75em;
+				background-color: $color__background;
+			}
+
+			ul {
+				left: inherit;
+				top: inherit;
+			}
+
+			li {
+				@include susy-breakpoint($breakpoint__medium) {
+					float: none;
+					margin-left: 0;
+				}
+
+				&:hover > ul,
+				&.focus > ul {
+				}
+			}
+
+			a {
+				width: auto;
+				@include susy-breakpoint($breakpoint__medium) {
+					width: auto;
+					white-space: nowrap;
+				}
+			}
+
+			:hover > a,
+			.focus > a {
+			}
+
+			a:hover,
+			a.focus {
+			}
+		}
+
+		li:hover > ul,
+		li.focus > ul {
+			left: inherit;
+			@include susy-breakpoint($breakpoint__medium) {
+				left: -0.75em;
+				display: block;
+			}
+		}
+	}
+
+	li {
+		float: none;
+		position: inherit;
+		@include susy-breakpoint($breakpoint__medium) {
+			float: left;
+			position: relative;
+			margin-left: 0.75em;
+		}
+
+		&:hover > a,
+		&.focus > a {
+		}
+	}
+
+	a {
+		display: block;
+		text-decoration: none;
+	}
+
+	.current_page_item > a,
+	.current-menu-item > a,
+	.current_page_ancestor > a,
+	.current-menu-ancestor > a {
+		font-weight: bold;
+	}
+
+	.menu-item-has-children {
+
+		> a {
+
+			&:after {
+				@include susy-breakpoint($breakpoint__medium) {
+					font-family: $font__icon;
+					content: " \f107";
+				}
+			}
+		}
+	}
+}
+
+/* Small menu. */
+.menu-toggle,
+.main-navigation.toggled ul {
+	display: block;
+}
+
+.main-navigation.toggled ul ul {
+	@include susy-breakpoint($breakpoint__medium) {
+		display: none;
+	}
+}
+
+.menu-toggle {
+	@include susy-breakpoint($breakpoint__medium) {
+		display: none;
+	}
+
+	&:before {
+		font-family: $font__icon;
+		content: "\f0c9";
+	}
+
+	span {
+		@extend %screen-reader-text;
+	}
+}
+.main-navigation ul {
+	@include susy-breakpoint($breakpoint__medium) {
+		display: block;
+	}
+}
+
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+
+	.site-main & {
+		margin: 0 0 1.5em;
+		overflow: hidden;
+	}
+
+	.nav-previous {
+		float: left;
+		width: 50%;
+	}
+
+	.nav-next {
+		float: right;
+		text-align: right;
+		width: 50%;
+	}
+}

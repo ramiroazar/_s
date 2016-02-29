@@ -1,6 +1,60 @@
 #masthead {
+	position: fixed;
+	z-index: 10;
+	right: 0;
+	left: 0;
+	top: 0;
+	background-color: $color__background;
+
+	&.headroom {
+		transition: transform 200ms linear;
+	}
+
+	&.headroom--pinned {
+    transform: translateY(0%);
+	}
+	&.headroom--unpinned {
+    transform: translateY(-100%);
+	}
 
 	> div {
 		@extend %container;
+		padding: .75em 0;
+	}
+
+	.site-branding {
+		@include susy-breakpoint($breakpoint__medium) {
+			float: left;
+		}
+
+		.site-logo {
+
+			img {
+				vertical-align: bottom;
+				max-height: 3em;
+			}
+		}
+
+		.site-title {
+			@extend %screen-reader-text;
+		}
+
+		.site-description {
+			@extend %screen-reader-text;
+			margin: 0;
+		}
+	}
+
+	.site-contact {
+		@include susy-breakpoint($breakpoint__medium) {
+			float: right;
+			margin-left: gutters();
+		}
+	}
+
+	.main-navigation {
+		@include susy-breakpoint($breakpoint__medium) {
+			// float: right;
+		}
 	}
 }

@@ -17,6 +17,11 @@
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
+<meta name="format-detection" content="telephone=no">
+<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
 <?php wp_head(); ?>
 </head>
 
@@ -27,8 +32,9 @@
 	<header id="masthead" class="site-header" role="banner">
 		<div>
 			<div class="site-branding">
+				<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo esc_url( home_url( '/' ) ); ?>/wp/wp-admin/images/wordpress-logo.svg" alt="<?php bloginfo('name'); ?> Logo" /></a>
 				<?php
-				if ( is_front_page() && is_home() ) : ?>
+				if ( is_front_page() || is_home() ) : ?>
 					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<?php else : ?>
 					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
@@ -42,10 +48,12 @@
 				endif; ?>
 			</div><!-- .site-branding -->
 
-			<div class="site-contact"></div><!-- .site-contact -->
+			<div class="site-contact">
+				<?php echo do_shortcode('[contact type="phone"]') ?>
+			</div><!-- .site-contact -->
 
 			<nav id="site-navigation" class="main-navigation" role="navigation">
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', '_s' ); ?></button>
+				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span><?php esc_html_e( 'Primary Menu', '_s' ); ?></span></button>
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 			</nav><!-- #site-navigation -->
 		</div>
