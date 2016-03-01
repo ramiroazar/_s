@@ -12,7 +12,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<?php if ( get_post_meta(get_the_ID(), 'video', true) ) : ?>
-		<div class="entry-video">
+		<figure class="entry-video">
 			<?php /* <video preload="none" loop="1" muted="muted">
 				<source type="video/youtube" src="<?php echo get_post_meta(get_the_ID(), 'video', true); ?>" />
 			</video> */ ?>
@@ -20,11 +20,11 @@
 			<?php // echo do_shortcode('[video type="video/youtube" src="' . get_post_meta(get_the_ID(), 'video', true) . '"]'); ?>
 			<?php // echo do_shortcode('[video autoplay="true" loop="true" type="video/youtube" src="' . get_post_meta(get_the_ID(), 'video', true) . '"]'); ?>
 			<?php echo do_shortcode(get_post_meta(get_the_ID(), 'video', true)); ?>
-		</div><!-- .entry-video -->
+		</figure><!-- .entry-video -->
 	<?php elseif ( has_post_thumbnail() ) : ?>
-		<div class="entry-image">
+		<figure class="entry-image">
 			<?php the_post_thumbnail(); ?>
-		</div><!-- .entry-image -->
+		</figure><!-- .entry-image -->
 	<?php endif; ?>
 
 	<div>

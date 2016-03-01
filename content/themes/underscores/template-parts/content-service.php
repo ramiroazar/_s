@@ -24,9 +24,9 @@
 				</header><!-- .entry-header -->
 
 				<?php if ( has_post_thumbnail() ) : ?>
-					<div class="entry-image">
+					<figure class="entry-image">
 						<?php the_post_thumbnail( 'medium' ); ?>
-					</div><!-- .entry-image -->
+					</figure><!-- .entry-image -->
 				<?php endif; ?>
 
 				<div class="entry-summary">

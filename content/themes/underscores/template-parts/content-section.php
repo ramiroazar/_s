@@ -18,9 +18,9 @@
 		</header>
 
 		<?php if ( has_post_thumbnail() ) : ?>
-			<div class="section-image">
+			<figure class="section-image">
 				<?php the_post_thumbnail( 'medium' ); ?>
-			</div><!-- .section-image -->
+			</figure><!-- .section-image -->
 		<?php endif; ?>
 
 		<div class="section-content">
@@ -32,5 +32,5 @@
 		</footer><!-- .section-footer -->
 
 	</div>
-	
+
 </section><!-- #<?php echo sanitize_title(get_the_title()); ?> -->

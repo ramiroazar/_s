@@ -832,6 +832,10 @@ a:hover, a:active {
 /*--------------------------------------------------------------
 # Media
 --------------------------------------------------------------*/
+figure {
+  margin: 1.5em 0;
+}
+
 /*--------------------------------------------------------------
 ## Galleries
 --------------------------------------------------------------*/
@@ -938,16 +942,6 @@ html[xmlns] .slider .slides {
   opacity: 0.5;
 }
 
-.object-fit {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
-.object-fit img {
-  opacity: 0;
-}
-
 /*--------------------------------------------------------------
 # Modules
 --------------------------------------------------------------*/
@@ -961,6 +955,9 @@ html[xmlns] .slider .slides {
 }
 .featured.section .slider .slides > * {
   overflow: hidden;
+}
+.featured.section .slider .slides > * .entry-image {
+  margin: 0;
 }
 .featured.section .slider .slides > * .entry-image img {
   object-fit: cover;
@@ -976,6 +973,7 @@ html[xmlns] .slider .slides {
   position: absolute;
   width: 100%;
   height: 100%;
+  margin: 0;
   /* 1. No object-fit support: */
   /* 2. If supporting object-fit, overriding (1): */
 }
