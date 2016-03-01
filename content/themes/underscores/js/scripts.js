@@ -85,6 +85,43 @@ jQuery(document).ready(function($) {
     },
   });
 
+  /**
+  * Modernizr
+  *
+  * @link https://modernizr.com/
+  */
+
+  if ( !Modernizr.objectfit) {
+    $('img').each(function () {
+      if ($(this).css('object-fit')) {
+        $(this)
+          .closest('.entry-image')
+          .css('opacity',0)
+          .closest('article')
+          .css({
+            'backgroundImage' :'url(' + $(this).prop('src') + ')',
+            'backgroundSize' : $(this).css('object-fit'),
+            'backgroundPosition' : $(this).css('object-position'),
+            'backgroundRepeat' : 'no-repeat',
+          });
+      }
+    });
+    $('video').each(function () {
+      if ($(this).css('object-fit')) {
+        $(this)
+          .closest('.entry-video')
+          .css('opacity',0)
+          .closest('article')
+          .css({
+            'backgroundImage' :'url(' + $(this).prop('poster') + ')',
+            'backgroundSize' : $(this).css('object-fit'),
+            'backgroundPosition' : $(this).css('object-position'),
+            'backgroundRepeat' : 'no-repeat',
+          });
+      }
+    });
+  }
+
 });
 
 // Document ready

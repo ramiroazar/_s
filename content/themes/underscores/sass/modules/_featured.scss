@@ -1,61 +1,144 @@
+@mixin module__featured-layout-grid {
+
+  .slider {
+    @extend %container;
+
+    .slides {
+
+      > *  {
+        height: $module__featured-layout-grid-height;
+      }
+    }
+  }
+}
+
+@mixin module__featured-layout-viewport {
+
+  .slider {
+
+    .slides {
+
+      > *  {
+        height: 100vh;
+      }
+    }
+  }
+}
+
+
 .featured.section {
   @include susy-breakpoint(max-width $breakpoint__medium) {
     display: none;
   }
 
+  @if $module__featured-layout == grid {
+    @include module__featured-layout-grid;
+  } @else if $module__featured-layout == viewport {
+    @include module__featured-layout-viewport;
+  }
+
   .slider {
-    @if $featured-slider-width == fixed {
-      @extend %container;
-    }
 
     .slides {
 
-      .slide {
-        @if $featured-slider-height == fixed {
-          height: $featured-slider-minimum-height;
-        } @else if $featured-slider-height == full {
-          height: 100vh;
-        }
+      > *  {
+        overflow: hidden;
 
-        @if $featured-slider-image-size == cover {
-          overflow: hidden;
-          min-height: $featured-slider-minimum-height;
-        }
+        .entry-image {
 
-        img {
-          @if $featured-slider-image-size == height {
-            width: auto;
-            max-width: auto;
-            max-height: 100%;
-          } @else if $featured-slider-image-size == cover {
-        		object-fit: cover;
-        		position: absolute;
+          img {
+            object-fit: cover;
+            object-position: center center;
+            position: absolute;
             z-index: -1;
             top: 0;
             left: 0;
-        		width: 100%;
-        		height: 100%;
+            width: 100%;
+            height: 100%;
           }
         }
 
-        figcaption {
+        .entry-video {
+          position: absolute;
+          width: 100%;
+          height: 100%;
 
-          > div {
+          embed, iframe, object, video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            max-width: none;
+          }
+
+          /* 1. No object-fit support: */
+          @media (min-aspect-ratio: 16/9) {
+            embed, iframe, object, video { height: 300% !important; top: -100%; }
+          }
+          @media (max-aspect-ratio: 16/9) {
+            embed, iframe, object, video { width: 300% !important; left: -100%; }
+          }
+
+          /* 2. If supporting object-fit, overriding (1): */
+          @supports (object-fit: cover) {
+            video {
+              top: 0;
+              left: 0;
+              width: 100% !important;
+              height: 100% !important;
+              object-fit: cover;
+          		object-position: center center;
+            }
+          }
+
+          .mejs-container {
+            position: absolute;
+            width: 100% !important;
+            height: 100% !important;
+            .mejs-mediaelement {
+              .me-plugin {
+                width: 100%;
+                height: 100%;
+              }
+            }
+            .mejs-layers {
+              .mejs-layer {
+                width: 100% !important;
+                height: 100% !important;
+
+                &.mejs-poster {
+                  background-size: cover;
+                }
+              }
+            }
+            .mejs-controls {
+              display: none !important;
+            }
+          }
+        }
+
+        > div {
+
+          &:last-of-type {
 
             > div {
-              @if $featured-slider-caption-alignment == center {
-                float: none;
-                margin: 0 auto;
-              } @else if $featured-slider-caption-alignment == right {
-                float: right;
-              }
 
-              @if $featured-slider-caption-text-color != $color__text {
-                color: $featured-slider-caption-text-color;
-              }
+              > div {
+                @if $module__featured-caption-alignment == center {
+                  float: none;
+                  margin: 0 auto;
+                } @else if $module__featured-caption-alignment == right {
+                  float: right;
+                }
 
-              @if $featured-slider-caption-background-color != $color__background {
-                background-color: $featured-slider-caption-background-color;
+                @if $module__featured-caption-text-color != $color__text {
+                  color: $module__featured-caption-text-color;
+                }
+
+                @if $module__featured-caption-background-color != $color__background {
+                  background-color: $module__featured-caption-background-color;
+                }
               }
             }
           }
@@ -69,15 +152,15 @@
 
         a {
 
-          @if $featured-slider-navigation-color != $color__link {
-            color: $featured-slider-navigation-color;
+          @if $module__featured-navigation-color != $color__link {
+            color: $module__featured-navigation-color;
           }
 
-          @if $featured-slider-navigation-pagination == bullet {
+          @if $module__featured-navigation-pagination == bullet {
             text-indent: 1.5em;
             background-color: $color__link;
             border-radius: 50%;
-            background-color: $featured-slider-navigation-color;
+            background-color: $module__featured-navigation-color;
           }
         }
       }
@@ -89,11 +172,11 @@
 
         a {
 
-          @if $featured-slider-navigation-color != $color__link {
-            color: $featured-slider-navigation-color;
+          @if $module__featured-navigation-color != $color__link {
+            color: $module__featured-navigation-color;
           }
 
-          @if $featured-slider-navigation-direction == icon {
+          @if $module__featured-navigation-direction == icon {
 
             &.slider-prev {
 

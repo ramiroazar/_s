@@ -77,7 +77,7 @@ function _s_post_type_init_slider() {
 		'hierarchical'       => false,
 		'menu_position'      => null,
 		'menu_icon' 			=> 'dashicons-images-alt',
-		'supports'           => array( 'title', 'editor', 'thumbnail' )
+		'supports'           => array( 'title', 'editor', 'thumbnail', 'custom-fields' )
 	);
 
 	register_post_type( 'slider', $args );

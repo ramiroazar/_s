@@ -42,7 +42,7 @@ get_header(); ?>
 
 					  <div class="slider">
 
-						  <figure class="slides">
+						  <div class="slides">
 
 							  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
@@ -50,7 +50,7 @@ get_header(); ?>
 
 							  <?php endwhile; ?>
 
-						  </figure>
+						  </div>
 
 					  </div>
 

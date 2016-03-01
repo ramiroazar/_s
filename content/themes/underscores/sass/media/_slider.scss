@@ -17,7 +17,7 @@
     }
     // End clearfix
 
-    .slide {
+    > * {
       margin: 0;
 
       // Start no javascript fallback
@@ -29,32 +29,28 @@
       }
       // End no javascript fallback
 
-      img {
-        display: block;
-        width: 100%;
-        margin: auto;
+      .entry-header {
+        .entry-title {
+          font-weight: bold;
+        }
       }
 
-      figcaption {
-        position: absolute;
-        bottom: 4.5em;
-        width: 100%;
+      > div {
 
-        > div {
-          @extend %container;
+        &:last-of-type {
+          position: absolute;
+          bottom: 4.5em;
+          width: 100%;
 
           > div {
-            overflow: auto;
-            float: left;
-            width: 50%;
-            padding: 0 gutters();
-            background-color: $color__background;
+            @extend %container;
 
-            p {
-
-              &:first-of-type {
-                font-weight: bold;
-              }
+            > div {
+              overflow: auto;
+              float: left;
+              width: 50%;
+              padding: 1.5em gutters();
+              background-color: $color__background;
             }
           }
         }

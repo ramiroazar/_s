@@ -530,13 +530,13 @@ img.mfp-img {
   transform: translateY(0);
 }
 
-#masthead > div, body:not(.home) #content > div, .slider .slides .slide figcaption > div, .slider ol, .slider ul, .introduction.section > div, .services.section > div, .map.section > div, .gallery.section .section-header, .gallery.section article .entry-header, .gallery.section article .entry-footer, .cta.section > div, .credentials.section > div, .counter.section > div, .contact.section > div, #copyright > div {
+#masthead > div, body:not(.home) #content > div, .slider .slides > * > div:last-of-type > div, .slider ol, .slider ul, .introduction.section > div, .services.section > div, .map.section > div, .gallery.section .section-header, .gallery.section article .entry-header, .gallery.section article .entry-footer, .cta.section > div, .credentials.section > div, .counter.section > div, .contact.section > div, #copyright > div {
   max-width: 64em;
   margin-left: auto;
   margin-right: auto;
   width: 94.28571%;
 }
-#masthead > div:after, body:not(.home) #content > div:after, .slider .slides .slide figcaption > div:after, .slider ol:after, .slider ul:after, .introduction.section > div:after, .services.section > div:after, .map.section > div:after, .gallery.section .section-header:after, .gallery.section article .entry-header:after, .gallery.section article .entry-footer:after, .cta.section > div:after, .credentials.section > div:after, .counter.section > div:after, .contact.section > div:after, #copyright > div:after {
+#masthead > div:after, body:not(.home) #content > div:after, .slider .slides > * > div:last-of-type > div:after, .slider ol:after, .slider ul:after, .introduction.section > div:after, .services.section > div:after, .map.section > div:after, .gallery.section .section-header:after, .gallery.section article .entry-header:after, .gallery.section article .entry-footer:after, .cta.section > div:after, .credentials.section > div:after, .counter.section > div:after, .contact.section > div:after, #copyright > div:after {
   content: " ";
   display: block;
   clear: both;
@@ -864,33 +864,28 @@ html[xmlns] .slider .slides {
 * html .slider .slides {
   height: 1%;
 }
-.slider .slides .slide {
+.slider .slides > * {
   margin: 0;
   display: none;
   backface-visibility: hidden;
 }
-.slider .slides .slide:first-child {
+.slider .slides > *:first-child {
   display: block;
 }
-.slider .slides .slide img {
-  display: block;
-  width: 100%;
-  margin: auto;
+.slider .slides > * .entry-header .entry-title {
+  font-weight: bold;
 }
-.slider .slides .slide figcaption {
+.slider .slides > * > div:last-of-type {
   position: absolute;
   bottom: 4.5em;
   width: 100%;
 }
-.slider .slides .slide figcaption > div > div {
+.slider .slides > * > div:last-of-type > div > div {
   overflow: auto;
   float: left;
   width: 50%;
-  padding: 0 2.85714%;
+  padding: 1.5em 2.85714%;
   background-color: white;
-}
-.slider .slides .slide figcaption > div > div p:first-of-type {
-  font-weight: bold;
 }
 .slider ol {
   position: absolute;
@@ -943,6 +938,16 @@ html[xmlns] .slider .slides {
   opacity: 0.5;
 }
 
+.object-fit {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.object-fit img {
+  opacity: 0;
+}
+
 /*--------------------------------------------------------------
 # Modules
 --------------------------------------------------------------*/
@@ -950,6 +955,78 @@ html[xmlns] .slider .slides {
   .featured.section {
     display: none;
   }
+}
+.featured.section .slider .slides > * {
+  height: 100vh;
+}
+.featured.section .slider .slides > * {
+  overflow: hidden;
+}
+.featured.section .slider .slides > * .entry-image img {
+  object-fit: cover;
+  object-position: center center;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.featured.section .slider .slides > * .entry-video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* 1. No object-fit support: */
+  /* 2. If supporting object-fit, overriding (1): */
+}
+.featured.section .slider .slides > * .entry-video embed, .featured.section .slider .slides > * .entry-video iframe, .featured.section .slider .slides > * .entry-video object, .featured.section .slider .slides > * .entry-video video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+@media (min-aspect-ratio: 16 / 9) {
+  .featured.section .slider .slides > * .entry-video embed, .featured.section .slider .slides > * .entry-video iframe, .featured.section .slider .slides > * .entry-video object, .featured.section .slider .slides > * .entry-video video {
+    height: 300% !important;
+    top: -100%;
+  }
+}
+@media (max-aspect-ratio: 16 / 9) {
+  .featured.section .slider .slides > * .entry-video embed, .featured.section .slider .slides > * .entry-video iframe, .featured.section .slider .slides > * .entry-video object, .featured.section .slider .slides > * .entry-video video {
+    width: 300% !important;
+    left: -100%;
+  }
+}
+@supports (object-fit: cover) {
+  .featured.section .slider .slides > * .entry-video video {
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+.featured.section .slider .slides > * .entry-video .mejs-container {
+  position: absolute;
+  width: 100% !important;
+  height: 100% !important;
+}
+.featured.section .slider .slides > * .entry-video .mejs-container .mejs-mediaelement .me-plugin {
+  width: 100%;
+  height: 100%;
+}
+.featured.section .slider .slides > * .entry-video .mejs-container .mejs-layers .mejs-layer {
+  width: 100% !important;
+  height: 100% !important;
+}
+.featured.section .slider .slides > * .entry-video .mejs-container .mejs-layers .mejs-layer.mejs-poster {
+  background-size: cover;
+}
+.featured.section .slider .slides > * .entry-video .mejs-container .mejs-controls {
+  display: none !important;
 }
 
 .introduction.section {

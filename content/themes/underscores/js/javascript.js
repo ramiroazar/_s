@@ -3199,6 +3199,339 @@ $.magnificPopup.registerModule(RETINA_NS, {
 
 !function(a){a.fn.onScreen=function(b){var c={container:window,direction:"vertical",toggleClass:null,doIn:null,doOut:null,tolerance:0,throttle:null,lazyAttr:null,lazyPlaceholder:"data:image/gif;base64,R0lGODlhEAAFAIAAAP///////yH/C05FVFNDQVBFMi4wAwEAAAAh+QQJCQAAACwAAAAAEAAFAAACCIyPqcvtD00BACH5BAkJAAIALAAAAAAQAAUAgfT29Pz6/P///wAAAAIQTGCiywKPmjxUNhjtMlWrAgAh+QQJCQAFACwAAAAAEAAFAIK8urzc2tzEwsS8vrzc3tz///8AAAAAAAADFEiyUf6wCEBHvLPemIHdTzCMDegkACH5BAkJAAYALAAAAAAQAAUAgoSChLS2tIyKjLy+vIyOjMTCxP///wAAAAMUWCQ09jAaAiqQmFosdeXRUAkBCCUAIfkECQkACAAsAAAAABAABQCDvLq83N7c3Nrc9Pb0xMLE/P78vL68/Pr8////AAAAAAAAAAAAAAAAAAAAAAAAAAAABCEwkCnKGbegvQn4RjGMx8F1HxBi5Il4oEiap2DcVYlpZwQAIfkECQkACAAsAAAAABAABQCDvLq85OLkxMLE9Pb0vL685ObkxMbE/Pr8////AAAAAAAAAAAAAAAAAAAAAAAAAAAABCDwnCGHEcIMxPn4VAGMQNBx0zQEZHkiYNiap5RaBKG9EQAh+QQJCQAJACwAAAAAEAAFAIOEgoTMysyMjozs6uyUlpSMiozMzsyUkpTs7uz///8AAAAAAAAAAAAAAAAAAAAAAAAEGTBJiYgoBM09DfhAwHEeKI4dGKLTIHzCwEUAIfkECQkACAAsAAAAABAABQCDvLq85OLkxMLE9Pb0vL685ObkxMbE/Pr8////AAAAAAAAAAAAAAAAAAAAAAAAAAAABCAQSTmMEGaco8+UBSACwWBqHxKOJYd+q1iaXFoRRMbtEQAh+QQJCQAIACwAAAAAEAAFAIO8urzc3tzc2tz09vTEwsT8/vy8vrz8+vz///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAEIhBJWc6wJZAtJh3gcRBAaXiIZV2kiRbgNZbA6VXiUAhGL0QAIfkECQkABgAsAAAAABAABQCChIKEtLa0jIqMvL68jI6MxMLE////AAAAAxRoumxFgoxGCbiANos145e3DJcQJAAh+QQJCQAFACwAAAAAEAAFAIK8urzc2tzEwsS8vrzc3tz///8AAAAAAAADFFi6XCQwtCmAHbPVm9kGWKcEQxkkACH5BAkJAAIALAAAAAAQAAUAgfT29Pz6/P///wAAAAIRlI8SAZsPYnuJMUCRnNksWwAAOw==",debug:!1};return"remove"!==b&&a.extend(c,b),this.each(function(){function d(){a(w).off("scroll.onScreen resize.onScreen"),a(window).off("resize.onScreen")}function e(){return z?u<q-c.tolerance&&l<u+s-c.tolerance:u<o-c.tolerance&&u>-s+c.tolerance}function f(){return z?u+(s-c.tolerance)<l||u>q-c.tolerance:u>o-c.tolerance||-s+c.tolerance>u}function g(){return z?v<r-c.tolerance&&m<v+t-c.tolerance:v<p-c.tolerance&&v>-t+c.tolerance}function h(){return z?v+(t-c.tolerance)<m||v>r-c.tolerance:v>p-c.tolerance||-t+c.tolerance>v}function i(){return x?!1:"horizontal"===c.direction?g():e()}function j(){return x?"horizontal"===c.direction?h():f():!1}function k(a,b,c){var d,e,f;return function(){e=arguments,f=!0,c=c||this,d||!function(){f?(a.apply(c,e),f=!1,d=setTimeout(arguments.callee,b)):d=null}()}}var l,m,n,o,p,q,r,s,t,u,v,w=this,x=!1,y=a(this),z=a.isWindow(c.container);if("remove"===b)return void d();var A=function(){if(z||"static"!==a(c.container).css("position")||a(c.container).css("position","relative"),n=a(c.container),o=n.height(),p=n.width(),q=n.scrollTop()+o,r=n.scrollLeft()+p,s=y.outerHeight(!0),t=y.outerWidth(!0),z){var b=y.offset();u=b.top,v=b.left}else{var d=y.position();u=d.top,v=d.left}if(l=n.scrollTop(),m=n.scrollLeft(),c.debug,i()){if(c.toggleClass&&y.addClass(c.toggleClass),a.isFunction(c.doIn)&&c.doIn.call(y[0]),c.lazyAttr&&"IMG"===y.prop("tagName")){var e=y.attr(c.lazyAttr);e!==y.prop("src")&&(y.css({background:"url("+c.lazyPlaceholder+") 50% 50% no-repeat",minHeight:"5px",minWidth:"16px"}),y.prop("src",e).load(function(){a(this).css({background:"none"})}))}x=!0}else j()&&(c.toggleClass&&y.removeClass(c.toggleClass),a.isFunction(c.doOut)&&c.doOut.call(y[0]),x=!1)};window.location.hash?k(A,50):A(),c.throttle&&(A=k(A,c.throttle)),a(c.container).on("scroll.onScreen resize.onScreen",A),z||a(window).on("resize.onScreen",A),"object"==typeof module&&module&&"object"==typeof module.exports?module.exports=jQuery:"function"==typeof define&&define.amd&&define("jquery-onscreen",[],function(){return jQuery})})}}(jQuery);
 //# sourceMappingURL=jquery.onscreen.min.js.map
+/*
+ * YoutubeBackground - A wrapper for the Youtube API - Great for fullscreen background videos or just regular videos.
+ *
+ * Licensed under the MIT license:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *
+ *
+ * Version:  1.0.1
+ *
+ */
+
+// Chain of Responsibility pattern. Creates base class that can be overridden.
+if (typeof Object.create !== "function") {
+  Object.create = function(obj) {
+    function F() {}
+    F.prototype = obj;
+    return new F();
+  };
+}
+
+(function($, window, document) {
+  var
+    loadAPI = function loadAPI(callback) {
+
+      // Load Youtube API
+      var tag = document.createElement('script'),
+      head = document.getElementsByTagName('head')[0];
+      
+      if(window.location.origin == 'file://') {
+        tag.src = 'http://www.youtube.com/iframe_api';
+      } else {
+        tag.src = '//www.youtube.com/iframe_api';
+      }
+      
+      head.appendChild(tag);
+
+      // Clean up Tags.
+      head = null;
+      tag = null;
+
+      iframeIsReady(callback);
+    },
+    iframeIsReady = function iframeIsReady(callback) {
+      // Listen for Gobal YT player callback
+      if (typeof YT === 'undefined' && typeof window.loadingPlayer === 'undefined') {
+        // Prevents Ready Event from being called twice
+        window.loadingPlayer = true;
+
+        
+        // Creates deferred so, other players know when to wait.
+        window.dfd = $.Deferred();
+        window.onYouTubeIframeAPIReady = function() {
+          window.onYouTubeIframeAPIReady = null;
+          window.dfd.resolve( "done" );
+          callback();
+        };
+      } else if (typeof YT === 'object')  {
+        callback();
+      } else {
+        window.dfd.done(function( name ) {
+          callback();
+        });
+      }
+    };
+
+  // YTPlayer Object
+  YTPlayer = {
+    player: null,
+
+    // Defaults
+    defaults: {
+      ratio: 16 / 9,
+      videoId: 'LSmgKRx5pBo',
+      mute: true,
+      repeat: true,
+      width: $(window).width(),
+      playButtonClass: 'YTPlayer-play',
+      pauseButtonClass: 'YTPlayer-pause',
+      muteButtonClass: 'YTPlayer-mute',
+      volumeUpClass: 'YTPlayer-volume-up',
+      volumeDownClass: 'YTPlayer-volume-down',
+      start: 0,
+      pauseOnScroll: false,
+      fitToBackground: true,
+      playerVars: {
+        iv_load_policy: 3,
+        modestbranding: 1,
+        autoplay: 1,
+        controls: 0,
+        showinfo: 0,
+        wmode: 'opaque',
+        branding: 0,
+        autohide: 0
+      },
+      events: null
+    },
+
+    /**
+     * @function init
+     * Intializes YTPlayer object
+     */
+    init: function init(node, userOptions) {
+      var self = this;
+
+      self.userOptions = userOptions;
+
+      self.$body = $('body'),
+      self.$node = $(node),
+      self.$window = $(window);
+
+      // Setup event defaults with the reference to this
+      self.defaults.events = {
+        'onReady': function(e) {
+          self.onPlayerReady(e);
+
+          // setup up pause on scroll
+          if (self.options.pauseOnScroll) {
+            self.pauseOnScroll();
+          }
+
+          // Callback for when finished
+          if (typeof self.options.callback == 'function') {
+            self.options.callback.call(this);
+          }
+        },
+        'onStateChange': function(e) {
+          if (e.data === 1) {
+
+            self.$node.find('img').fadeOut(400);
+            self.$node.addClass('loaded');
+          } else if (e.data === 0 && self.options.repeat) { // video ended and repeat option is set true
+            self.player.seekTo(self.options.start);
+          }
+        }
+      }
+
+
+      self.options = $.extend(true, {}, self.defaults, self.userOptions);
+      self.options.height = Math.ceil(self.options.width / self.options.ratio);
+      self.ID = (new Date()).getTime();
+      self.holderID = 'YTPlayer-ID-' + self.ID;
+
+      if (self.options.fitToBackground) {
+        self.createBackgroundVideo();
+      } else {
+        self.createContainerVideo();
+      }
+      // Listen for Resize Event
+      self.$window.on('resize.YTplayer' + self.ID, function() {
+        self.resize(self);
+      });
+
+      loadAPI(self.onYouTubeIframeAPIReady.bind(self));
+
+      self.resize(self);
+
+      return self;
+    },
+
+
+    /**
+     * @function pauseOnScroll
+     * Adds window events to pause video on scroll.
+     */
+    pauseOnScroll: function pauseOnScroll() {
+      var self = this;
+      self.$window.on('scroll.YTplayer' + self.ID, function() {
+        var state = self.player.getPlayerState();
+        if (state === 1) {
+          self.player.pauseVideo();
+        }
+      });
+      self.$window.scrollStopped(function(){
+        var state = self.player.getPlayerState();
+        if (state === 2) {
+          self.player.playVideo();
+        }
+      });
+    },
+    /**
+     * @function createContainerVideo
+     * Adds HTML for video in a container
+     */
+    createContainerVideo: function createContainerVideo() {
+      var self = this;
+
+      /*jshint multistr: true */
+      var $YTPlayerString = $('<div id="ytplayer-container' + self.ID + '" >\
+                                    <div id="' + self.holderID + '" class="ytplayer-player"></div> \
+                                    </div> \
+                                    <div id="ytplayer-shield" class="ytplayer-shield"></div>');
+
+      self.$node.append($YTPlayerString);
+      self.$YTPlayerString = $YTPlayerString;
+      $YTPlayerString = null;
+    },
+
+    /**
+     * @function createBackgroundVideo
+     * Adds HTML for video background
+     */
+    createBackgroundVideo: function createBackgroundVideo() {
+      /*jshint multistr: true */
+      var self = this,
+        $YTPlayerString = $('<div id="ytplayer-container' + self.ID + '" class="ytplayer-container background">\
+                                    <div id="' + self.holderID + '" class="ytplayer-player"></div>\
+                                    </div>\
+                                    <div id="ytplayer-shield" class="ytplayer-shield"></div>');
+
+      self.$node.append($YTPlayerString);
+      self.$YTPlayerString = $YTPlayerString;
+      $YTPlayerString = null;
+    },
+
+    /**
+     * @function resize
+     * Resize event to change video size
+     */
+    resize: function resize(self) {
+      //var self = this;
+      var container = $(window);
+
+      if (!self.options.fitToBackground) {
+        container = self.$node;
+      }
+
+      var width = container.width(),
+        pWidth, // player width, to be defined
+        height = container.height(),
+        pHeight, // player height, tbd
+        $YTPlayerPlayer = $('#' + self.holderID);
+
+      // when screen aspect ratio differs from video, video must center and underlay one dimension
+      if (width / self.options.ratio < height) {
+        pWidth = Math.ceil(height * self.options.ratio); // get new player width
+        $YTPlayerPlayer.width(pWidth).height(height).css({
+          left: (width - pWidth) / 2,
+          top: 0
+        }); // player width is greater, offset left; reset top
+      } else { // new video width < window width (gap to right)
+        pHeight = Math.ceil(width / self.options.ratio); // get new player height
+        $YTPlayerPlayer.width(width).height(pHeight).css({
+          left: 0,
+          top: (height - pHeight) / 2
+        }); // player height is greater, offset top; reset left
+      }
+
+      $YTPlayerPlayer = null;
+      container = null;
+    },
+
+    /**
+     * @function onYouTubeIframeAPIReady
+     * @ params {object} YTPlayer object for access to options
+     * Youtube API calls this function when the player is ready.
+     */
+    onYouTubeIframeAPIReady: function onYouTubeIframeAPIReady() {
+      var self = this;
+      self.player = new window.YT.Player(self.holderID, self.options);  
+    },
+
+    /**
+     * @function onPlayerReady
+     * @ params {event} window event from youtube player
+     */
+    onPlayerReady: function onPlayerReady(e) {
+      if (this.options.mute) {
+        e.target.mute();
+      }
+      e.target.playVideo();
+    },
+
+    /**
+     * @function getPlayer
+     * returns youtube player
+     */
+    getPlayer: function getPlayer() {
+      return this.player;
+    },
+
+    /**
+     * @function destroy
+     * destroys all!
+     */
+    destroy: function destroy() {
+      var self = this;
+
+      self.$node
+        .removeData('yt-init')
+        .removeData('ytPlayer')
+        .removeClass('loaded');
+
+      self.$YTPlayerString.remove();
+
+      $(window).off('resize.YTplayer' + self.ID);
+      $(window).off('scroll.YTplayer' + self.ID);
+      self.$body = null;
+      self.$node = null;
+      self.$YTPlayerString = null;
+      self.player.destroy();
+      self.player = null;
+    }
+  };
+
+  // Scroll Stopped event.
+  $.fn.scrollStopped = function(callback) {
+    var $this = $(this), self = this;
+    $this.scroll(function(){
+      if ($this.data('scrollTimeout')) {
+        clearTimeout($this.data('scrollTimeout'));
+      }
+      $this.data('scrollTimeout', setTimeout(callback,250,self));
+    });
+  };
+
+  // Create plugin
+  $.fn.YTPlayer = function(options) {
+
+    return this.each(function() {
+      var el = this;
+
+      $(el).data("yt-init", true);
+      var player = Object.create(YTPlayer);
+      player.init(el, options);
+      $.data(el, "ytPlayer", player);
+    });
+  };
+
+})(jQuery, window, document);
+
+/*! modernizr 3.3.1 (Custom Build) | MIT *
+ * http://modernizr.com/download/?-objectfit !*/
+!function(e,n,t){function r(e,n){return typeof e===n}function o(){var e,n,t,o,i,s,f;for(var a in h)if(h.hasOwnProperty(a)){if(e=[],n=h[a],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(t=0;t<n.options.aliases.length;t++)e.push(n.options.aliases[t].toLowerCase());for(o=r(n.fn,"function")?n.fn():n.fn,i=0;i<e.length;i++)s=e[i],f=s.split("."),1===f.length?Modernizr[f[0]]=o:(!Modernizr[f[0]]||Modernizr[f[0]]instanceof Boolean||(Modernizr[f[0]]=new Boolean(Modernizr[f[0]])),Modernizr[f[0]][f[1]]=o),g.push((o?"":"no-")+f.join("-"))}}function i(e){return e.replace(/([a-z])-([a-z])/g,function(e,n,t){return n+t.toUpperCase()}).replace(/^-/,"")}function s(e,n){return!!~(""+e).indexOf(n)}function f(e,n){return function(){return e.apply(n,arguments)}}function a(e,n,t){var o;for(var i in e)if(e[i]in n)return t===!1?e[i]:(o=n[e[i]],r(o,"function")?f(o,t||n):o);return!1}function u(e){return e.replace(/([A-Z])/g,function(e,n){return"-"+n.toLowerCase()}).replace(/^ms-/,"-ms-")}function l(){return"function"!=typeof n.createElement?n.createElement(arguments[0]):b?n.createElementNS.call(n,"http://www.w3.org/2000/svg",arguments[0]):n.createElement.apply(n,arguments)}function p(){var e=n.body;return e||(e=l(b?"svg":"body"),e.fake=!0),e}function d(e,t,r,o){var i,s,f,a,u="modernizr",d=l("div"),c=p();if(parseInt(r,10))for(;r--;)f=l("div"),f.id=o?o[r]:u+(r+1),d.appendChild(f);return i=l("style"),i.type="text/css",i.id="s"+u,(c.fake?c:d).appendChild(i),c.appendChild(d),i.styleSheet?i.styleSheet.cssText=e:i.appendChild(n.createTextNode(e)),d.id=u,c.fake&&(c.style.background="",c.style.overflow="hidden",a=S.style.overflow,S.style.overflow="hidden",S.appendChild(c)),s=t(d,e),c.fake?(c.parentNode.removeChild(c),S.style.overflow=a,S.offsetHeight):d.parentNode.removeChild(d),!!s}function c(n,r){var o=n.length;if("CSS"in e&&"supports"in e.CSS){for(;o--;)if(e.CSS.supports(u(n[o]),r))return!0;return!1}if("CSSSupportsRule"in e){for(var i=[];o--;)i.push("("+u(n[o])+":"+r+")");return i=i.join(" or "),d("@supports ("+i+") { #modernizr { position: absolute; } }",function(e){return"absolute"==getComputedStyle(e,null).position})}return t}function m(e,n,o,f){function a(){p&&(delete z.style,delete z.modElem)}if(f=r(f,"undefined")?!1:f,!r(o,"undefined")){var u=c(e,o);if(!r(u,"undefined"))return u}for(var p,d,m,v,h,y=["modernizr","tspan"];!z.style;)p=!0,z.modElem=l(y.shift()),z.style=z.modElem.style;for(m=e.length,d=0;m>d;d++)if(v=e[d],h=z.style[v],s(v,"-")&&(v=i(v)),z.style[v]!==t){if(f||r(o,"undefined"))return a(),"pfx"==n?v:!0;try{z.style[v]=o}catch(g){}if(z.style[v]!=h)return a(),"pfx"==n?v:!0}return a(),!1}function v(e,n,t,o,i){var s=e.charAt(0).toUpperCase()+e.slice(1),f=(e+" "+w.join(s+" ")+s).split(" ");return r(n,"string")||r(n,"undefined")?m(f,n,o,i):(f=(e+" "+_.join(s+" ")+s).split(" "),a(f,n,t))}var h=[],y={_version:"3.3.1",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var t=this;setTimeout(function(){n(t[e])},0)},addTest:function(e,n,t){h.push({name:e,fn:n,options:t})},addAsyncTest:function(e){h.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=y,Modernizr=new Modernizr;var g=[],C="Moz O ms Webkit",w=y._config.usePrefixes?C.split(" "):[];y._cssomPrefixes=w;var x=function(n){var r,o=prefixes.length,i=e.CSSRule;if("undefined"==typeof i)return t;if(!n)return!1;if(n=n.replace(/^@/,""),r=n.replace(/-/g,"_").toUpperCase()+"_RULE",r in i)return"@"+n;for(var s=0;o>s;s++){var f=prefixes[s],a=f.toUpperCase()+"_"+r;if(a in i)return"@-"+f.toLowerCase()+"-"+n}return!1};y.atRule=x;var _=y._config.usePrefixes?C.toLowerCase().split(" "):[];y._domPrefixes=_;var S=n.documentElement,b="svg"===S.nodeName.toLowerCase(),E={elem:l("modernizr")};Modernizr._q.push(function(){delete E.elem});var z={style:E.elem.style};Modernizr._q.unshift(function(){delete z.style}),y.testAllProps=v;var P=y.prefixed=function(e,n,t){return 0===e.indexOf("@")?x(e):(-1!=e.indexOf("-")&&(e=i(e)),n?v(e,n,t):v(e,"pfx"))};Modernizr.addTest("objectfit",!!P("objectFit"),{aliases:["object-fit"]}),o(),delete y.addTest,delete y.addAsyncTest;for(var T=0;T<Modernizr._q.length;T++)Modernizr._q[T]();e.Modernizr=Modernizr}(window,document);
 /*! odometer 0.4.7 */
 (function(){var a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G=[].slice;q='<span class="odometer-value"></span>',n='<span class="odometer-ribbon"><span class="odometer-ribbon-inner">'+q+"</span></span>",d='<span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner">'+n+"</span></span>",g='<span class="odometer-formatting-mark"></span>',c="(,ddd).dd",h=/^\(?([^)]*)\)?(?:(.)(d+))?$/,i=30,f=2e3,a=20,j=2,e=.5,k=1e3/i,b=1e3/a,o="transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd",y=document.createElement("div").style,p=null!=y.transition||null!=y.webkitTransition||null!=y.mozTransition||null!=y.oTransition,w=window.requestAnimationFrame||window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||window.msRequestAnimationFrame,l=window.MutationObserver||window.WebKitMutationObserver||window.MozMutationObserver,s=function(a){var b;return b=document.createElement("div"),b.innerHTML=a,b.children[0]},v=function(a,b){return a.className=a.className.replace(new RegExp("(^| )"+b.split(" ").join("|")+"( |$)","gi")," ")},r=function(a,b){return v(a,b),a.className+=" "+b},z=function(a,b){var c;return null!=document.createEvent?(c=document.createEvent("HTMLEvents"),c.initEvent(b,!0,!0),a.dispatchEvent(c)):void 0},u=function(){var a,b;return null!=(a=null!=(b=window.performance)&&"function"==typeof b.now?b.now():void 0)?a:+new Date},x=function(a,b){return null==b&&(b=0),b?(a*=Math.pow(10,b),a+=.5,a=Math.floor(a),a/=Math.pow(10,b)):Math.round(a)},A=function(a){return 0>a?Math.ceil(a):Math.floor(a)},t=function(a){return a-x(a)},C=!1,(B=function(){var a,b,c,d,e;if(!C&&null!=window.jQuery){for(C=!0,d=["html","text"],e=[],b=0,c=d.length;c>b;b++)a=d[b],e.push(function(a){var b;return b=window.jQuery.fn[a],window.jQuery.fn[a]=function(a){var c;return null==a||null==(null!=(c=this[0])?c.odometer:void 0)?b.apply(this,arguments):this[0].odometer.update(a)}}(a));return e}})(),setTimeout(B,0),m=function(){function a(b){var c,d,e,g,h,i,l,m,n,o,p=this;if(this.options=b,this.el=this.options.el,null!=this.el.odometer)return this.el.odometer;this.el.odometer=this,m=a.options;for(d in m)g=m[d],null==this.options[d]&&(this.options[d]=g);null==(h=this.options).duration&&(h.duration=f),this.MAX_VALUES=this.options.duration/k/j|0,this.resetFormat(),this.value=this.cleanValue(null!=(n=this.options.value)?n:""),this.renderInside(),this.render();try{for(o=["innerHTML","innerText","textContent"],i=0,l=o.length;l>i;i++)e=o[i],null!=this.el[e]&&!function(a){return Object.defineProperty(p.el,a,{get:function(){var b;return"innerHTML"===a?p.inside.outerHTML:null!=(b=p.inside.innerText)?b:p.inside.textContent},set:function(a){return p.update(a)}})}(e)}catch(q){c=q,this.watchForMutations()}}return a.prototype.renderInside=function(){return this.inside=document.createElement("div"),this.inside.className="odometer-inside",this.el.innerHTML="",this.el.appendChild(this.inside)},a.prototype.watchForMutations=function(){var a,b=this;if(null!=l)try{return null==this.observer&&(this.observer=new l(function(){var a;return a=b.el.innerText,b.renderInside(),b.render(b.value),b.update(a)})),this.watchMutations=!0,this.startWatchingMutations()}catch(c){a=c}},a.prototype.startWatchingMutations=function(){return this.watchMutations?this.observer.observe(this.el,{childList:!0}):void 0},a.prototype.stopWatchingMutations=function(){var a;return null!=(a=this.observer)?a.disconnect():void 0},a.prototype.cleanValue=function(a){var b;return"string"==typeof a&&(a=a.replace(null!=(b=this.format.radix)?b:".","<radix>"),a=a.replace(/[.,]/g,""),a=a.replace("<radix>","."),a=parseFloat(a,10)||0),x(a,this.format.precision)},a.prototype.bindTransitionEnd=function(){var a,b,c,d,e,f,g=this;if(!this.transitionEndBound){for(this.transitionEndBound=!0,b=!1,e=o.split(" "),f=[],c=0,d=e.length;d>c;c++)a=e[c],f.push(this.el.addEventListener(a,function(){return b?!0:(b=!0,setTimeout(function(){return g.render(),b=!1,z(g.el,"odometerdone")},0),!0)},!1));return f}},a.prototype.resetFormat=function(){var a,b,d,e,f,g,i,j;if(a=null!=(i=this.options.format)?i:c,a||(a="d"),d=h.exec(a),!d)throw new Error("Odometer: Unparsable digit format");return j=d.slice(1,4),g=j[0],f=j[1],b=j[2],e=(null!=b?b.length:void 0)||0,this.format={repeating:g,radix:f,precision:e}},a.prototype.render=function(a){var b,c,d,e,f,g,h;for(null==a&&(a=this.value),this.stopWatchingMutations(),this.resetFormat(),this.inside.innerHTML="",f=this.options.theme,b=this.el.className.split(" "),e=[],g=0,h=b.length;h>g;g++)c=b[g],c.length&&((d=/^odometer-theme-(.+)$/.exec(c))?f=d[1]:/^odometer(-|$)/.test(c)||e.push(c));return e.push("odometer"),p||e.push("odometer-no-transitions"),e.push(f?"odometer-theme-"+f:"odometer-auto-theme"),this.el.className=e.join(" "),this.ribbons={},this.formatDigits(a),this.startWatchingMutations()},a.prototype.formatDigits=function(a){var b,c,d,e,f,g,h,i,j,k;if(this.digits=[],this.options.formatFunction)for(d=this.options.formatFunction(a),j=d.split("").reverse(),f=0,h=j.length;h>f;f++)c=j[f],c.match(/0-9/)?(b=this.renderDigit(),b.querySelector(".odometer-value").innerHTML=c,this.digits.push(b),this.insertDigit(b)):this.addSpacer(c);else for(e=!this.format.precision||!t(a)||!1,k=a.toString().split("").reverse(),g=0,i=k.length;i>g;g++)b=k[g],"."===b&&(e=!0),this.addDigit(b,e)},a.prototype.update=function(a){var b,c=this;return a=this.cleanValue(a),(b=a-this.value)?(v(this.el,"odometer-animating-up odometer-animating-down odometer-animating"),b>0?r(this.el,"odometer-animating-up"):r(this.el,"odometer-animating-down"),this.stopWatchingMutations(),this.animate(a),this.startWatchingMutations(),setTimeout(function(){return c.el.offsetHeight,r(c.el,"odometer-animating")},0),this.value=a):void 0},a.prototype.renderDigit=function(){return s(d)},a.prototype.insertDigit=function(a,b){return null!=b?this.inside.insertBefore(a,b):this.inside.children.length?this.inside.insertBefore(a,this.inside.children[0]):this.inside.appendChild(a)},a.prototype.addSpacer=function(a,b,c){var d;return d=s(g),d.innerHTML=a,c&&r(d,c),this.insertDigit(d,b)},a.prototype.addDigit=function(a,b){var c,d,e,f;if(null==b&&(b=!0),"-"===a)return this.addSpacer(a,null,"odometer-negation-mark");if("."===a)return this.addSpacer(null!=(f=this.format.radix)?f:".",null,"odometer-radix-mark");if(b)for(e=!1;;){if(!this.format.repeating.length){if(e)throw new Error("Bad odometer format without digits");this.resetFormat(),e=!0}if(c=this.format.repeating[this.format.repeating.length-1],this.format.repeating=this.format.repeating.substring(0,this.format.repeating.length-1),"d"===c)break;this.addSpacer(c)}return d=this.renderDigit(),d.querySelector(".odometer-value").innerHTML=a,this.digits.push(d),this.insertDigit(d)},a.prototype.animate=function(a){return p&&"count"!==this.options.animation?this.animateSlide(a):this.animateCount(a)},a.prototype.animateCount=function(a){var c,d,e,f,g,h=this;if(d=+a-this.value)return f=e=u(),c=this.value,(g=function(){var i,j,k;return u()-f>h.options.duration?(h.value=a,h.render(),void z(h.el,"odometerdone")):(i=u()-e,i>b&&(e=u(),k=i/h.options.duration,j=d*k,c+=j,h.render(Math.round(c))),null!=w?w(g):setTimeout(g,b))})()},a.prototype.getDigitCount=function(){var a,b,c,d,e,f;for(d=1<=arguments.length?G.call(arguments,0):[],a=e=0,f=d.length;f>e;a=++e)c=d[a],d[a]=Math.abs(c);return b=Math.max.apply(Math,d),Math.ceil(Math.log(b+1)/Math.log(10))},a.prototype.getFractionalDigitCount=function(){var a,b,c,d,e,f,g;for(e=1<=arguments.length?G.call(arguments,0):[],b=/^\-?\d*\.(\d*?)0*$/,a=f=0,g=e.length;g>f;a=++f)d=e[a],e[a]=d.toString(),c=b.exec(e[a]),e[a]=null==c?0:c[1].length;return Math.max.apply(Math,e)},a.prototype.resetDigits=function(){return this.digits=[],this.ribbons=[],this.inside.innerHTML="",this.resetFormat()},a.prototype.animateSlide=function(a){var b,c,d,f,g,h,i,j,k,l,m,n,o,p,q,s,t,u,v,w,x,y,z,B,C,D,E;if(s=this.value,j=this.getFractionalDigitCount(s,a),j&&(a*=Math.pow(10,j),s*=Math.pow(10,j)),d=a-s){for(this.bindTransitionEnd(),f=this.getDigitCount(s,a),g=[],b=0,m=v=0;f>=0?f>v:v>f;m=f>=0?++v:--v){if(t=A(s/Math.pow(10,f-m-1)),i=A(a/Math.pow(10,f-m-1)),h=i-t,Math.abs(h)>this.MAX_VALUES){for(l=[],n=h/(this.MAX_VALUES+this.MAX_VALUES*b*e),c=t;h>0&&i>c||0>h&&c>i;)l.push(Math.round(c)),c+=n;l[l.length-1]!==i&&l.push(i),b++}else l=function(){E=[];for(var a=t;i>=t?i>=a:a>=i;i>=t?a++:a--)E.push(a);return E}.apply(this);for(m=w=0,y=l.length;y>w;m=++w)k=l[m],l[m]=Math.abs(k%10);g.push(l)}for(this.resetDigits(),D=g.reverse(),m=x=0,z=D.length;z>x;m=++x)for(l=D[m],this.digits[m]||this.addDigit(" ",m>=j),null==(u=this.ribbons)[m]&&(u[m]=this.digits[m].querySelector(".odometer-ribbon-inner")),this.ribbons[m].innerHTML="",0>d&&(l=l.reverse()),o=C=0,B=l.length;B>C;o=++C)k=l[o],q=document.createElement("div"),q.className="odometer-value",q.innerHTML=k,this.ribbons[m].appendChild(q),o===l.length-1&&r(q,"odometer-last-value"),0===o&&r(q,"odometer-first-value");return 0>t&&this.addDigit("-"),p=this.inside.querySelector(".odometer-radix-mark"),null!=p&&p.parent.removeChild(p),j?this.addSpacer(this.format.radix,this.digits[j-1],"odometer-radix-mark"):void 0}},a}(),m.options=null!=(E=window.odometerOptions)?E:{},setTimeout(function(){var a,b,c,d,e;if(window.odometerOptions){d=window.odometerOptions,e=[];for(a in d)b=d[a],e.push(null!=(c=m.options)[a]?(c=m.options)[a]:c[a]=b);return e}},0),m.init=function(){var a,b,c,d,e,f;if(null!=document.querySelectorAll){for(b=document.querySelectorAll(m.options.selector||".odometer"),f=[],c=0,d=b.length;d>c;c++)a=b[c],f.push(a.odometer=new m({el:a,value:null!=(e=a.innerText)?e:a.textContent}));return f}},null!=(null!=(F=document.documentElement)?F.doScroll:void 0)&&null!=document.createEventObject?(D=document.onreadystatechange,document.onreadystatechange=function(){return"complete"===document.readyState&&m.options.auto!==!1&&m.init(),null!=D?D.apply(this,arguments):void 0}):document.addEventListener("DOMContentLoaded",function(){return m.options.auto!==!1?m.init():void 0},!1),"function"==typeof define&&define.amd?define(["jquery"],function(){return m}):"undefined"!=typeof exports&&null!==exports?module.exports=m:window.Odometer=m}).call(this);
 /**
@@ -3946,6 +4279,43 @@ jQuery(document).ready(function($) {
       $('#site-navigation a[href=#' + $(this).attr('id') + ']').parent().removeClass('current-menu-item');
     },
   });
+
+  /**
+  * Modernizr
+  *
+  * @link https://modernizr.com/
+  */
+
+  if ( !Modernizr.objectfit) {
+    $('img').each(function () {
+      if ($(this).css('object-fit')) {
+        $(this)
+          .closest('.entry-image')
+          .css('opacity',0)
+          .closest('article')
+          .css({
+            'backgroundImage' :'url(' + $(this).prop('src') + ')',
+            'backgroundSize' : $(this).css('object-fit'),
+            'backgroundPosition' : $(this).css('object-position'),
+            'backgroundRepeat' : 'no-repeat',
+          });
+      }
+    });
+    $('video').each(function () {
+      if ($(this).css('object-fit')) {
+        $(this)
+          .closest('.entry-video')
+          .css('opacity',0)
+          .closest('article')
+          .css({
+            'backgroundImage' :'url(' + $(this).prop('poster') + ')',
+            'backgroundSize' : $(this).css('object-fit'),
+            'backgroundPosition' : $(this).css('object-position'),
+            'backgroundRepeat' : 'no-repeat',
+          });
+      }
+    });
+  }
 
 });
 

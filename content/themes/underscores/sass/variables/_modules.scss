@@ -2,32 +2,36 @@
  * Featured
  */
 
-// grid
+// layouts
+$module__featured-layout: viewport; // grid | viewport
 
-// viewport
-$featured-slider-width: auto !default; // auto | fixed
-$featured-slider-height: auto !default; // auto | fixed | full
-$featured-slider-minimum-height: 48em !default;
-$featured-slider-image-size: width !default; // width | height | cover
-$featured-slider-caption-alignment: left !default; // left | center | right
-$featured-slider-navigation-color: $color__link !default;
-$featured-slider-navigation-pagination: numbered !default; // number | bullet
-$featured-slider-navigation-direction: text !default; // text | icon
-$featured-slider-caption-text-color: $color__text !default;
-$featured-slider-caption-background-color: $color__background !default;
+  // grid
+  $module__featured-layout-grid-height: 48em;
+
+// general
+$module__featured-caption-alignment: left; // left | center | right
+$module__featured-navigation-color: $color__link;
+$module__featured-navigation-pagination: numbered; // number | bullet
+$module__featured-navigation-direction: text; // text | icon
+$module__featured-caption-text-color: $color__text;
+$module__featured-caption-background-color: $color__background;
 
 /**
  * Services
  */
-$module__services-layout: grid !default; // grid | viewport
+
+// layouts
+$module__services-layout: grid; // grid | viewport
+
+  // grid
+  $module__services-layout-grid-columns-small: 4;
+  $module__services-layout-grid-columns-xsmall: 2;
+
+  // viewport
+  $module__services-layout-viewport-caption-vertical-alignment: middle; // top | middle | bottom
+  $module__services-layout-viewport-caption-horizontal-alignment: odd; // left | center | right | odd | even
+  $module__services-caption-background-color: $color__background;
+
+// general
 $module__services-caption-text-color: $color__text;
 $module__services-caption-text-link: $color__link;
-
-// grid
-$module__services-layout-grid-columns-small: 4 !default;
-$module__services-layout-grid-columns-xsmall: 2 !default;
-
-// viewport
-$module__services-layout-viewport-caption-vertical-alignment: middle !default; // top | middle | bottom
-$module__services-layout-viewport-caption-horizontal-alignment: odd !default; // left | center | right | odd | even
-$module__services-caption-background-color: $color__background;

@@ -7,3 +7,14 @@
 ## Slider
 --------------------------------------------------------------*/
 @import "slider";
+
+.object-fit {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
+  img {
+    opacity: 0;
+  }
+}
