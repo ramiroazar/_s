@@ -122,6 +122,30 @@ jQuery(document).ready(function($) {
     });
   }
 
+  /**
+  * skrollr
+  *
+  * @link https://github.com/Prinzhorn/skrollr
+  */
+
+  var setSkrollr = function($element, data) {
+    for (var i = 0, l = data.length; i < l; i++) {
+      var d = data[i],
+          keyframe = d[0];
+          css = d[1];
+      $element.attr('data-' + keyframe, css);
+    }
+  }
+
+  $('.featured.section').each(function () {
+    setSkrollr($(this), [['top', 'max-height:' + $(this).height() + 'px'], ['top-bottom', 'max-height:0']]);
+  });
+
+  var s = skrollr.init({
+    forceHeight: false,
+    smoothScrolling: false,
+  });
+
 });
 
 // Document ready

@@ -1885,6 +1885,9 @@ html[xmlns] .slider .slides {
 /*--------------------------------------------------------------
 # Modules
 --------------------------------------------------------------*/
+.featured.section {
+  overflow: hidden;
+}
 @media (max-width: 64em) {
   .featured.section {
     display: none;

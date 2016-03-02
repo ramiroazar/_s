@@ -27,6 +27,7 @@
 
 
 .featured.section {
+  overflow: hidden;
   @include susy-breakpoint(max-width $breakpoint__medium) {
     display: none;
   }
