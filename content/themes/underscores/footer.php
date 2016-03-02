@@ -89,7 +89,13 @@
 					<?php
 					  $args = array(
 							'post_type' => 'section',
-							'p' => 207
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'category_section',
+									'terms' => array('calls-to-action'),
+									'field' => 'slug',
+								),
+							),
 					  );
 					?>
 

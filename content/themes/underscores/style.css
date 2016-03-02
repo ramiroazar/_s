@@ -36,7 +36,10 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
  * Services
  */
 /**
- * Credentils
+ * Calls to Action
+ */
+/**
+ * Credentials
  */
 /**
  * Counter
@@ -1125,7 +1128,13 @@ html[xmlns] .slider .slides {
   margin: 0;
 }
 
+.cta.section {
+  overflow: auto;
+  text-align: center;
+}
+
 .credentials.section {
+  overflow: auto;
   text-align: center;
 }
 .credentials.section ol:after {
@@ -1183,6 +1192,7 @@ html[xmlns] .slider .slides {
 }
 
 .counter.section {
+  overflow: auto;
   text-align: center;
 }
 .counter.section ul {

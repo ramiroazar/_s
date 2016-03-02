@@ -1,5 +1,12 @@
 .counter.section {
+  overflow: auto;
   text-align: center;
+  @if $module__counter-text-color != $color__text {
+    color: $module__counter-text-color;
+  }
+  @if $module__counter-background-color != $color__background {
+    background-color: $module__counter-background-color;
+  }
 
   > div {
     @extend %container;
@@ -24,6 +31,9 @@
         display: block;
         font-size: 3em;
         font-weight: bold;
+        @if $module__counter-odometer-text-color != $color__text {
+          color: $module__counter-odometer-text-color;
+        }
       }
     }
   }

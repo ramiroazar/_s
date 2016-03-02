@@ -37,11 +37,20 @@ $module__services-caption-text-color: $color__text;
 $module__services-caption-text-link: $color__link;
 
 /**
- * Credentils
+ * Calls to Action
+ */
+
+// general
+$module__cta-text-align: center;
+$module__cta-text-color: $color__text;
+$module__cta-background-color: $color__background;
+
+/**
+ * Credentials
  */
 
 // layouts
-$module__credentials-layout: grid; // grid | list
+$module__credentials-layout: grid; // grid
 
   // grid
   $module__credentials-layout-grid-columns-small: 4;
@@ -51,7 +60,9 @@ $module__credentials-layout: grid; // grid | list
 $module__credentials-text-align: center;
 $module__credentials-icon-position: center; // center | left
 $module__credentials-icon-size: 3em;
-$module__credentials-font-size: 3em;
+$module__credentials-icon-color: $color__text;
+$module__credentials-text-color: $color__text;
+$module__credentials-background-color: $color__background;
 
 /**
  * Counter
@@ -59,3 +70,6 @@ $module__credentials-font-size: 3em;
 
 // general
 $module__counter-odometer-font-size: 3em;
+$module__counter-odometer-text-color: $color__text;
+$module__counter-text-color: $color__text;
+$module__counter-background-color: $color__background;

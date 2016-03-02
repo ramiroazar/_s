@@ -1,4 +1,12 @@
 .cta.section {
+  overflow: auto;
+  text-align: $module__cta-text-align;
+  @if $module__cta-text-color != $color__text {
+    color: $module__cta-text-color;
+  }
+  @if $module__cta-background-color != $color__background {
+    background-color: $module__cta-background-color;
+  }
 
   > div {
     @extend %container;
