@@ -35,3 +35,27 @@ $module__services-layout: grid; // grid | viewport
 // general
 $module__services-caption-text-color: $color__text;
 $module__services-caption-text-link: $color__link;
+
+/**
+ * Credentils
+ */
+
+// layouts
+$module__credentials-layout: grid; // grid | list
+
+  // grid
+  $module__credentials-layout-grid-columns-small: 4;
+  $module__credentials-layout-grid-columns-xsmall: 2;
+
+// general
+$module__credentials-text-align: center;
+$module__credentials-icon-position: center; // center | left
+$module__credentials-icon-size: 3em;
+$module__credentials-font-size: 3em;
+
+/**
+ * Counter
+ */
+
+// general
+$module__counter-odometer-font-size: 3em;

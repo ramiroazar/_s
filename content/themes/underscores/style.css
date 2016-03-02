@@ -35,6 +35,12 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /**
  * Services
  */
+/**
+ * Credentils
+ */
+/**
+ * Counter
+ */
 /*--------------------------------------------------------------
 # Susy
 --------------------------------------------------------------*/
@@ -1117,6 +1123,63 @@ html[xmlns] .slider .slides {
 }
 .gallery.section article .entry-content .gallery figure {
   margin: 0;
+}
+
+.credentials.section {
+  text-align: center;
+}
+.credentials.section ol:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+@media (min-width: 30em) and (max-width: 48em) {
+  .credentials.section ol li {
+    width: 48.57143%;
+    float: left;
+    margin-right: 2.85714%;
+  }
+}
+@media (min-width: 48em) {
+  .credentials.section ol li {
+    width: 22.85714%;
+    float: left;
+    margin-right: 2.85714%;
+  }
+}
+@media (min-width: 30em) and (max-width: 48em) {
+  .credentials.section ol li:nth-of-type(2n) {
+    float: right;
+    margin-right: 0;
+  }
+}
+@media (min-width: 48em) {
+  .credentials.section ol li:nth-of-type(4n) {
+    float: right;
+    margin-right: 0;
+  }
+}
+.credentials.section ol {
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none;
+}
+.credentials.section ol li {
+  margin-bottom: 1.5em;
+}
+.credentials.section ol li:before {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+  content: "\f111";
+  font-size: 3em;
+  display: block;
+  width: 100%;
+  margin-bottom: .5em;
 }
 
 .counter.section {

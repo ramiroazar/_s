@@ -124,7 +124,13 @@
 					<?php
 					  $args = array(
 							'post_type' => 'section',
-							'p' => 204
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'category_section',
+									'terms' => array('credentials'),
+									'field' => 'slug',
+								),
+							),
 					  );
 					?>
 
@@ -162,7 +168,7 @@
 							'tax_query' => array(
 								array(
 									'taxonomy' => 'category_section',
-									'terms' => array('counter'),
+									'terms' => array('counters'),
 									'field' => 'slug',
 								),
 							),
