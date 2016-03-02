@@ -1,4 +1,11 @@
 .contact.section {
+  overflow: auto;
+  @if $module__contact-text-color != $color__text {
+    color: $module__contact-text-color;
+  }
+  @if $module__contact-background-color != $color__background {
+    background-color: $module__contact-background-color;
+  }
 
   > div {
     @extend %container;
@@ -12,10 +19,86 @@
       }
     }
 
-    &:last-of-type {
+    &:nth-of-type(n+2) {
       @include susy-breakpoint($breakpoint__small) {
         @include span(6 last);
       }
+    }
+  }
+}
+
+.contact-detail {
+
+  &:before {
+    @include fontawesome;
+    margin-right: 0.25em;
+  }
+
+  &.phone {
+    &:before {
+      content:"\f095";
+    }
+  }
+  &.mobile {
+    &:before {
+      content:"\f10b";
+    }
+  }
+  &.fax {
+    &:before {
+      content:"\f1ac";
+    }
+  }
+  &.email {
+    &:before {
+      content:"\f0e0";
+    }
+  }
+  &.address {
+    &:before {
+      content:"\f041";
+    }
+  }
+  &.facebook {
+    &:before {
+      content:"\f09a";
+      // content:"\f082";
+    }
+  }
+  &.googleplus {
+    &:before {
+      content:"\f0d5";
+      // content:"\f0d4";
+    }
+  }
+  &.twitter {
+    &:before {
+      content:"\f099";
+      // content:"\f081";
+    }
+  }
+  &.instagram {
+    &:before {
+      content:"\f16d";
+      // content:"\f16d";
+    }
+  }
+  &.pinterest {
+    &:before {
+      content:"\f231";
+      // content:"\f0d3";
+    }
+  }
+  &.youtube {
+    &:before {
+      content:"\f167";
+      // content:"\f166";
+    }
+  }
+  &.linkedin {
+    &:before {
+      content:"\f0e1";
+      // content:"\f08c";
     }
   }
 }

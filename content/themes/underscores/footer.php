@@ -212,7 +212,13 @@
 					<?php
 					  $args = array(
 							'post_type' => 'section',
-							'p' => 213
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'category_section',
+									'terms' => array('contact-forms'),
+									'field' => 'slug',
+								),
+							),
 					  );
 					?>
 
@@ -233,7 +239,40 @@
 					<?php
 					  $args = array(
 							'post_type' => 'section',
-							'p' => 203
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'category_section',
+									'terms' => array('contact-details'),
+									'field' => 'slug',
+								),
+							),
+					  );
+					?>
+
+					<?php $query = new WP_Query( $args ); ?>
+
+					<?php if ( $query->have_posts() ) : ?>
+
+					  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+
+					    <?php get_template_part( 'template-parts/content', 'section' ); ?>
+
+					  <?php endwhile; ?>
+
+					<?php endif; ?>
+
+					<?php wp_reset_postdata(); ?>
+
+					<?php
+					  $args = array(
+							'post_type' => 'section',
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'category_section',
+									'terms' => array('social-media'),
+									'field' => 'slug',
+								),
+							),
 					  );
 					?>
 

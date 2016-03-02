@@ -1,0 +1,30 @@
+a.more-link,
+a.button,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	border: 1px solid;
+	border-color: $color__button-border;
+	border-radius: 3px;
+	background: $color__button-background;
+	box-shadow: none;
+	color: $color__button-text;
+	@include font-size(0.75);
+	line-height: 1.5em;
+	padding: 0.5em 1em;
+	text-shadow: none;
+
+	&:hover {
+		border-color: $color__button-border-hover;
+		background-color: $color__button-background-hover;
+		box-shadow: none;
+	}
+
+	&:active,
+	&:focus {
+		border-color: $color__button-border-focus;
+		background-color: $color__button-background-focus;
+		box-shadow: none;
+	}
+}

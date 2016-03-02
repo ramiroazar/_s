@@ -1,4 +1,11 @@
 #copyright {
+  overflow: auto;
+  @if $module__copyright-text-color != $color__text {
+    color: $module__copyright-text-color;
+  }
+  @if $module__copyright-background-color != $color__background {
+    background-color: $module__copyright-background-color;
+  }
 
   > div {
     @extend %container;

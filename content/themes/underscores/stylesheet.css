@@ -988,6 +988,12 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /**
  * Counter
  */
+/**
+ * Contact
+ */
+/**
+ * Copyright
+ */
 /*--------------------------------------------------------------
 # Susy
 --------------------------------------------------------------*/
@@ -1450,7 +1456,6 @@ img.mfp-img {
   position: absolute;
 }
 .odometer.odometer-auto-theme.odometer-animating-up .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-up .odometer-ribbon-inner {
-  -webkit-transition: -webkit-transform 2s;
   transition: -webkit-transform 2s;
   transition: transform 2s;
   transition: transform 2s, -webkit-transform 2s;
@@ -1464,7 +1469,6 @@ img.mfp-img {
   transform: translateY(-100%);
 }
 .odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
-  -webkit-transition: -webkit-transform 2s;
   transition: -webkit-transform 2s;
   transition: transform 2s;
   transition: transform 2s, -webkit-transform 2s;
@@ -1484,14 +1488,14 @@ img.mfp-img {
   clear: both;
 }
 
-#masthead .site-branding .site-title, #masthead .site-branding .site-description, .menu-toggle span, .introduction.section article .entry-footer .toggle span {
+.wpcf7 .screen-reader-response, .wpcf7 label, #masthead .site-branding .site-title, #masthead .site-branding .site-description, .menu-toggle span, .introduction.section article .entry-footer .toggle span {
   clip: rect(1px, 1px, 1px, 1px);
   position: absolute !important;
   height: 1px;
   width: 1px;
   overflow: hidden;
 }
-#masthead .site-branding .site-title:focus, #masthead .site-branding .site-description:focus, .menu-toggle span:focus, .introduction.section article .entry-footer .toggle span:focus {
+.wpcf7 .screen-reader-response:focus, .wpcf7 label:focus, #masthead .site-branding .site-title:focus, #masthead .site-branding .site-description:focus, .menu-toggle span:focus, .introduction.section article .entry-footer .toggle span:focus {
   background-color: black;
   border-radius: 3px;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
@@ -1533,7 +1537,6 @@ body:before {
   max-width: 64em;
   margin-left: auto;
   margin-right: auto;
-  background-image: -webkit-linear-gradient(left, rgba(255, 0, 0, 0.1), rgba(255, 77, 77, 0.1) 66.66667%, transparent 66.66667%);
   background-image: linear-gradient(to right, rgba(255, 0, 0, 0.1), rgba(255, 77, 77, 0.1) 66.66667%, transparent 66.66667%);
   background-size: 8.57143%;
   background-origin: content-box;
@@ -1544,6 +1547,129 @@ body:before:after {
   content: " ";
   display: block;
   clear: both;
+}
+
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+a.more-link,
+a.button,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  border: 1px solid;
+  border-color: #ccc;
+  border-radius: 3px;
+  background: #e6e6e6;
+  box-shadow: none;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 1.5em;
+  padding: 0.5em 1em;
+  text-shadow: none;
+}
+a.more-link:hover,
+a.button:hover,
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+  border-color: #bbb;
+  background-color: #e6e6e6;
+  box-shadow: none;
+}
+a.more-link:active, a.more-link:focus,
+a.button:active,
+a.button:focus,
+button:active,
+button:focus,
+input[type="button"]:active,
+input[type="button"]:focus,
+input[type="reset"]:active,
+input[type="reset"]:focus,
+input[type="submit"]:active,
+input[type="submit"]:focus {
+  border-color: #aaa;
+  background-color: #e6e6e6;
+  box-shadow: none;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+  max-width: 100%;
+  padding: 0.75em;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: #666;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="range"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="color"]:focus,
+textarea:focus {
+  color: #111;
+}
+
+select {
+  border: 1px solid #ccc;
+}
+
+textarea {
+  width: 100%;
+  vertical-align: top;
+}
+
+.wpcf7 br {
+  display: none;
+}
+.wpcf7 [role=alert] {
+  display: block;
+}
+.wpcf7 .form-validation {
+  position: relative;
+  margin: 1.5em 0;
+}
+.wpcf7 .form-validation img.wpcf7-captchac {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  width: auto;
+  height: 100%;
+  max-height: 3em;
+  margin: 0;
+  padding: 1px;
+  border-radius: 3px;
+}
+.wpcf7 .form-validation input.wpcf7-captchar {
+  width: 100%;
+  padding-right: 10em;
 }
 
 /*--------------------------------------------------------------
@@ -1558,7 +1684,6 @@ body:before:after {
   background-color: white;
 }
 #masthead.headroom {
-  -webkit-transition: -webkit-transform 200ms linear;
   transition: -webkit-transform 200ms linear;
   transition: transform 200ms linear;
   transition: transform 200ms linear, -webkit-transform 200ms linear;
@@ -1912,10 +2037,8 @@ html[xmlns] .slider .slides {
   margin: 0;
 }
 .featured.section .slider .slides > * .entry-image img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center center;
-     object-position: center center;
+  object-fit: cover;
+  object-position: center center;
   position: absolute;
   z-index: -1;
   top: 0;
@@ -1957,10 +2080,8 @@ html[xmlns] .slider .slides {
     left: 0;
     width: 100% !important;
     height: 100% !important;
-    -o-object-fit: cover;
-       object-fit: cover;
-    -o-object-position: center center;
-       object-position: center center;
+    object-fit: cover;
+    object-position: center center;
   }
 }
 .featured.section .slider .slides > * .entry-video .mejs-container {
@@ -2203,6 +2324,9 @@ html[xmlns] .slider .slides {
   font-weight: bold;
 }
 
+.contact.section {
+  overflow: auto;
+}
 @media (min-width: 48em) {
   .contact.section section:first-of-type {
     width: 48.57143%;
@@ -2211,9 +2335,61 @@ html[xmlns] .slider .slides {
   }
 }
 @media (min-width: 48em) {
-  .contact.section section:last-of-type {
+  .contact.section section:nth-of-type(n+2) {
     width: 48.57143%;
     float: right;
     margin-right: 0;
   }
+}
+
+.contact-detail:before {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  margin-right: 0.25em;
+}
+.contact-detail.phone:before {
+  content: "\f095";
+}
+.contact-detail.mobile:before {
+  content: "\f10b";
+}
+.contact-detail.fax:before {
+  content: "\f1ac";
+}
+.contact-detail.email:before {
+  content: "\f0e0";
+}
+.contact-detail.address:before {
+  content: "\f041";
+}
+.contact-detail.facebook:before {
+  content: "\f09a";
+}
+.contact-detail.googleplus:before {
+  content: "\f0d5";
+}
+.contact-detail.twitter:before {
+  content: "\f099";
+}
+.contact-detail.instagram:before {
+  content: "\f16d";
+}
+.contact-detail.pinterest:before {
+  content: "\f231";
+}
+.contact-detail.youtube:before {
+  content: "\f167";
+}
+.contact-detail.linkedin:before {
+  content: "\f0e1";
+}
+
+#copyright {
+  overflow: auto;
 }

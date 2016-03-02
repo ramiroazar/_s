@@ -1,0 +1,39 @@
+.wpcf7 {
+
+	.screen-reader-response {
+		@extend %screen-reader-text;
+	}
+
+	label {
+		@extend %screen-reader-text;
+	}
+
+	br {
+		display: none;
+	}
+
+	[role=alert] {
+		display: block;
+	}
+
+	.form-validation {
+		position: relative;
+		margin: 1.5em 0;
+
+		img.wpcf7-captchac {
+			position: absolute;
+			z-index: 1;
+			right: 0;
+			width: auto;
+			height: 100%;
+			max-height: 3em;
+			margin: 0;
+			padding: 1px;
+			border-radius: 3px;
+		}
+		input.wpcf7-captchar {
+			width: 100%;
+			padding-right: 10em;
+		}
+	}
+}
