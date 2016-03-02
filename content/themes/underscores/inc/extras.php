@@ -51,6 +51,14 @@ function _s_mce_before_init_insert_formats( $init_array ) {
             'title' => 'Button',
             'selector' => 'a',
             'classes' => 'button',
+        ),
+        // Each array child is a format with it's own settings
+        array(
+            'title' => 'Odometer',
+						'block' => 'span',
+            'classes' => 'odometer',
+						'wrapper' => true,
+						'exact' => true
         )
     );
     // Insert the array, JSON ENCODED, into 'style_formats'

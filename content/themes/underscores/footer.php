@@ -159,7 +159,13 @@
 					<?php
 					  $args = array(
 							'post_type' => 'section',
-							'p' => 214
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'category_section',
+									'terms' => array('counter'),
+									'field' => 'slug',
+								),
+							),
 					  );
 					?>
 

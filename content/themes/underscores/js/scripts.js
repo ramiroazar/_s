@@ -49,22 +49,18 @@ jQuery(document).ready(function($) {
   });
 
 /**
- * Odometer
+ * Headroom.js
  *
- * @link http://github.hubspot.com/odometer/
+ * @link https://github.com/WickyNilliams/headroom.js
  */
 
-  setTimeout(function(){
-    $('.odometer').html(100000);
-  });
+ $('#masthead').headroom();
 
 /**
  * onScreen
  *
  * @link http://silvestreh.github.io/onScreen/
  */
-
-  $('#masthead').headroom();
 
   // $(window).scroll(function() {
   //   $('section').each(function() {
@@ -75,7 +71,6 @@ jQuery(document).ready(function($) {
   //   });
   // });
 
-
   $('section').onScreen({
     doIn: function() {
       $('#site-navigation a[href=#' + $(this).attr('id') + ']').parent().addClass('current-menu-item');
@@ -85,11 +80,29 @@ jQuery(document).ready(function($) {
     },
   });
 
-  /**
-  * Modernizr
-  *
-  * @link https://modernizr.com/
-  */
+/**
+ * Odometer
+ *
+ * @link http://github.hubspot.com/odometer/
+ */
+
+  $('.odometer').each(function () {
+    var value = $(this).html();
+    $(this).onScreen({
+      doIn: function() {
+        $(this).html(value);
+      },
+      doOut: function() {
+        $(this).html(0);
+      },
+    });
+  });
+
+/**
+* Modernizr
+*
+* @link https://modernizr.com/
+*/
 
   if ( !Modernizr.objectfit) {
     $('img').each(function () {
@@ -122,11 +135,11 @@ jQuery(document).ready(function($) {
     });
   }
 
-  /**
-  * skrollr
-  *
-  * @link https://github.com/Prinzhorn/skrollr
-  */
+/**
+* skrollr
+*
+* @link https://github.com/Prinzhorn/skrollr
+*/
 
   var setSkrollr = function($element, data) {
     for (var i = 0, l = data.length; i < l; i++) {

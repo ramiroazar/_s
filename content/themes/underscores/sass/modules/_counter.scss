@@ -1,6 +1,30 @@
 .counter.section {
+  text-align: center;
 
   > div {
     @extend %container;
+  }
+
+  ul {
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+    @include susy-clearfix;
+
+    li {
+      margin-bottom: 1.5em;
+      @include susy-breakpoint($breakpoint__xsmall $breakpoint__small) {
+        @include gallery(6);
+      }
+      @include susy-breakpoint($breakpoint__small) {
+        @include gallery(3);
+      }
+
+      .odometer {
+        display: block;
+        font-size: 3em;
+        font-weight: bold;
+      }
+    }
   }
 }
