@@ -21,7 +21,7 @@ $module__featured-caption-background-color: $color__background;
  */
 
 // layouts
-$module__services-layout: grid; // grid | viewport
+$module__services-layout: viewport; // grid | viewport
 
   // grid
   $module__services-layout-grid-columns-small: 4;
@@ -35,6 +35,26 @@ $module__services-layout: grid; // grid | viewport
 // general
 $module__services-caption-text-color: $color__text;
 $module__services-caption-text-link: $color__link;
+
+/**
+ * Services Featured
+ */
+
+// layouts
+$module__services-featured-layout: viewport; // grid | viewport
+
+  // grid
+  $module__services-featured-layout-grid-columns-small: 4;
+  $module__services-featured-layout-grid-columns-xsmall: 2;
+
+  // viewport
+  $module__services-featured-layout-viewport-caption-vertical-alignment: middle; // top | middle | bottom
+  $module__services-featured-layout-viewport-caption-horizontal-alignment: odd; // left | center | right | odd | even
+  $module__services-featured-caption-background-color: $color__background;
+
+// general
+$module__services-featured-caption-text-color: $color__text;
+$module__services-featured-caption-text-link: $color__link;
 
 /**
  * Calls to Action

@@ -28,6 +28,11 @@
 
 @mixin module__services-layout-viewport {
 
+  .section-header {
+    overflow: auto;
+    @extend %container;
+  }
+
   article {
     position: relative;
     height: 100vh;

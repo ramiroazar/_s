@@ -68,7 +68,11 @@ get_header(); ?>
 
 				<div>
 
-					<h2 class="section-title"><?php _e( 'About', '_s' ); ?></h2>
+					<header class="section-header">
+
+						<h2 class="section-title"><?php _e( 'About', '_s' ); ?></h2>
+
+					</header>
 
 					<?php
 					  $args = array(
@@ -99,16 +103,74 @@ get_header(); ?>
 
 				<div>
 
-					<h2 class="section-title"><?php _e( 'Services', '_s' ); ?></h2>
+					<header class="section-header">
+
+						<h2 class="section-title"><?php _e( 'Services', '_s' ); ?></h2>
+
+					</header>
 
 					<?php
 					  $args = array(
 							'post_type' => 'page',
 							'tax_query' => array(
+								'relation' => 'AND',
 								array(
 									'taxonomy' => 'category_page',
 									'field'    => 'slug',
 									'terms'    => 'services',
+								),
+								array(
+									'taxonomy' => 'category_page',
+									'field'    => 'slug',
+									'terms'    => 'featured',
+									'operator' => 'NOT IN',
+								),
+							),
+					  );
+					?>
+
+					<?php $query = new WP_Query( $args ); ?>
+
+					<?php if ( $query->have_posts() ) : ?>
+
+					  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+
+					    <?php get_template_part( 'template-parts/content', 'service' ); ?>
+
+					  <?php endwhile; ?>
+
+					<?php endif; ?>
+
+					<?php wp_reset_postdata(); ?>
+
+				</div>
+
+			</section><!-- #services -->
+
+			<section id="services-featured" class="section services-featured">
+
+				<div>
+
+					<header class="section-header">
+
+						<h2 class="section-title"><?php _e( 'Featured Services', '_s' ); ?></h2>
+
+					</header>
+
+					<?php
+					  $args = array(
+							'post_type' => 'page',
+							'tax_query' => array(
+								'relation' => 'AND',
+								array(
+									'taxonomy' => 'category_page',
+									'field'    => 'slug',
+									'terms'    => 'services',
+								),
+								array(
+									'taxonomy' => 'category_page',
+									'field'    => 'slug',
+									'terms'    => 'featured',
 								),
 							),
 					  );
