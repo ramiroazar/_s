@@ -204,3 +204,87 @@ function _s_taxonomy_init_section() {
 	register_taxonomy( 'category_section', array( 'section' ), $args );
 
 }
+
+/**
+* Register a post type.
+*
+* @link http://codex.wordpress.org/Function_Reference/register_post_type
+*/
+
+add_action( 'init', '_s_post_type_faq_init' );
+
+function _s_post_type_faq_init() {
+
+ $labels = array(
+	 'name'               => _x( 'FAQs', 'post type general name', '_s' ),
+	 'singular_name'      => _x( 'FAQ', 'post type singular name', '_s' ),
+	 'menu_name'          => _x( 'FAQs', 'admin menu', '_s' ),
+	 'name_admin_bar'     => _x( 'FAQ', 'add new on admin bar', '_s' ),
+	 'add_new'            => _x( 'Add New', 'faq', '_s' ),
+	 'add_new_item'       => __( 'Add New FAQ', '_s' ),
+	 'new_item'           => __( 'New FAQ', '_s' ),
+	 'edit_item'          => __( 'Edit FAQ', '_s' ),
+	 'view_item'          => __( 'View FAQ', '_s' ),
+	 'all_items'          => __( 'All FAQs', '_s' ),
+	 'search_items'       => __( 'Search FAQs', '_s' ),
+	 'parent_item_colon'  => __( 'Parent FAQs:', '_s' ),
+	 'not_found'          => __( 'No faqs found.', '_s' ),
+	 'not_found_in_trash' => __( 'No faqs found in Trash.', '_s' )
+ );
+
+ $args = array(
+	 'labels'             => $labels,
+	 'public'             => false,
+	 'publicly_queryable' => false,
+	 'show_ui'            => true,
+	 'show_in_menu'       => true,
+	 'query_var'          => true,
+	 'rewrite'            => false, // array( 'slug' => 'faq' ),
+	 'capability_type'    => 'post',
+	 'has_archive'        => false,
+	 'hierarchical'       => false,
+	 'menu_position'      => null,
+	 'menu_icon' 			=> 'dashicons-editor-help',
+	 'supports'           => array( 'title', 'editor' )
+ );
+
+ register_post_type( 'faq', $args );
+
+}
+
+/**
+ * Register a taxonomy.
+ *
+ * @link http://codex.wordpress.org/Function_Reference/register_taxonomy
+ */
+
+add_action( 'init', '_s_taxonomy_faq_init', 0 );
+
+function _s_taxonomy_faq_init() {
+
+	$labels = array(
+		'name'              => _x( 'Categories', 'taxonomy general name' ),
+		'singular_name'     => _x( 'Category', 'taxonomy singular name' ),
+		'search_items'      => __( 'Search Categories' ),
+		'all_items'         => __( 'All Categories' ),
+		'parent_item'       => __( 'Parent Category' ),
+		'parent_item_colon' => __( 'Parent Category:' ),
+		'edit_item'         => __( 'Edit Category' ),
+		'update_item'       => __( 'Update Category' ),
+		'add_new_item'      => __( 'Add New Category' ),
+		'new_item_name'     => __( 'New Category Name' ),
+		'menu_name'         => __( 'Categories' ),
+	);
+
+	$args = array(
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => 'category_faq' ),
+	);
+
+	register_taxonomy( 'category_faq', array( 'faq' ), $args );
+
+}

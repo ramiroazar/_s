@@ -240,3 +240,84 @@ function _s_shortcode_init_contact($atts) {
 
 }
 add_shortcode("contact", "_s_shortcode_init_contact");
+
+/**
+ * Register shortcode.
+ *
+ * @link https://codex.wordpress.org/Shortcode_API
+ */
+
+function _s_faq( $atts ) {
+
+	$atts = shortcode_atts(
+		array(
+			'limit' 		=> -1,
+			'questions'	=> true,
+			'answers'	=> true,
+			'order' => '',
+			'orderby' => '',
+		),
+		$atts
+	);
+
+	$args = array(
+		'post_type' => 'faq',
+		'posts_per_page' => $atts['limit'],
+		'order' => $atts['order'],
+		'orderby' => $atts['orderby'],
+	);
+
+	$return = '';
+
+	$the_query = new WP_Query( $args );
+	if ( $the_query->have_posts() ) :
+
+		if ($atts['questions'] === true) :
+
+			$return .= "<ol class='faq'>";
+
+			while ($the_query->have_posts()) : $the_query->the_post();
+
+				$faq_link = preg_replace('/\s+/', '_', get_the_title());
+
+				$return .= "<li>";
+				$return .= "<a href='#" . $faq_link . "'>";
+				$return .= get_the_title();
+				$return .= "</a>";
+				$return .= "</li>";
+
+			endwhile;
+
+			$return .= "</ol>";
+
+		endif;
+
+		if ($atts['answers'] === true) :
+
+			$return .= "<dl class='faq'>";
+
+			while ($the_query->have_posts()) : $the_query->the_post();
+
+				$faq_link = preg_replace('/\s+/', '_', get_the_title());
+
+				$return .= "<dt>";
+				$return .= "<a href='#" . $faq_link . "'>";
+				$return .= get_the_title();
+				$return .= "</a>";
+				$return .= "</dt>";
+				$return .= "<dd id='" . $faq_link . "'>";
+				$return .= wpautop(get_the_content());
+				$return .= "</dd>";
+
+			endwhile;
+
+			$return .= "</dl>";
+
+		endif;
+
+	endif; wp_reset_query();
+
+	return $return;
+}
+
+add_shortcode( 'faq', '_s_faq' );
