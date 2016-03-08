@@ -3,7 +3,6 @@
 /sql-dump-*.sql
 /db-sync
 /content/upgrade/
-/content/plugins/
 /content/mu-plugins/
 /node_modules
 /.sass-cache
