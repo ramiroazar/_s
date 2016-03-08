@@ -3,14 +3,21 @@
 	display: block;
 	float: none;
 	width: auto;
+	@include susy-breakpoint(max-width $breakpoint__medium) {
+		clear: both;
+	}
+	@include susy-breakpoint($breakpoint__medium) {
+		float: right;
+		margin-top: 0.75em;
+	}
 
 	ul {
 		display: none;
 		list-style: none;
 		margin: 0;
 		padding-left: 0;
-		@include susy-breakpoint($breakpoint__medium) {
-			float: right;
+		@include susy-breakpoint(max-width $breakpoint__medium) {
+			padding: 0.75em 0;
 		}
 
 		ul {
@@ -23,6 +30,7 @@
 
 			@include susy-breakpoint(max-width $breakpoint__medium) {
 				margin-left: 1.5em;
+				padding: 0;
 			}
 
 			@include susy-breakpoint($breakpoint__medium) {
@@ -128,6 +136,8 @@
 }
 
 .menu-toggle {
+	float: right;
+	margin-top: -3.5em;
 	@include susy-breakpoint($breakpoint__medium) {
 		display: none;
 	}

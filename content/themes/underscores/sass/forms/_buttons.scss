@@ -1,30 +1,38 @@
+@mixin button-default {
+	@include button-color();
+}
+
+%button-default {
+	@include button-default;
+}
+
+@mixin button-one {
+	@include button-color($color__button-one, $color__button-one-background, $color__button-one-border);
+}
+
+%button-one {
+	@include button-one;
+}
+
 a.more-link,
 a.button,
 button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	border: 1px solid;
-	border-color: $color__button-border;
+	@extend %button-default;
+	display: inline-block;
+	border: none;
 	border-radius: 3px;
-	background: $color__button-background;
 	box-shadow: none;
-	color: $color__button-text;
-	@include font-size(0.75);
+	font-size: 1em;
 	line-height: 1.5em;
-	padding: 0.5em 1em;
+	padding: 0.375em 1em;
 	text-shadow: none;
 
-	&:hover {
-		border-color: $color__button-border-hover;
-		background-color: $color__button-background-hover;
-		box-shadow: none;
-	}
-
+	&:hover,
 	&:active,
 	&:focus {
-		border-color: $color__button-border-focus;
-		background-color: $color__button-background-focus;
 		box-shadow: none;
 	}
 }

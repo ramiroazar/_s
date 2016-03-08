@@ -9,9 +9,9 @@ jQuery(document).ready(function($) {
   $('.slider').flexslider({
     namespace: "slider-",
     selector: ".slides > *",
-    smoothHeight: true,
     prevText: "<span>Previous</span>",
     nextText: "<span>Next</span>",
+    animationLoop: false
   });
 
 /**
@@ -62,6 +62,8 @@ jQuery(document).ready(function($) {
  * @link http://silvestreh.github.io/onScreen/
  */
 
+  // Navigation
+
   $('section').onScreen({
     doIn: function() {
       $('#site-navigation a[href="#' + $(this).attr('id') + '"]').parent().addClass('current-menu-item');
@@ -71,22 +73,18 @@ jQuery(document).ready(function($) {
     },
   });
 
+  // Animation
+
   $(window).load(function() {
-
-    $('#services article').css('opacity', 0).onScreen({
-      tolerance: 200,
-      doIn: function() {
-        $(this).addClass("animated fadeInUp").css('opacity', 1);
-      },
+    $('*').each(function () {
+      if ($(this).css('animation-duration') != '0s') {
+        $(this).css('opacity', 0).onScreen({
+          doIn: function() {
+            $(this).addClass("animated").css('opacity', 1);
+          },
+        });
+      }
     });
-
-    $('.credentials.section li').css('opacity', 0).onScreen({
-      tolerance: 200,
-      doIn: function() {
-        $(this).addClass("animated zoomIn").css('opacity', 1);
-      },
-    });
-
   });
 
 /**
@@ -114,61 +112,46 @@ jQuery(document).ready(function($) {
 * @link https://modernizr.com/
 */
 
-  if ( !Modernizr.objectfit) {
-    $('.featured.section img').each(function () {
-      // if ($(this).css('object-fit')) {
+  // object-fit fallback
+
+  function setCurrentSrc() {
+    $('.entry-image img').each(function () {
+      if ($(this).css('object-fit') == 'cover') {
         $(this)
-          .closest('.entry-image')
           .css('opacity',0)
           .closest('article')
           .css({
-            'backgroundImage' :'url(' + $(this).prop('src') + ')',
+            'backgroundImage' :'url(' + this.currentSrc + ')',
             'backgroundSize' : $(this).css('object-fit'),
             'backgroundPosition' : $(this).css('object-position'),
             'backgroundRepeat' : 'no-repeat',
           });
-      // }
+      }
     });
-    $('.featured.section video').each(function () {
-      // if ($(this).css('object-fit')) {
-        $(this)
-          .closest('.entry-video')
-          .css('opacity',0)
-          .closest('article')
-          .css({
-            'backgroundImage' :'url(' + $(this).prop('poster') + ')',
-            'backgroundSize' : $(this).css('object-fit'),
-            'backgroundPosition' : $(this).css('object-position'),
-            'backgroundRepeat' : 'no-repeat',
-          });
-      // }
+  }
+
+  setCurrentSrc();
+
+  $(window).resize(function () {
+    setCurrentSrc();
+  });
+
+  if (!Modernizr.objectfit) {
+
+    $('.entry-video video').each(function () {
+      if ($(this).css('object-fit') == 'cover') {
+        $(this).closest('.entry-video').css('opacity',0);
+      }
     });
   }
 
 /**
-* skrollr
+* Viewport Units Buggyfill
 *
-* @link https://github.com/Prinzhorn/skrollr
+* @link https://github.com/rodneyrehm/viewport-units-buggyfill
 */
 
-  var setSkrollr = function($element, data) {
-    for (var i = 0, l = data.length; i < l; i++) {
-      var d = data[i],
-          keyframe = d[0];
-          css = d[1];
-      $element.attr('data-' + keyframe, css);
-    }
-  }
-
-  $('.featured.section').each(function () {
-    setSkrollr($(this), [['top', 'max-height:' + $(this).height() + 'px'], ['top-bottom', 'max-height:0']]);
-    // setSkrollr($(this), [['top', 'max-height:' + ($(this).height()) + 'px;transform:translateY(0px);'], ['top-bottom', 'max-height:0;transform:translateY(' + ($(this).height()) + 'px);']]);
-  });
-
-  var s = skrollr.init({
-    forceHeight: false,
-    smoothScrolling: false,
-  });
+  window.viewportUnitsBuggyfill.init();
 
 });
 

@@ -10,6 +10,13 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+	<?php if ( has_post_thumbnail() ) : ?>
+		<figure class="entry-image">
+			<?php the_post_thumbnail(); ?>
+		</figure><!-- .entry-image -->
+	<?php endif; ?>
+
 	<div>
 		<div>
 			<div>
@@ -23,18 +30,13 @@
 					<?php endif; ?>
 				</header><!-- .entry-header -->
 
-				<?php if ( has_post_thumbnail() ) : ?>
-					<figure class="entry-image">
-						<?php the_post_thumbnail( 'medium' ); ?>
-					</figure><!-- .entry-image -->
-				<?php endif; ?>
-
 				<div class="entry-summary">
 					<?php the_excerpt(); ?>
+
+					<?php  _s_more_link(); ?>
 				</div><!-- .entry-summary -->
 
 				<footer class="entry-footer">
-					<?php _s_entry_footer_child(); ?>
 					<?php _s_entry_footer(); ?>
 				</footer><!-- .entry-footer -->
 			</div>

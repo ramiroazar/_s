@@ -1,14 +1,23 @@
-a {
-	color: $color__link;
+@mixin hyperlink-default {
+	@include hyperlink-color();
+}
 
-	&:visited {
-		color: $color__link-visited;
-	}
-	&:hover,
-	&:focus,
-	&:active {
-		color: $color__link-hover;
-	}
+%hyperlink-default {
+	@include hyperlink-default;
+}
+
+@mixin hyperlink-one {
+	@include hyperlink-color($color__link-one, $color__link-one-hover);
+}
+
+%hyperlink-one {
+	@include hyperlink-one;
+}
+
+a {
+	@extend %hyperlink-default;
+	text-decoration: none;
+
 	&:focus {
 		outline: thin dotted;
 	}

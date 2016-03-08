@@ -15,6 +15,20 @@ function _s_customize_register_child( $wp_customize ) {
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
+	// Administration
+
+	$wp_customize->add_section( '_s_administration', array(
+		'title'          => 'Administration',
+		'priority'       => 35,
+	) );
+
+	$wp_customize->add_setting( 'google_tag_manager_account_id', array() );
+	$wp_customize->add_control( 'google_tag_manager_account_id', array(
+		'label'   => 'Googl Tag Manager container ID',
+		'section' => '_s_administration',
+		'type'    => 'text',
+	) );
+
 	// Pages
 
 	$wp_customize->add_section( '_s_pages', array(

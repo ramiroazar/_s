@@ -19,180 +19,196 @@ get_header(); ?>
 
 			<?php if ( !wp_is_mobile() ) : ?>
 
-			<section id="featured" class="section featured">
-
-				<div>
-
-					<?php
-					  $args = array(
-							'post_type' => 'slider',
-							'tax_query' => array(
-								array(
-									'taxonomy' => 'category_slider',
-									'field'    => 'slug',
-									'terms'    => 'front-page',
-								),
+				<?php
+				  $args = array(
+						'post_type' => 'slide',
+						'tax_query' => array(
+							array(
+								'taxonomy' => 'category_slide',
+								'field'    => 'slug',
+								'terms'    => 'featured',
 							),
-					  );
-					?>
+						),
+				  );
+				?>
 
-					<?php $query = new WP_Query( $args ); ?>
+				<?php $query = new WP_Query( $args ); ?>
 
 					<?php if ( $query->have_posts() ) : ?>
 
-					  <div class="slider">
+						<section id="featured" class="section featured">
 
-						  <div class="slides">
+							<div>
 
-							  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+							  <div class="slider">
 
-							    <?php get_template_part( 'template-parts/content', 'slide' ); ?>
+								  <div class="slides">
 
-							  <?php endwhile; ?>
+									  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
-						  </div>
+									    <?php get_template_part( 'template-parts/content', 'slide' ); ?>
 
-					  </div>
+									  <?php endwhile; ?>
+
+								  </div>
+
+							  </div>
+
+							</div>
+
+						</section><!-- #featured -->
 
 					<?php endif; ?>
 
-					<?php wp_reset_postdata(); ?>
-
-				</div>
-
-			</section><!-- #featured -->
+				<?php wp_reset_postdata(); ?>
 
 			<?php endif; ?>
 
-			<section id="introduction" class="section introduction">
+			<?php
+			  $args = array(
+					'post_type' => 'page',
+					'pagename' => 'home',
+			  );
+			?>
 
-				<div>
+			<?php $query = new WP_Query( $args ); ?>
 
-					<header class="section-header">
+				<?php if ( $query->have_posts() ) : ?>
 
-						<h2 class="section-title"><?php _e( 'About', '_s' ); ?></h2>
+						  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
-					</header>
+								<?php if (get_the_content() != '') : ?>
 
-					<?php
-					  $args = array(
-							'post_type' => 'page',
-							'pagename' => 'home',
-					  );
-					?>
+									<section id="introduction" class="section introduction">
 
-					<?php $query = new WP_Query( $args ); ?>
+										<div>
 
-					<?php if ( $query->have_posts() ) : ?>
+											<header class="section-header">
 
-					  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+												<h2 class="section-title"><?php _e( 'Introduction', '_s' ); ?></h2>
 
-					    <?php get_template_part( 'template-parts/content', 'toggle' ); ?>
+											</header>
 
-					  <?php endwhile; ?>
+											<div class="section-content">
 
-					<?php endif; ?>
+										    <?php get_template_part( 'template-parts/content', 'toggle' ); ?>
 
-					<?php wp_reset_postdata(); ?>
+											</div>
 
-				</div>
+										</div>
 
-			</section><!-- #introduction -->
+									</section><!-- #introduction -->
 
-			<section id="services" class="section services">
+								<?php endif; ?>
 
-				<div>
+						  <?php endwhile; ?>
 
-					<header class="section-header">
+				<?php endif; ?>
 
-						<h2 class="section-title"><?php _e( 'Services', '_s' ); ?></h2>
+			<?php wp_reset_postdata(); ?>
 
-					</header>
+			<?php
+			  $args = array(
+					'post_type' => 'page',
+					'tax_query' => array(
+						'relation' => 'AND',
+						array(
+							'taxonomy' => 'category_page',
+							'field'    => 'slug',
+							'terms'    => 'services',
+						),
+						array(
+							'taxonomy' => 'category_page',
+							'field'    => 'slug',
+							'terms'    => 'featured',
+							'operator' => 'NOT IN',
+						),
+					),
+			  );
+			?>
 
-					<?php
-					  $args = array(
-							'post_type' => 'page',
-							'tax_query' => array(
-								'relation' => 'AND',
-								array(
-									'taxonomy' => 'category_page',
-									'field'    => 'slug',
-									'terms'    => 'services',
-								),
-								array(
-									'taxonomy' => 'category_page',
-									'field'    => 'slug',
-									'terms'    => 'featured',
-									'operator' => 'NOT IN',
-								),
-							),
-					  );
-					?>
+			<?php $query = new WP_Query( $args ); ?>
 
-					<?php $query = new WP_Query( $args ); ?>
+				<?php if ( $query->have_posts() ) : ?>
 
-					<?php if ( $query->have_posts() ) : ?>
+					<section id="services" class="section services">
 
-					  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+						<div>
 
-					    <?php get_template_part( 'template-parts/content', 'service' ); ?>
+							<header class="section-header">
 
-					  <?php endwhile; ?>
+								<h2 class="section-title"><?php _e( 'Services', '_s' ); ?></h2>
 
-					<?php endif; ?>
+							</header>
 
-					<?php wp_reset_postdata(); ?>
+							<div class="section-content">
 
-				</div>
+							  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
-			</section><!-- #services -->
+							    <?php get_template_part( 'template-parts/content', 'service' ); ?>
 
-			<section id="services-featured" class="section services-featured">
+							  <?php endwhile; ?>
 
-				<div>
+							</div>
 
-					<header class="section-header">
+						</div>
 
-						<h2 class="section-title"><?php _e( 'Featured Services', '_s' ); ?></h2>
+					</section><!-- #services -->
 
-					</header>
+				<?php endif; ?>
 
-					<?php
-					  $args = array(
-							'post_type' => 'page',
-							'tax_query' => array(
-								'relation' => 'AND',
-								array(
-									'taxonomy' => 'category_page',
-									'field'    => 'slug',
-									'terms'    => 'services',
-								),
-								array(
-									'taxonomy' => 'category_page',
-									'field'    => 'slug',
-									'terms'    => 'featured',
-								),
-							),
-					  );
-					?>
+			<?php wp_reset_postdata(); ?>
 
-					<?php $query = new WP_Query( $args ); ?>
+			<?php
+			  $args = array(
+					'post_type' => 'page',
+					'tax_query' => array(
+						'relation' => 'AND',
+						array(
+							'taxonomy' => 'category_page',
+							'field'    => 'slug',
+							'terms'    => 'services',
+						),
+						array(
+							'taxonomy' => 'category_page',
+							'field'    => 'slug',
+							'terms'    => 'featured',
+						),
+					),
+			  );
+			?>
 
-					<?php if ( $query->have_posts() ) : ?>
+			<?php $query = new WP_Query( $args ); ?>
 
-					  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+				<?php if ( $query->have_posts() ) : ?>
 
-					    <?php get_template_part( 'template-parts/content', 'service' ); ?>
+					<section id="services-featured" class="section services-featured">
 
-					  <?php endwhile; ?>
+						<div>
 
-					<?php endif; ?>
+							<header class="section-header">
 
-					<?php wp_reset_postdata(); ?>
+								<h2 class="section-title"><?php _e( 'Featured Services', '_s' ); ?></h2>
 
-				</div>
+							</header>
 
-			</section><!-- #services -->
+							<div class="section-content">
+
+							  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+
+							    <?php get_template_part( 'template-parts/content', 'service' ); ?>
+
+							  <?php endwhile; ?>
+
+							</div>
+
+						</div>
+
+					</section><!-- #services-featured -->
+
+				<?php endif; ?>
+
+			<?php wp_reset_postdata(); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->

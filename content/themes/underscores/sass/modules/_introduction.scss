@@ -1,5 +1,11 @@
 .introduction.section {
   overflow: auto;
+  @if $module__introduction-text-color != $color__text {
+    color: $module__introduction-text-color;
+  }
+  @if $module__introduction-background-color != $color__background {
+    background-color: $module__introduction-background-color;
+  }
 
   > div {
     @extend %container;

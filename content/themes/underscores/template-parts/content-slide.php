@@ -11,20 +11,16 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<?php if ( get_post_meta(get_the_ID(), 'video', true) ) : ?>
-		<figure class="entry-video">
-			<?php /* <video preload="none" loop="1" muted="muted">
-				<source type="video/youtube" src="<?php echo get_post_meta(get_the_ID(), 'video', true); ?>" />
-			</video> */ ?>
-			<?php // echo do_shortcode('[video src="http://fvsch.com/code/video-background/video.mp4"]'); ?>
-			<?php // echo do_shortcode('[video type="video/youtube" src="' . get_post_meta(get_the_ID(), 'video', true) . '"]'); ?>
-			<?php // echo do_shortcode('[video autoplay="true" loop="true" type="video/youtube" src="' . get_post_meta(get_the_ID(), 'video', true) . '"]'); ?>
-			<?php echo do_shortcode(get_post_meta(get_the_ID(), 'video', true)); ?>
-		</figure><!-- .entry-video -->
-	<?php elseif ( has_post_thumbnail() ) : ?>
+	<?php if ( has_post_thumbnail() ) : ?>
 		<figure class="entry-image">
 			<?php the_post_thumbnail(); ?>
 		</figure><!-- .entry-image -->
+	<?php endif; ?>
+
+	<?php if ( get_post_meta(get_the_ID(), 'video', true) ) : ?>
+		<figure class="entry-video">
+			<?php echo do_shortcode(get_post_meta(get_the_ID(), 'video', true)); ?>
+		</figure><!-- .entry-video -->
 	<?php endif; ?>
 
 	<div>
@@ -41,7 +37,7 @@
 				</header><!-- .entry-header -->
 
 				<div class="entry-summary">
-					<?php the_excerpt(); ?>
+					<?php the_content(); ?>
 				</div><!-- .entry-summary -->
 
 				<footer class="entry-footer">

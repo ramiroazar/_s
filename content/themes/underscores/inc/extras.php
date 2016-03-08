@@ -119,3 +119,15 @@ function _s_filter_gallery_img_atts( $atts, $attachment, $size ) {
     return $atts;
 }
 add_filter( 'wp_get_attachment_image_attributes', '_s_filter_gallery_img_atts', 10, 3 );
+
+/**
+ * Modify The Read More Link Text
+ *
+ * @link https://codex.wordpress.org/Customizing_the_Read_More#Modify_The_Read_More_Link_Text
+ */
+
+	add_filter( 'the_content_more_link', 'modify_read_more_link' );
+
+	function modify_read_more_link() {
+		return '<a class="more-link" href="' . get_permalink() . '">More</a>';
+	}

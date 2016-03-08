@@ -1,3 +1,86 @@
+@mixin media__slider-navigation-pagination-bullet {
+
+  .slider {
+
+    ol {
+
+      li {
+
+        a {
+          text-indent: 1.5em;
+          border-radius: 50%;
+          background-color: $color__link;
+        }
+      }
+    }
+  }
+}
+
+@mixin media__slider-navigation-direction-icon {
+
+  .slider {
+
+    ul {
+
+      li {
+
+        a {
+
+          &.slider-prev {
+
+            &:before {
+              vertical-align: middle;
+              @include fontawesome;
+              font-size: 1.5em;
+              content: "\f104";
+            }
+          }
+
+          &.slider-next {
+
+            &:after {
+              vertical-align: middle;
+              @include fontawesome;
+              font-size: 1.5em;
+              content: "\f105";
+            }
+          }
+
+          span {
+            @extend %screen-reader-text;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin media__slider-navigation-overlay {
+
+  .slider {
+
+    ol {
+      position: absolute;
+      z-index: 2;
+      right: 0;
+      bottom: 1.5em;
+      left: 0;
+      margin: 0 auto;
+      @extend %container;
+    }
+
+    ul {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      right: 0;
+      left: 0;
+      margin: -0.75em auto 0 auto;
+      @extend %container;
+    }
+  }
+}
+
 .slider {
   overflow: hidden;
   position: relative;
@@ -34,46 +117,20 @@
           font-weight: bold;
         }
       }
-
-      > div {
-
-        &:last-of-type {
-          position: absolute;
-          bottom: 4.5em;
-          width: 100%;
-
-          > div {
-            @extend %container;
-
-            > div {
-              overflow: auto;
-              float: left;
-              width: 50%;
-              padding: 1.5em gutters();
-              background-color: $color__background;
-            }
-          }
-        }
-      }
     }
   }
 
   ol {
-    position: absolute;
-    z-index: 2;
-    right: 0;
-    bottom: 1.5em;
-    left: 0;
-    margin: 0 auto;
+    min-height: 1.5em;
+    margin: 1.5em 0;
     padding: 0;
-    @extend %container;
     list-style: none;
     text-align: center;
 
     li {
       display: inline-block;
       vertical-align: middle;
-      margin-right: 1.5em;
+      margin-right: 0.75em;
 
       &:last-of-type {
         margin-right: auto;
@@ -84,6 +141,7 @@
         display: block;
         width: 1.5em;
         height: 1.5em;
+        @include media__slider-navigation-pagination-bullet;
 
         &.slider-active {
           opacity: 0.5;
@@ -93,15 +151,10 @@
   }
 
   ul {
-    position: absolute;
-    z-index: 2;
-    top: 50%;
-    right: 0;
-    left: 0;
-    margin: -2.25em auto 0 auto;
+    margin: -3em 0 1.5em 0;
     padding: 0;
-    @extend %container;
     list-style: none;
+    @include susy-clearfix;
 
     li {
 
@@ -115,6 +168,7 @@
 
       a {
         display: block;
+        @include media__slider-navigation-direction-icon;
 
         &:hover, &:focus {
           opacity: 0.5;

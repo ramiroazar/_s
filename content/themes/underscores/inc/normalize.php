@@ -4,6 +4,20 @@
  * functions.php
  */
 function _s_setup_normalize() {
+  /*
+   * Enable support for Post Formats.
+   * See https://developer.wordpress.org/themes/functionality/post-formats/
+   */
+  add_theme_support( 'post-formats', array(
+    'aside',
+    'image',
+    'video',
+    'quote',
+    'link',
+    'gallery',
+  ) );
+
+	// Set up the WordPress core custom background feature.
   remove_theme_support( 'custom-background' );
 }
 add_action( 'after_setup_theme', '_s_setup_normalize', 15 );

@@ -30,6 +30,32 @@
 	}
 }
 
+@mixin hyperlink-color($hyperlink-color: $color__link, $hyperlink-color-hover: $color__link-hover) {
+	color: $hyperlink-color;
+
+	&:visited {
+		color: $hyperlink-color;
+	}
+	&:hover,
+	&:focus,
+	&:active {
+		color: $hyperlink-color-hover;
+	}
+}
+
+@mixin button-color($button-color: $color__button, $button-color-background: $color__button-background, $button-color-border: $color__button-border) {
+	color: $button-color;
+	border-color: $button-color-border;
+	background: $button-color-background;
+
+	&:hover,
+	&:active,
+	&:focus {
+		border-color: darken($button-color-border, 10%);
+		background-color: darken($button-color-background, 10%);
+	}
+}
+
 @mixin fontawesome {
 	display: inline-block;
 	font: normal normal normal 14px/1 FontAwesome;
@@ -38,6 +64,15 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	transform: translate(0, 0);
+}
+
+@mixin animated($animation-name) {
+  animation-duration: $AnimateDuration;
+  animation-fill-mode: both;
+
+	&.animated {
+		@include animate($animation-name);
+	}
 }
 
 @import "placeholders";

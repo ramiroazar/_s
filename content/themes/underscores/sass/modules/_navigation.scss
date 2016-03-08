@@ -1,0 +1,108 @@
+.main-navigation {
+  @if $module__navigation-background-color {
+    background-color: $module__navigation-background-color;
+  }
+  @include susy-breakpoint(max-width $breakpoint__medium) {
+    @if $module__navigation-bleed-x {
+      @include bleed-x(gutters() + 0.142855);
+    }
+  }
+
+	ul {
+
+		ul {
+      @if $module__navigation-submenu-background-color != $color__background {
+        background-color: $module__navigation-submenu-background-color;
+      }
+
+			ul {
+			}
+
+			li {
+
+				&:hover > ul,
+				&.focus > ul {
+				}
+			}
+
+			a {
+        @if $module__navigation-submenu-link-color != hyperlink-default {
+          @extend %#{$module__navigation-submenu-link-color};
+        }
+			}
+
+			:hover > a,
+			.focus > a {
+			}
+
+			a:hover,
+			a.focus {
+			}
+		}
+
+		li:hover > ul,
+		li.focus > ul {
+		}
+	}
+
+	li {
+
+		&:hover > a,
+		&.focus > a {
+		}
+	}
+
+	a {
+    @if $module__navigation-link-color != hyperlink-default {
+      @extend %#{$module__navigation-link-color};
+    }
+	}
+
+	.current_page_item > a,
+	.current-menu-item > a,
+	.current_page_ancestor > a,
+	.current-menu-ancestor > a {
+	}
+
+	.menu-item-has-children {
+
+		> a {
+
+			&:after {
+			}
+		}
+	}
+}
+
+/* Small menu. */
+.menu-toggle,
+.main-navigation.toggled ul {
+}
+
+.main-navigation.toggled ul ul {
+}
+
+.menu-toggle {
+
+	&:before {
+	}
+
+	span {
+	}
+}
+.main-navigation ul {
+}
+
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+
+	.site-main & {
+	}
+
+	.nav-previous {
+	}
+
+	.nav-next {
+	}
+}

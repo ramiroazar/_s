@@ -244,7 +244,7 @@ $mfp-use-visuallyhidden:              false !default;                      // Hi
 }
 
 // CSS-reset for buttons
-button {
+button, button:hover, button:focus {
   &.mfp-close,
   &.mfp-arrow {
     overflow: visible;
@@ -254,7 +254,7 @@ button {
     -webkit-appearance: none;
     display: block;
     outline: none;
-    padding: 0;
+    // padding: 0;
     z-index: $mfp-z-index-base + 6;
     box-shadow: none;
     touch-action: manipulation;

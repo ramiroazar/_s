@@ -25,6 +25,23 @@
       }
     }
   }
+
+  a {
+    @if $module__contact-link-color != hyperlink-default {
+      @extend %#{$module__contact-link-color};
+    }
+  }
+
+  a.more-link,
+  a.button,
+  button,
+  input[type="button"],
+  input[type="reset"],
+  input[type="submit"] {
+    @if $module__contact-link-color != hyperlink-default {
+      @extend %#{$module__contact-link-color};
+    }
+  }
 }
 
 .contact-detail {

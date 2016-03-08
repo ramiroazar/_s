@@ -1,21 +1,26 @@
-$color__text: black;
+$color__brand-one: red;
+$color__brand-two: orange;
+$color__brand-three: yellow;
 
+$color__text: black;
 $color__background: white;
 
 $color__link: blue;
 $color__link-hover: darkblue;
-$color__link-visited: purple;
 
-$color__button-text: rgba(0, 0, 0, .8);
-$color__button-background: #e6e6e6;
-$color__button-background-hover: #e6e6e6;
-$color__button-background-focus: #e6e6e6;
-$color__button-border: #ccc;
-$color__button-border-hover: #bbb;
-$color__button-border-focus: #aaa;
+$color__link-one: $color__brand-one;
+$color__link-one-hover: darken($color__brand-one, 10);
+
+$color__button: $color__text;
+$color__button-background: lightgray;
+$color__button-border: lightgray;
+
+$color__button-one: $color__button;
+$color__button-one-background: $color__brand-one;
+$color__button-one-border: $color__brand-one;
 
 $color__input-text: #666;
 $color__input-text-focus: #111;
 $color__input-border: #ccc;
 
-$color__debugging: rgba(red, .1);
+$color__debugging: rgba(red, 0.1);

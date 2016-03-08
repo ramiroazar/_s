@@ -19,185 +19,266 @@
 
 		<div>
 
-			<section id="map" class="section map">
+			<?php if ( get_theme_mod('map') ) : ?>
 
-				<div>
+				<section id="map" class="section map">
 
-					<header class="section-header">
+					<div>
 
-						<h2 class="section-title"><?php _e( 'Map', '_s' ); ?></h2>
+						<header class="section-header">
 
-					</header>
+							<h2 class="section-title"><?php _e( 'Map', '_s' ); ?></h2>
 
-					<?php echo do_shortcode('[contact type="map"]'); ?>
+						</header>
 
-				</div>
+						<div class="section-content">
 
-			</section><!-- #map -->
+							<?php echo do_shortcode('[contact type="map"]'); ?>
 
-			<section id="gallery" class="section gallery">
+						</div>
 
-				<div>
+					</div>
 
-					<header class="section-header">
+				</section><!-- #map -->
 
-						<h2 class="section-title"><?php _e( 'Gallery', '_s' ); ?></h2>
+			<?php endif; ?>
 
-					</header>
+			<?php
+			  $args = array(
+					'post_type' => 'post',
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'post_format',
+							'terms' => array('post-format-quote'),
+							'field' => 'slug',
+						),
+					),
+			  );
+			?>
 
-					<?php
-					  $args = array(
-							'post_type' => 'post',
-							'tax_query' => array(
-								array(
-									'taxonomy' => 'post_format',
-									'terms' => array('post-format-gallery'),
-									'field' => 'slug',
-								),
-							),
-					  );
-					?>
+			<?php $query = new WP_Query( $args ); ?>
 
-					<?php $query = new WP_Query( $args ); ?>
+				<?php if ( $query->have_posts() ) : ?>
 
-					<?php if ( $query->have_posts() ) : ?>
+					<section id="reviews" class="section reviews">
 
-					  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+						<div>
 
-					    <?php get_template_part( 'template-parts/content', 'gallery' ); ?>
+							<header class="section-header">
 
-					  <?php endwhile; ?>
+								<h2 class="section-title"><?php _e( 'Reviews', '_s' ); ?></h2>
 
-					<?php endif; ?>
+							</header>
 
-					<?php wp_reset_postdata(); ?>
+							<div class="section-content">
 
-				</div>
+							  <div class="slider">
 
-			</section><!-- #gallery -->
+								  <div class="slides">
 
-			<section id="cta" class="section cta">
+									  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
-				<div>
+									    <?php get_template_part( 'template-parts/content', 'review' ); ?>
 
-					<header class="section-header">
+									  <?php endwhile; ?>
 
-						<h2 class="section-title"><?php _e( 'Call to Action', '_s' ); ?></h2>
+									</div>
 
-					</header>
+								</div>
 
-					<?php
-					  $args = array(
-							'post_type' => 'section',
-							'tax_query' => array(
-								array(
-									'taxonomy' => 'category_section',
-									'terms' => array('calls-to-action'),
-									'field' => 'slug',
-								),
-							),
-					  );
-					?>
+							</div>
 
-					<?php $query = new WP_Query( $args ); ?>
+						</div>
 
-					<?php if ( $query->have_posts() ) : ?>
+					</section><!-- #reviews -->
 
-					  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+				<?php endif; ?>
 
-					    <?php the_content(); ?>
+			<?php wp_reset_postdata(); ?>
 
-					  <?php endwhile; ?>
+			<?php
+			  $args = array(
+					'post_type' => 'post',
+					'posts_per_page' => 1,
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'post_format',
+							'terms' => array('post-format-gallery'),
+							'field' => 'slug',
+						),
+					),
+			  );
+			?>
 
-					<?php endif; ?>
+			<?php $query = new WP_Query( $args ); ?>
 
-					<?php wp_reset_postdata(); ?>
+				<?php if ( $query->have_posts() ) : ?>
 
-				</div>
+					<section id="gallery" class="section gallery">
 
-			</section><!-- #cta -->
+						<div>
 
-			<section id="credentials" class="section credentials">
+							<header class="section-header">
 
-				<div>
+								<h2 class="section-title"><?php _e( 'Gallery', '_s' ); ?></h2>
 
-					<header class="section-header">
+							</header>
 
-						<h2 class="section-title"><?php _e( 'Credentials', '_s' ); ?></h2>
+							<div class="section-content">
 
-					</header>
+							  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
-					<?php
-					  $args = array(
-							'post_type' => 'section',
-							'tax_query' => array(
-								array(
-									'taxonomy' => 'category_section',
-									'terms' => array('credentials'),
-									'field' => 'slug',
-								),
-							),
-					  );
-					?>
+							    <?php get_template_part( 'template-parts/content', 'gallery' ); ?>
 
-					<?php $query = new WP_Query( $args ); ?>
+							  <?php endwhile; ?>
 
-					<?php if ( $query->have_posts() ) : ?>
+							</div>
 
-					  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+						</div>
 
-					    <?php the_content(); ?>
+					</section><!-- #gallery -->
 
-					  <?php endwhile; ?>
+				<?php endif; ?>
 
-					<?php endif; ?>
+			<?php wp_reset_postdata(); ?>
 
-					<?php wp_reset_postdata(); ?>
+			<?php
+			  $args = array(
+					'post_type' => 'section',
+					'posts_per_page' => 1,
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'category_section',
+							'terms' => array('calls-to-action'),
+							'field' => 'slug',
+						),
+					),
+			  );
+			?>
 
-				</div>
+			<?php $query = new WP_Query( $args ); ?>
 
-			</section><!-- #credentials -->
+				<?php if ( $query->have_posts() ) : ?>
 
-			<section id="counter" class="section counter">
+					<section id="cta" class="section cta">
 
-				<div>
+						<div>
 
-					<header class="section-header">
+							<header class="section-header">
 
-						<h2 class="section-title"><?php _e( 'Counter', '_s' ); ?></h2>
+								<h2 class="section-title"><?php _e( 'Call to Action', '_s' ); ?></h2>
 
-					</header>
+							</header>
 
-					<?php
-					  $args = array(
-							'post_type' => 'section',
-							'tax_query' => array(
-								array(
-									'taxonomy' => 'category_section',
-									'terms' => array('counters'),
-									'field' => 'slug',
-								),
-							),
-					  );
-					?>
+							<div class="section-content">
 
-					<?php $query = new WP_Query( $args ); ?>
+							  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
-					<?php if ( $query->have_posts() ) : ?>
+							    <?php the_content(); ?>
 
-					  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+							  <?php endwhile; ?>
 
-					    <?php the_content(); ?>
+							</div>
 
-					  <?php endwhile; ?>
+						</div>
 
-					<?php endif; ?>
+					</section><!-- #cta -->
 
-					<?php wp_reset_postdata(); ?>
+				<?php endif; ?>
 
-				</div>
+			<?php wp_reset_postdata(); ?>
 
-			</section><!-- #counter -->
+			<?php
+			  $args = array(
+					'post_type' => 'section',
+					'posts_per_page' => 1,
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'category_section',
+							'terms' => array('credentials'),
+							'field' => 'slug',
+						),
+					),
+			  );
+			?>
+
+			<?php $query = new WP_Query( $args ); ?>
+
+				<?php if ( $query->have_posts() ) : ?>
+
+					<section id="credentials" class="section credentials">
+
+						<div>
+
+							<header class="section-header">
+
+								<h2 class="section-title"><?php _e( 'Credentials', '_s' ); ?></h2>
+
+							</header>
+
+							<div class="section-content">
+
+							  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+
+							    <?php the_content(); ?>
+
+							  <?php endwhile; ?>
+
+							</div>
+
+						</div>
+
+					</section><!-- #credentials -->
+
+				<?php endif; ?>
+
+			<?php wp_reset_postdata(); ?>
+
+			<?php
+			  $args = array(
+					'post_type' => 'section',
+					'posts_per_page' => 1,
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'category_section',
+							'terms' => array('counters'),
+							'field' => 'slug',
+						),
+					),
+			  );
+			?>
+
+			<?php $query = new WP_Query( $args ); ?>
+
+				<?php if ( $query->have_posts() ) : ?>
+
+					<section id="counter" class="section counter">
+
+						<div>
+
+							<header class="section-header">
+
+								<h2 class="section-title"><?php _e( 'Counter', '_s' ); ?></h2>
+
+							</header>
+
+							<div class="section-content">
+
+							  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+
+							    <?php the_content(); ?>
+
+							  <?php endwhile; ?>
+
+							</div>
+
+						</div>
+
+					</section><!-- #counter -->
+
+				<?php endif; ?>
+
+			<?php wp_reset_postdata(); ?>
 
 			<section id="contact" class="section contact">
 
@@ -209,86 +290,140 @@
 
 					</header>
 
-					<?php
-					  $args = array(
-							'post_type' => 'section',
-							'tax_query' => array(
-								array(
-									'taxonomy' => 'category_section',
-									'terms' => array('contact-forms'),
-									'field' => 'slug',
+					<div class="section-content">
+
+						<?php
+						  $args = array(
+								'post_type' => 'wpcf7_contact_form',
+								'posts_per_page' => 1,
+						  );
+						?>
+
+						<?php $query = new WP_Query( $args ); ?>
+
+							<?php if ( $query->have_posts() ) : ?>
+
+								<section id="contact-form" class="section contact-form">
+
+									<div>
+
+										<header class="section-header">
+
+											<h3 class="section-title"><?php _e( 'Contact Form', '_s' ); ?></h3>
+
+										</header>
+
+										<div class="section-content">
+
+										  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+
+												<?php echo do_shortcode('[contact-form-7 id="' . get_the_ID() . '"]'); ?>
+
+										  <?php endwhile; ?>
+
+										</div>
+
+									</div>
+
+								</section><!-- #contact-form -->
+
+							<?php endif; ?>
+
+						<?php wp_reset_postdata(); ?>
+
+						<?php
+						  $args = array(
+								'post_type' => 'section',
+								'posts_per_page' => 1,
+								'tax_query' => array(
+									array(
+										'taxonomy' => 'category_section',
+										'terms' => array('contact-details'),
+										'field' => 'slug',
+									),
 								),
-							),
-					  );
-					?>
+						  );
+						?>
 
-					<?php $query = new WP_Query( $args ); ?>
+						<?php $query = new WP_Query( $args ); ?>
 
-					<?php if ( $query->have_posts() ) : ?>
+							<?php if ( $query->have_posts() ) : ?>
 
-					  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+								<section id="contact-details" class="section contact-details">
 
-					    <?php get_template_part( 'template-parts/content', 'section' ); ?>
+									<div>
 
-					  <?php endwhile; ?>
+										<header class="section-header">
 
-					<?php endif; ?>
+											<h3 class="section-title"><?php _e( 'Contact Details', '_s' ); ?></h3>
 
-					<?php wp_reset_postdata(); ?>
+										</header>
 
-					<?php
-					  $args = array(
-							'post_type' => 'section',
-							'tax_query' => array(
-								array(
-									'taxonomy' => 'category_section',
-									'terms' => array('contact-details'),
-									'field' => 'slug',
+										<div class="section-content">
+
+										  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+
+										    <?php the_content(); ?>
+
+										  <?php endwhile; ?>
+
+										</div>
+
+									</div>
+
+								</section><!-- #contact-details -->
+
+							<?php endif; ?>
+
+						<?php wp_reset_postdata(); ?>
+
+						<?php
+						  $args = array(
+								'post_type' => 'section',
+								'posts_per_page' => 1,
+								'tax_query' => array(
+									array(
+										'taxonomy' => 'category_section',
+										'terms' => array('social-media'),
+										'field' => 'slug',
+									),
 								),
-							),
-					  );
-					?>
+						  );
+						?>
 
-					<?php $query = new WP_Query( $args ); ?>
+						<?php $query = new WP_Query( $args ); ?>
 
-					<?php if ( $query->have_posts() ) : ?>
+							<?php if ( $query->have_posts() ) : ?>
 
-					  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+								<section id="social-media" class="section social-media">
 
-					    <?php get_template_part( 'template-parts/content', 'section' ); ?>
+									<div>
 
-					  <?php endwhile; ?>
+										<header class="section-header">
 
-					<?php endif; ?>
+											<h3 class="section-title"><?php _e( 'Social Media', '_s' ); ?></h3>
 
-					<?php wp_reset_postdata(); ?>
+										</header>
 
-					<?php
-					  $args = array(
-							'post_type' => 'section',
-							'tax_query' => array(
-								array(
-									'taxonomy' => 'category_section',
-									'terms' => array('social-media'),
-									'field' => 'slug',
-								),
-							),
-					  );
-					?>
+										<div class="section-content">
 
-					<?php $query = new WP_Query( $args ); ?>
+										  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
-					<?php if ( $query->have_posts() ) : ?>
+										    <?php the_content(); ?>
 
-					  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+										  <?php endwhile; ?>
 
-					    <?php get_template_part( 'template-parts/content', 'section' ); ?>
+										</div>
 
-					  <?php endwhile; ?>
+									</div>
 
-					<?php endif; ?>
+								</section><!-- #social-media -->
 
-					<?php wp_reset_postdata(); ?>
+							<?php endif; ?>
+
+						<?php wp_reset_postdata(); ?>
+
+					</div>
 
 				</div>
 
@@ -303,7 +438,7 @@
 
 				</div>
 
-			</div><!-- .site-info -->
+			</div><!-- #copyright -->
 
 		</div>
 

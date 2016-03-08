@@ -10,4 +10,10 @@
   > div {
     @extend %container;
   }
+
+  a {
+    @if $module__copyright-link-color != hyperlink-default {
+      @extend %#{$module__copyright-link-color};
+    }
+  }
 }

@@ -37,6 +37,19 @@ add_action( 'wp_enqueue_scripts', '_s_scripts_enqueue' );
  add_filter( 'wpcf7_load_css', '__return_false' );
 
 /**
+ * Add image sizes
+ */
+add_image_size('2560', 2560);
+add_image_size('1920', 1920);
+add_image_size('1280', 1280);
+add_image_size('1024', 1024);
+add_image_size('768', 768);
+add_image_size('480', 480);
+add_image_size('320', 320);
+
+add_image_size('thumbnail-large', 300, 300, true);
+
+/**
  * Custom template tags for this theme.
  */
 require get_stylesheet_directory() . '/inc/template-tags.php';
@@ -60,3 +73,13 @@ require get_stylesheet_directory() . '/inc/post-types.php';
  * Shortcodes.
  */
 require get_stylesheet_directory() . '/inc/shortcodes.php';
+
+/**
+ * Schema.org.
+ */
+require get_stylesheet_directory() . '/inc/schema.php';
+
+/**
+ * Google Tag Manager.
+ */
+require get_stylesheet_directory() . '/inc/google-tag-manager.php';

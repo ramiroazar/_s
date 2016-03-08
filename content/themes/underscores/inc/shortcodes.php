@@ -247,7 +247,7 @@ add_shortcode("contact", "_s_shortcode_init_contact");
  * @link https://codex.wordpress.org/Shortcode_API
  */
 
-function _s_faq( $atts ) {
+function _s_question( $atts ) {
 
 	$atts = shortcode_atts(
 		array(
@@ -261,7 +261,7 @@ function _s_faq( $atts ) {
 	);
 
 	$args = array(
-		'post_type' => 'faq',
+		'post_type' => 'question',
 		'posts_per_page' => $atts['limit'],
 		'order' => $atts['order'],
 		'orderby' => $atts['orderby'],
@@ -274,14 +274,14 @@ function _s_faq( $atts ) {
 
 		if ($atts['questions'] === true) :
 
-			$return .= "<ol class='faq'>";
+			$return .= "<ol class='question'>";
 
 			while ($the_query->have_posts()) : $the_query->the_post();
 
-				$faq_link = preg_replace('/\s+/', '_', get_the_title());
+				$question_link = preg_replace('/\s+/', '_', get_the_title());
 
 				$return .= "<li>";
-				$return .= "<a href='#" . $faq_link . "'>";
+				$return .= "<a href='#" . $question_link . "'>";
 				$return .= get_the_title();
 				$return .= "</a>";
 				$return .= "</li>";
@@ -294,18 +294,18 @@ function _s_faq( $atts ) {
 
 		if ($atts['answers'] === true) :
 
-			$return .= "<dl class='faq'>";
+			$return .= "<dl class='question'>";
 
 			while ($the_query->have_posts()) : $the_query->the_post();
 
-				$faq_link = preg_replace('/\s+/', '_', get_the_title());
+				$question_link = preg_replace('/\s+/', '_', get_the_title());
 
 				$return .= "<dt>";
-				$return .= "<a href='#" . $faq_link . "'>";
+				$return .= "<a href='#" . $question_link . "'>";
 				$return .= get_the_title();
 				$return .= "</a>";
 				$return .= "</dt>";
-				$return .= "<dd id='" . $faq_link . "'>";
+				$return .= "<dd id='" . $question_link . "'>";
 				$return .= wpautop(get_the_content());
 				$return .= "</dd>";
 
@@ -320,4 +320,4 @@ function _s_faq( $atts ) {
 	return $return;
 }
 
-add_shortcode( 'faq', '_s_faq' );
+add_shortcode( 'question', '_s_question' );

@@ -4,6 +4,7 @@
 	right: 0;
 	left: 0;
 	top: 0;
+	box-shadow: rgba(black, 0.1) 0 1px 0;
 	background-color: $color__background;
 
 	&.headroom {
@@ -17,15 +18,28 @@
     transform: translateY(-100%);
 	}
 
+	& + #content {
+		margin-top: 4.5em;
+
+		// body.home.page & {
+		// 	@include susy-breakpoint($breakpoint__medium) {
+		// 		margin-top: 0;
+		// 	}
+		// }
+
+		#featured {
+			margin-top: -4.5em;
+		}
+	}
+
 	> div {
+		position: relative;
 		@extend %container;
-		padding: .75em 0;
 	}
 
 	.site-branding {
-		@include susy-breakpoint($breakpoint__medium) {
-			float: left;
-		}
+		float: left;
+		margin: 0.75em 0;
 
 		.site-logo {
 
@@ -46,15 +60,13 @@
 	}
 
 	.site-contact {
-		@include susy-breakpoint($breakpoint__medium) {
-			float: right;
-			margin-left: gutters();
+		float: right;
+		margin-top: 0.75em;
+		@include susy-breakpoint(max-width $breakpoint__medium) {
+			margin-right: 3.5em;
 		}
-	}
-
-	.main-navigation {
 		@include susy-breakpoint($breakpoint__medium) {
-			// float: right;
+			margin-left: gutters();
 		}
 	}
 }

@@ -1,4 +1,5 @@
 @mixin module__featured-layout-grid {
+  height: $module__featured-layout-grid-height;
 
   .slider {
     @extend %container;
@@ -13,13 +14,42 @@
 }
 
 @mixin module__featured-layout-viewport {
+  @if ($module__featured-layout-viewport-height) {
+    height: $module__featured-layout-viewport-height;
+  } @else {
+    height: 100vh;
+  }
 
   .slider {
 
     .slides {
 
       > *  {
-        height: 100vh;
+        @if ($module__featured-layout-viewport-height) {
+          height: $module__featured-layout-viewport-height;
+        } @else {
+          height: 100vh;
+        }
+      }
+    }
+  }
+}
+
+@mixin module__featured-parallax {
+
+  .slider {
+    z-index: 0;
+
+    .slides {
+
+      > *  {
+        background-attachment: fixed;
+
+        .entry-video {
+          position: fixed !important;
+          width: 100%;
+          height: 100%;
+        }
       }
     }
   }
@@ -36,6 +66,20 @@
     @include module__featured-layout-grid;
   } @else if $module__featured-layout == viewport {
     @include module__featured-layout-viewport;
+  }
+
+  @if $module__featured-parallax {
+    @include module__featured-parallax;
+  }
+
+  @include media__slider-navigation-overlay;
+
+  @if $module__featured-navigation-pagination == bullet {
+    @include media__slider-navigation-pagination-bullet;
+  }
+
+  @if $module__featured-navigation-direction == icon {
+    @include media__slider-navigation-direction-icon
   }
 
   .slider {
@@ -124,10 +168,20 @@
         > div {
 
           &:last-of-type {
+            position: absolute;
+            bottom: 4.5em;
+            width: 100%;
 
             > div {
+              @extend %container;
 
               > div {
+                overflow: auto;
+                float: left;
+                width: 50%;
+                padding: 1.5em gutters();
+                background-color: $color__background;
+
                 @if $module__featured-caption-alignment == center {
                   float: none;
                   margin: 0 auto;
@@ -141,6 +195,18 @@
 
                 @if $module__featured-caption-background-color != $color__background {
                   background-color: $module__featured-caption-background-color;
+                }
+
+                a {
+                  @if $module__featured-caption-link-color != hyperlink-default {
+                    @extend %#{$module__featured-caption-link-color};
+                  }
+
+                  &.button {
+                    @if $module__featured-caption-button-color != button-default {
+                      @extend %#{$module__featured-caption-button-color};
+                    }
+                  }
                 }
               }
             }
@@ -157,52 +223,40 @@
 
           @if $module__featured-navigation-color != $color__link {
             color: $module__featured-navigation-color;
+            background-color: $module__featured-navigation-color;
           }
 
           @if $module__featured-navigation-pagination == bullet {
-            text-indent: 1.5em;
-            background-color: $color__link;
-            border-radius: 50%;
-            background-color: $module__featured-navigation-color;
+
+            @if $module__featured-navigation-color != $color__link {
+              background-color: $module__featured-navigation-color;
+            }
           }
         }
       }
     }
 
     ul {
+      margin: -1.5em auto 0 auto;
 
       li {
 
         a {
-
           @if $module__featured-navigation-color != $color__link {
             color: $module__featured-navigation-color;
           }
 
-          @if $module__featured-navigation-direction == icon {
+          &.slider-prev {
 
-            &.slider-prev {
-
-              &:before {
-                vertical-align: middle;
-                font-family: $font__icon;
-                @include font-size(3);
-                content: "\f104";
-              }
+            &:before {
+              font-size: 3em;
             }
+          }
 
-            &.slider-next {
+          &.slider-next {
 
-              &:after {
-                vertical-align: middle;
-                font-family: $font__icon;
-                @include font-size(3);
-                content: "\f105";
-              }
-            }
-
-            span {
-              @extend %screen-reader-text;
+            &:after {
+              font-size: 3em;
             }
           }
         }

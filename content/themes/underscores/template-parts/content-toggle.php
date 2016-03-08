@@ -30,9 +30,7 @@
 	<div class="entry-summary">
 
 		<?php if ($count_content == 1) : ?>
-			<div>
-				<?php echo $content_1 ?>
-			</div>
+			<?php echo $content_1 ?>
 		<?php endif; ?>
 
 		<?php if ($count_content >= 2) : ?>

@@ -5,6 +5,7 @@
   }
 
   article {
+    @include animated(fadeInUp);
     @include susy-breakpoint($breakpoint__xsmall $breakpoint__small) {
       @include span( 12 / $module__services-layout-grid-columns-xsmall);
     }
@@ -23,6 +24,12 @@
         @include last;
       }
     }
+
+    .entry-image {
+      img {
+        width: 100%;
+      }
+    }
   }
 }
 
@@ -35,7 +42,11 @@
 
   article {
     position: relative;
-    height: 100vh;
+    @if ($module__services-layout-viewport-height) {
+      height: $module__services-layout-viewport-height;
+    } @else {
+      height: 100vh;
+    }
     margin-bottom: 0;
 
     &:nth-of-type(even) {
@@ -86,16 +97,30 @@
           width: 50%;
           padding: 1.5em gutters();
           background-color: $module__services-caption-background-color;
+          @include animated(zoomIn);
           @if $module__services-layout-viewport-caption-horizontal-alignment == left or $module__services-layout-viewport-caption-horizontal-alignment == right {
             float: $module__services-layout-viewport-caption-horizontal-alignment;
           } @else if $module__services-layout-viewport-caption-horizontal-alignment == center {
             margin: 0 auto;
+          }
+
+          a {
+            @if $module__services-caption-link-color != hyperlink-default {
+              @extend %#{$module__services-caption-link-color};
+            }
+
+            &.button {
+              @if $module__services-caption-button-color != button-default {
+                @extend %#{$module__services-caption-button-color};
+              }
+            }
           }
         }
       }
     }
 
     .entry-image {
+      margin: 0;
       img {
         object-fit: cover;
         position: absolute;
@@ -109,7 +134,8 @@
   }
 }
 
-.services.section {
+body.home .services.section {
+  overflow: hidden;
 
   @if $module__services-layout == grid {
     @include module__services-layout-grid;
@@ -123,6 +149,9 @@
   article {
     @if $module__services-caption-text-color != $color__text {
       color: $module__services-caption-text-color;
+    }
+    @if $module__services-parallax {
+      background-attachment: fixed;
     }
 
     > div {

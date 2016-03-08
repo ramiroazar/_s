@@ -39,10 +39,11 @@
 				echo do_shortcode('[gallery ids="' . _s_truncate_gallery(array('total' => 5)) . '" columns="5" size="thumbnail-large"]');
 			endif;
 		?>
+
+		<?php  _s_more_link(); ?>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php  _s_entry_footer_child(); ?>
 		<?php _s_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

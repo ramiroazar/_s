@@ -32,7 +32,7 @@ var javascript_src = [
 gulp.task('javascript', function() {
   return gulp.src(javascript_src)
     .pipe(concat('javascript.js'))
-    // .pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest(child_theme_directory + '/js'))
 });
 
@@ -53,10 +53,10 @@ gulp.task('css', function() {
   return gulp.src(css_src)
     .pipe(concat('stylesheet.css'))
     .pipe(autoprefixer())
-    // .pipe(cssnano({
-    //   discardComments: {removeAll: true},
-    //   zindex: false,
-    // }))
+    .pipe(cssnano({
+      discardComments: {removeAll: true},
+      zindex: false,
+    }))
     .pipe(gulp.dest(child_theme_directory))
 });
 

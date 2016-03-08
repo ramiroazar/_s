@@ -1,0 +1,80 @@
+.reviews.section {
+  overflow: hidden;
+  margin: 0;
+  @if $module__reviews-text-color != $color__text {
+    color: $module__reviews-text-color;
+  }
+  @if $module__reviews-background-color != $color__background {
+    background-color: $module__reviews-background-color;
+  }
+
+  @if $module__featured-navigation-pagination == bullet {
+    @include media__slider-navigation-pagination-bullet;
+  }
+
+  @if $module__featured-navigation-direction == icon {
+    @include media__slider-navigation-direction-icon
+  }
+
+  > div {
+    @extend %container;
+  }
+
+  .section-header {
+
+    .section-title {
+      // @extend %screen-reader-text;
+    }
+  }
+
+  .slider {
+
+    ol {
+
+      li {
+
+        a {
+
+          @if $module__reviews-navigation-pagination == bullet {
+
+            @if $module__reviews-navigation-color != $color__link {
+              background-color: $module__reviews-navigation-color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  article {
+
+    .entry-header {
+
+      .entry-title {
+        // @extend %screen-reader-text;
+      }
+
+      .entry-meta {
+        // @extend %screen-reader-text;
+      }
+    }
+
+    .entry-content {
+    }
+
+    .entry-footer {
+    }
+
+    a {
+      @if $module__reviews-link-color != hyperlink-default {
+        @extend %#{$module__reviews-link-color};
+      }
+
+      &.button {
+        @if $module__reviews-button-color != button-default {
+          @extend %#{$module__reviews-button-color};
+        }
+      }
+    }
+  }
+}
