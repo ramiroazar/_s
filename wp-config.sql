@@ -1,10 +1,10 @@
 /*
 Replace URL
-localhost/underscores = localhost/underscores
+[{domain}] = localhost/underscores
 Replace Date
-2016-01-01 08:30:00 = 2016-01-01 08:30:00
+[{date}] = 2016-01-01 08:30:00
 Replace Theme Name
-underscores = underscores
+[{theme}] = underscores
 */
 
 --
@@ -47,8 +47,8 @@ DELETE FROM wp_posts;
 --
 
 INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
-(1, 1, '2016-01-01 08:30:00', '2016-01-01 08:30:00', '<label for="contact-form-primary-name">Name</label>\r\n[text* name id:contact-form-primary-name placeholder "Name"]\r\n\r\n<label for="contact-form-primary-email">Email</label>\r\n[email* email id:contact-form-primary-email placeholder "Email"]\r\n\r\n[honeypot email-confirm id:contact-form-primary-email-confirm]\r\n\r\n<label for="contact-form-primary-phone">Phone</label>\r\n[tel phone id:contact-form-primary-phone placeholder "Phone"]\r\n\r\n<label for="contact-form-primary-message">Message</label>\r\n[textarea message id:contact-form-primary-message placeholder "Message"]\r\n\r\n<label for="contact-form-primary-validation">Validation</label>\r\n<div class="form-validation">\r\n	[captchac validation fg:#000 bg:#fff size:l]\r\n	[captchar validation id:contact-form-primary-validation]\r\n</div>\r\n\r\n[submit class:button "Submit"]\nOnline Enquiry\n[name] <[email]>\n<b>From:</b> [name] <[email]>\r\n<b>Phone:</b> [phone]\r\n\r\n<b>Message:</b> [message]\n\n\n\n1\n\n\n[your-subject]\n[your-name] <[your-email]>\nMessage Body:\r\n[your-message]\r\n\r\n--\r\nThis e-mail was sent from a contact form in your website\n[your-email]\n\n\n\n\nYour message was sent successfully. Thanks.\nFailed to send your message. Please try later or contact the administrator by another method.\nValidation errors occurred. Please confirm the fields and submit it again.\nFailed to send your message. Please try later or contact the administrator by another method.\nPlease accept the terms to proceed.\nPlease fill the required field.\nYour entered code is incorrect.\nNumber format seems invalid.\nThis number is too small.\nThis number is too large.\nEmail address seems invalid.\nURL seems invalid.\nTelephone number seems invalid.\nYour answer is not correct.\nDate format seems invalid.\nThis date is too early.\nThis date is too late.\nFailed to upload file.\nThis file type is not allowed.\nThis file is too large.\nFailed to upload file. Error occurred.\nThis input is too long.\nThis input is too short.', 'Contact Form (Primary)', '', 'publish', 'open', 'open', '', 'contact-form-primary', '', '', '2015-03-07 07:18:57', '2015-03-07 07:18:57', '', 0, 'http://localhost/underscores/?post_type=wpcf7_contact_form&#038;p=1', 0, 'wpcf7_contact_form', '', 0),
-(2, 1, '2016-01-01 08:30:00', '2016-01-01 08:30:00', '', 'Home', '', 'publish', 'closed', 'closed', '', 'home', '', '', '2016-01-01 08:30:00', '2016-01-01 08:30:00', '', 0, 'http://localhost/underscores/?page_id=2', 0, 'page', '', 0);
+(1, 1, '[{date}]', '[{date}]', '<label for="contact-form-primary-name">Name</label>\r\n[text* name id:contact-form-primary-name placeholder "Name"]\r\n\r\n<label for="contact-form-primary-email">Email</label>\r\n[email* email id:contact-form-primary-email placeholder "Email"]\r\n\r\n[honeypot email-confirm id:contact-form-primary-email-confirm]\r\n\r\n<label for="contact-form-primary-phone">Phone</label>\r\n[tel phone id:contact-form-primary-phone placeholder "Phone"]\r\n\r\n<label for="contact-form-primary-message">Message</label>\r\n[textarea message id:contact-form-primary-message placeholder "Message"]\r\n\r\n<label for="contact-form-primary-validation">Validation</label>\r\n<div class="form-validation">\r\n	[captchac validation fg:#000 bg:#fff size:l]\r\n	[captchar validation id:contact-form-primary-validation]\r\n</div>\r\n\r\n[submit class:button "Submit"]\nOnline Enquiry\n[name] <[email]>\n<b>From:</b> [name] <[email]>\r\n<b>Phone:</b> [phone]\r\n\r\n<b>Message:</b> [message]\n\n\n\n1\n\n\n[your-subject]\n[your-name] <[your-email]>\nMessage Body:\r\n[your-message]\r\n\r\n--\r\nThis e-mail was sent from a contact form in your website\n[your-email]\n\n\n\n\nYour message was sent successfully. Thanks.\nFailed to send your message. Please try later or contact the administrator by another method.\nValidation errors occurred. Please confirm the fields and submit it again.\nFailed to send your message. Please try later or contact the administrator by another method.\nPlease accept the terms to proceed.\nPlease fill the required field.\nYour entered code is incorrect.\nNumber format seems invalid.\nThis number is too small.\nThis number is too large.\nEmail address seems invalid.\nURL seems invalid.\nTelephone number seems invalid.\nYour answer is not correct.\nDate format seems invalid.\nThis date is too early.\nThis date is too late.\nFailed to upload file.\nThis file type is not allowed.\nThis file is too large.\nFailed to upload file. Error occurred.\nThis input is too long.\nThis input is too short.', 'Contact Form (Primary)', '', 'publish', 'open', 'open', '', 'contact-form-primary', '', '', '2015-03-07 07:18:57', '2015-03-07 07:18:57', '', 0, 'http://[{domain}]/?post_type=wpcf7_contact_form&#038;p=1', 0, 'wpcf7_contact_form', '', 0),
+(2, 1, '[{date}]', '[{date}]', '', 'Home', '', 'publish', 'closed', 'closed', '', 'home', '', '', '[{date}]', '[{date}]', '', 0, 'http://[{domain}]/?page_id=2', 0, 'page', '', 0);
 
 --
 -- Set Options
@@ -56,14 +56,14 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 
 UPDATE wp_options
 SET option_value = CASE option_name
-	WHEN 'siteurl' THEN 'http://localhost/underscores/wp'
-	WHEN 'home' THEN 'http://localhost/underscores'
+	WHEN 'siteurl' THEN 'http://[{domain}]/wp'
+	WHEN 'home' THEN 'http://[{domain}]'
 	WHEN 'default_comment_status' THEN 'closed'
 	WHEN 'comment_registration' THEN 1
 	WHEN 'permalink_structure' THEN '/%postname%/'
 	WHEN 'active_plugins' THEN 'a:3:{i:0;s:36:"contact-form-7-honeypot/honeypot.php";i:1;s:36:"contact-form-7/wp-contact-form-7.php";i:2;s:47:"really-simple-captcha/really-simple-captcha.php";}'
 	WHEN 'template' THEN '_s'
-	WHEN 'stylesheet' THEN 'underscores'
+	WHEN 'stylesheet' THEN '[{theme}]'
 	WHEN 'uploads_use_yearmonth_folders' THEN 0
 	WHEN 'show_on_front' THEN 'page'
 	WHEN 'page_on_front' THEN 2
