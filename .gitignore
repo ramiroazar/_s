@@ -6,4 +6,5 @@
 /content/mu-plugins/
 /node_modules
 /.sass-cache
+/npm-debug.log
 .DS_Store
