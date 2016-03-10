@@ -13,7 +13,7 @@
 
 	<?php if ( has_post_thumbnail() ) : ?>
 		<figure class="entry-image">
-			<?php the_post_thumbnail(); ?>
+			<?php the_post_thumbnail('thumbnail-large'); ?>
 		</figure><!-- .entry-image -->
 	<?php endif; ?>
 
