@@ -8,6 +8,6 @@
     "gulp-concat" : "latest",
     "gulp-cssnano" : "latest",
     "gulp-minify-css" : "latest",
-    "gulp-uglify" : "latest",
+    "gulp-uglify" : "latest"
   }
 }
