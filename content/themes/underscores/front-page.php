@@ -40,19 +40,23 @@ get_header(); ?>
 
 							<div>
 
-							  <div class="slider">
+								<div class="section-content">
 
-								  <div class="slides">
+								  <div class="slider">
 
-									  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+									  <div class="slides">
 
-									    <?php get_template_part( 'template-parts/content', 'slide' ); ?>
+										  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
-									  <?php endwhile; ?>
+										    <?php get_template_part( 'template-parts/content', 'slide' ); ?>
 
-								  </div>
+										  <?php endwhile; ?>
 
-							  </div>
+									  </div><!-- .slides -->
+
+								  </div><!-- .slider -->
+
+								</div><!-- .section-content -->
 
 							</div>
 
@@ -87,13 +91,13 @@ get_header(); ?>
 
 												<h2 class="section-title"><?php _e( 'Introduction', '_s' ); ?></h2>
 
-											</header>
+											</header><!-- .section-header -->
 
 											<div class="section-content">
 
 										    <?php get_template_part( 'template-parts/content', 'toggle' ); ?>
 
-											</div>
+											</div><!-- .section-content -->
 
 										</div>
 
@@ -139,7 +143,7 @@ get_header(); ?>
 
 								<h2 class="section-title"><?php _e( 'Services', '_s' ); ?></h2>
 
-							</header>
+							</header><!-- .section-header -->
 
 							<div class="section-content">
 
@@ -149,7 +153,7 @@ get_header(); ?>
 
 							  <?php endwhile; ?>
 
-							</div>
+							</div><!-- .section-content -->
 
 						</div>
 
@@ -190,7 +194,7 @@ get_header(); ?>
 
 								<h2 class="section-title"><?php _e( 'Featured Services', '_s' ); ?></h2>
 
-							</header>
+							</header><!-- .section-header -->
 
 							<div class="section-content">
 
@@ -200,7 +204,7 @@ get_header(); ?>
 
 							  <?php endwhile; ?>
 
-							</div>
+							</div><!-- .section-content -->
 
 						</div>
 

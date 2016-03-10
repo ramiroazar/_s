@@ -29,13 +29,13 @@
 
 							<h2 class="section-title"><?php _e( 'Map', '_s' ); ?></h2>
 
-						</header>
+						</header><!-- .section-header -->
 
 						<div class="section-content">
 
 							<?php echo do_shortcode('[contact type="map"]'); ?>
 
-						</div>
+						</div><!-- .section-content -->
 
 					</div>
 
@@ -68,7 +68,7 @@
 
 								<h2 class="section-title"><?php _e( 'Reviews', '_s' ); ?></h2>
 
-							</header>
+							</header><!-- .section-header -->
 
 							<div class="section-content">
 
@@ -82,11 +82,11 @@
 
 									  <?php endwhile; ?>
 
-									</div>
+									</div><!-- .slides -->
 
-								</div>
+								</div><!-- .slider -->
 
-							</div>
+							</div><!-- .section-content -->
 
 						</div>
 
@@ -122,7 +122,7 @@
 
 								<h2 class="section-title"><?php _e( 'Gallery', '_s' ); ?></h2>
 
-							</header>
+							</header><!-- .section-header -->
 
 							<div class="section-content">
 
@@ -130,7 +130,7 @@
 
 							    <?php get_template_part( 'template-parts/content', 'gallery' ); ?>
 
-							  <?php endwhile; ?>
+							  <?php endwhile; ?><!-- .section-content -->
 
 							</div>
 
@@ -168,7 +168,7 @@
 
 								<h2 class="section-title"><?php _e( 'Call to Action', '_s' ); ?></h2>
 
-							</header>
+							</header><!-- .section-header -->
 
 							<div class="section-content">
 
@@ -178,7 +178,13 @@
 
 							  <?php endwhile; ?>
 
-							</div>
+							</div><!-- .section-content -->
+
+							<footer class="section-footer">
+
+								<?php _s_entry_footer(); ?>
+
+							</footer><!-- .section-footer -->
 
 						</div>
 
@@ -214,7 +220,7 @@
 
 								<h2 class="section-title"><?php _e( 'Credentials', '_s' ); ?></h2>
 
-							</header>
+							</header><!-- .section-header -->
 
 							<div class="section-content">
 
@@ -224,7 +230,13 @@
 
 							  <?php endwhile; ?>
 
-							</div>
+							</div><!-- .section-content -->
+
+							<footer class="section-footer">
+
+								<?php _s_entry_footer(); ?>
+
+							</footer><!-- .section-footer -->
 
 						</div>
 
@@ -260,7 +272,7 @@
 
 								<h2 class="section-title"><?php _e( 'Counter', '_s' ); ?></h2>
 
-							</header>
+							</header><!-- .section-header -->
 
 							<div class="section-content">
 
@@ -270,7 +282,13 @@
 
 							  <?php endwhile; ?>
 
-							</div>
+							</div><!-- .section-content -->
+
+							<footer class="section-footer">
+
+								<?php _s_entry_footer(); ?>
+
+							</footer><!-- .section-footer -->
 
 						</div>
 
@@ -311,7 +329,7 @@
 
 											<h3 class="section-title"><?php _e( 'Contact Form', '_s' ); ?></h3>
 
-										</header>
+										</header><!-- .section-header -->
 
 										<div class="section-content">
 
@@ -321,7 +339,7 @@
 
 										  <?php endwhile; ?>
 
-										</div>
+										</div><!-- .section-content -->
 
 									</div>
 
@@ -357,7 +375,7 @@
 
 											<h3 class="section-title"><?php _e( 'Contact Details', '_s' ); ?></h3>
 
-										</header>
+										</header><!-- .section-header -->
 
 										<div class="section-content">
 
@@ -367,7 +385,13 @@
 
 										  <?php endwhile; ?>
 
-										</div>
+										</div><!-- .section-content -->
+
+										<footer class="section-footer">
+
+											<?php _s_entry_footer(); ?>
+
+										</footer><!-- .section-footer -->
 
 									</div>
 
@@ -403,7 +427,7 @@
 
 											<h3 class="section-title"><?php _e( 'Social Media', '_s' ); ?></h3>
 
-										</header>
+										</header><!-- .section-header -->
 
 										<div class="section-content">
 
@@ -413,7 +437,13 @@
 
 										  <?php endwhile; ?>
 
-										</div>
+										</div><!-- .section-content -->
+
+										<footer class="section-footer">
+
+											<?php _s_entry_footer(); ?>
+
+										</footer><!-- .section-footer -->
 
 									</div>
 
