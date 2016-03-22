@@ -31,7 +31,7 @@ $('.toggle').each(function() {
 	var target_redefined = ancestor.find(target_defined);
 
 	// hide target
-	target_redefined.hide();
+	target_redefined.addClass("toggled");
 
 	$(this).click(function() {
 
@@ -39,7 +39,7 @@ $('.toggle').each(function() {
 		togglePressed($(this));
 
 		// toggle target
-	  $(target_redefined).toggle();
+	  $(target_redefined).toggleClass("toggled");
 
 	});
 

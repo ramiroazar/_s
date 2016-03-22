@@ -43,7 +43,7 @@ if (
 
 						<h2 class="section-title"><?php _e( 'Services', '_s' ); ?></h2>
 
-					</header>
+					</header><!-- .section-header -->
 
 					<div class="section-content">
 
@@ -53,7 +53,7 @@ if (
 
 						<?php endwhile; ?>
 
-					</div>
+					</div><!-- .section-content -->
 
 				</div>
 

@@ -19,7 +19,7 @@
 	}
 
 	& + #content {
-		margin-top: 4.5em;
+		margin-top: 5.5em;
 
 		// body.home.page & {
 		// 	@include susy-breakpoint($breakpoint__medium) {
@@ -28,7 +28,7 @@
 		// }
 
 		#featured {
-			margin-top: -4.5em;
+			margin-top: -5.5em;
 		}
 	}
 
@@ -45,7 +45,7 @@
 
 			img {
 				vertical-align: bottom;
-				max-height: 3em;
+				max-height: 4em;
 			}
 		}
 
@@ -60,13 +60,7 @@
 	}
 
 	.site-contact {
-		float: right;
-		margin-top: 0.75em;
-		@include susy-breakpoint(max-width $breakpoint__medium) {
-			margin-right: 3.5em;
-		}
-		@include susy-breakpoint($breakpoint__medium) {
-			margin-left: gutters();
-		}
+		text-align: right;
+		padding-top: 0.75em;
 	}
 }

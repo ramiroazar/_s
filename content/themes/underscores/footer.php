@@ -120,7 +120,7 @@
 
 							<header class="section-header">
 
-								<h2 class="section-title"><?php _e( 'Gallery', '_s' ); ?></h2>
+								<h2 class="section-title"><?php _e( $query->post->post_title, '_s' ); ?></h2>
 
 							</header><!-- .section-header -->
 
@@ -166,7 +166,7 @@
 
 							<header class="section-header">
 
-								<h2 class="section-title"><?php _e( 'Call to Action', '_s' ); ?></h2>
+								<h2 class="section-title"><?php _e( $query->post->post_title, '_s' ); ?></h2>
 
 							</header><!-- .section-header -->
 
@@ -218,7 +218,7 @@
 
 							<header class="section-header">
 
-								<h2 class="section-title"><?php _e( 'Credentials', '_s' ); ?></h2>
+								<h2 class="section-title"><?php _e( $query->post->post_title, '_s' ); ?></h2>
 
 							</header><!-- .section-header -->
 
@@ -270,7 +270,7 @@
 
 							<header class="section-header">
 
-								<h2 class="section-title"><?php _e( 'Counter', '_s' ); ?></h2>
+								<h2 class="section-title"><?php _e( $query->post->post_title, '_s' ); ?></h2>
 
 							</header><!-- .section-header -->
 
@@ -327,7 +327,7 @@
 
 										<header class="section-header">
 
-											<h3 class="section-title"><?php _e( 'Contact Form', '_s' ); ?></h3>
+											<h3 class="section-title"><?php _e( $query->post->post_title, '_s' ); ?></h3>
 
 										</header><!-- .section-header -->
 
@@ -373,7 +373,7 @@
 
 										<header class="section-header">
 
-											<h3 class="section-title"><?php _e( 'Contact Details', '_s' ); ?></h3>
+											<h3 class="section-title"><?php _e( $query->post->post_title, '_s' ); ?></h3>
 
 										</header><!-- .section-header -->
 
@@ -425,7 +425,7 @@
 
 										<header class="section-header">
 
-											<h3 class="section-title"><?php _e( 'Social Media', '_s' ); ?></h3>
+											<h3 class="section-title"><?php _e( $query->post->post_title, '_s' ); ?></h3>
 
 										</header><!-- .section-header -->
 
@@ -464,7 +464,12 @@
 				<div>
 
 					<?php printf( esc_html__( '%1$s %2$s %3$s.', '_s' ), '&copy;', date('Y'), '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home" itemprop="url">' . get_bloginfo( 'name' ) . '</a>' ); ?>
-					<?php printf( esc_html__( '%1$s %2$s.', '_s' ), 'Website Designed & Developed by', '<a href="http://www.insightdigital.com.au" target="_blank">Insight Digital Marketing</a>' ); ?>
+
+					<?php
+						if (is_front_page()) :
+							printf( esc_html__( '%1$s %2$s.', '_s' ), 'Website Designed & Developed by', '<a href="http://www.insightdigital.com.au" target="_blank">Insight Digital Marketing</a>' );
+						endif;
+					?>
 
 				</div>
 

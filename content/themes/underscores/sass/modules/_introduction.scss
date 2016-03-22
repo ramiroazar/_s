@@ -1,3 +1,41 @@
+@mixin module__introduction-toggle-type-default {
+  article {
+
+    .entry-summary {
+      display: block;
+
+      &.toggled {
+        display: none;
+      }
+    }
+  }
+}
+
+@mixin module__introduction-toggle-type-fade {
+  article {
+
+    .entry-summary {
+
+      &.toggled {
+        position: relative;
+        overflow: hidden;
+        max-height: 7.5em;
+        margin-bottom: 1.5em;
+
+        &:after {
+          content: "";
+          position: absolute;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-image: linear-gradient(rgba($module__introduction-background-color, 0), $module__introduction-background-color);
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}
+
 .introduction.section {
   overflow: auto;
   @if $module__introduction-text-color != $color__text {
@@ -6,14 +44,24 @@
   @if $module__introduction-background-color != $color__background {
     background-color: $module__introduction-background-color;
   }
+  @if $module__introduction-toggle-type == fade {
+    @include module__introduction-toggle-type-fade;
+  } @else {
+    @include module__introduction-toggle-type-default;
+  }
 
   > div {
     @extend %container;
   }
 
-  .section-title {}
+  .section-header {
+
+    .section-title {}
+  }
 
   article {
+
+    .entry-header {}
 
     .entry-summary {
       @include susy-clearfix;
@@ -37,6 +85,9 @@
     .entry-footer {
 
       .toggle {
+        @if $module__introduction-button-color != button-default {
+          @extend %#{$module__introduction-button-color};
+        }
 
         &[aria-pressed="false"] {
           &:after {
@@ -52,6 +103,18 @@
 
         span {
           @extend %screen-reader-text;
+        }
+      }
+    }
+
+    a {
+      @if $module__introduction-link-color != hyperlink-default {
+        @extend %#{$module__introduction-link-color};
+      }
+
+      &.button {
+        @if $module__introduction-button-color != button-default {
+          @extend %#{$module__introduction-button-color};
         }
       }
     }

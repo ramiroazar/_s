@@ -25,6 +25,7 @@ $module__featured-layout: viewport; // grid | viewport
 // general
 $module__featured-parallax: false;
 $module__featured-caption-alignment: left; // left | center | right
+$module__featured-caption-text-alignment: left; // left | center | right
 $module__featured-navigation-color: $color__link;
 $module__featured-navigation-pagination: bullet; // number | bullet
 $module__featured-navigation-direction: icon; // text | icon
@@ -38,8 +39,11 @@ $module__featured-caption-background-color: $color__background;
  */
 
 // general
+$module__introduction-toggle-type: default; // fade | default
 $module__introduction-text-color: $color__text;
 $module__introduction-background-color: $color__background;
+$module__introduction-link-color: hyperlink-default;
+$module__introduction-button-color: button-default;
 
 /**
  * Services
@@ -121,7 +125,8 @@ $module__reviews-background-color: $color__background;
 
 // general
 $module__gallery-text-color: $color__text;
-// $module__gallery-link-color: hyperlink-default;
+$module__gallery-link-color: hyperlink-default;
+$module__gallery-button-color: button-default;
 $module__gallery-background-color: $color__background;
 
 /**

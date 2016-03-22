@@ -1,5 +1,7 @@
 .gallery.section {
+  overflow: hidden;
   margin: 0;
+  text-align: center;
   @if $module__gallery-text-color != $color__text {
     color: $module__gallery-text-color;
   }
@@ -12,12 +14,11 @@
   .section-header {
     @extend %container;
 
-    .section-title {
-      @extend %screen-reader-text;
-    }
+    .section-title {}
   }
 
   article {
+    margin: 0;
 
     .entry-header {
       @extend %container;
@@ -34,10 +35,6 @@
     .entry-content {
       margin-top: 0;
 
-      > *:not(.gallery) {
-        display: none;
-      }
-
       .gallery {
         margin: 0;
 
@@ -50,16 +47,24 @@
     .entry-footer {
       @extend %container;
 
-      .more-link {
-        @extend %screen-reader-text;
-      }
-
       .cat-links {
         @extend %screen-reader-text;
       }
 
       .edit-link {
         @extend %screen-reader-text;
+      }
+    }
+
+    a {
+      @if $module__gallery-link-color != hyperlink-default {
+        @extend %#{$module__gallery-link-color};
+      }
+
+      &.button {
+        @if $module__gallery-button-color != button-default {
+          @extend %#{$module__gallery-button-color};
+        }
       }
     }
   }

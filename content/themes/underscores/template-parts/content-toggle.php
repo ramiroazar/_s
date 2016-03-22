@@ -49,7 +49,7 @@
 
 	<footer class="entry-footer">
 		<?php if ($count_content > 1) : ?>
-			<button id="button-<?php the_ID(); ?>" class="toggle" data-target=".entry-summary" aria-pressed="false" role="button" tabindex="0">
+			<button id="button-<?php the_ID(); ?>" class="button toggle" data-target=".entry-summary" aria-pressed="false" role="button" tabindex="0">
 				<span>Toggle</span>
 			</button>
 		<?php endif; ?>

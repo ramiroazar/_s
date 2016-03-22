@@ -251,37 +251,47 @@ function _s_question( $atts ) {
 
 	$atts = shortcode_atts(
 		array(
-			'limit' 		=> -1,
+			'posts_per_page' => -1,
+			'words' 		=> false,
 			'questions'	=> true,
 			'answers'	=> true,
 			'order' => '',
 			'orderby' => '',
+			'taxonomy' => false,
+			'terms' => false,
 		),
 		$atts
 	);
 
 	$args = array(
 		'post_type' => 'question',
-		'posts_per_page' => $atts['limit'],
+		'posts_per_page' => $atts['posts_per_page'],
 		'order' => $atts['order'],
 		'orderby' => $atts['orderby'],
 	);
 
-	$return = '';
+	if ($atts['taxonomy']) :
+		$args['tax_query'] = array(
+			array(
+				'taxonomy' => $atts['taxonomy'],
+				'field' => 'slug',
+				'terms' => explode(',', $atts['terms']),
+			)
+		);
+	endif;
 
-	$the_query = new WP_Query( $args );
-	if ( $the_query->have_posts() ) :
+	$query = new WP_Query( $args );
+
+	if ( $query->have_posts() ) :
 
 		if ($atts['questions'] === true) :
 
-			$return .= "<ol class='question'>";
+			$return .= "<ol class='questions'>";
 
-			while ($the_query->have_posts()) : $the_query->the_post();
-
-				$question_link = preg_replace('/\s+/', '_', get_the_title());
+			while ($query->have_posts()) : $query->the_post();
 
 				$return .= "<li>";
-				$return .= "<a href='#" . $question_link . "'>";
+				$return .= "<a href='#" . sanitize_title(get_the_title()) . "'>";
 				$return .= get_the_title();
 				$return .= "</a>";
 				$return .= "</li>";
@@ -294,30 +304,47 @@ function _s_question( $atts ) {
 
 		if ($atts['answers'] === true) :
 
-			$return .= "<dl class='question'>";
+			$return .= "<ol class='questions'>";
 
-			while ($the_query->have_posts()) : $the_query->the_post();
+			while ($query->have_posts()) : $query->the_post();
 
-				$question_link = preg_replace('/\s+/', '_', get_the_title());
-
-				$return .= "<dt>";
-				$return .= "<a href='#" . $question_link . "'>";
-				$return .= get_the_title();
-				$return .= "</a>";
-				$return .= "</dt>";
-				$return .= "<dd id='" . $question_link . "'>";
-				$return .= wpautop(get_the_content());
-				$return .= "</dd>";
+				$return .= "<li>";
+					$return .= "<dl id='" . sanitize_title(get_the_title()) . "'>";
+						$return .= "<dt>";
+							$return .= get_the_title();
+						$return .= "</dt>";
+						$return .= "<dd>";
+							if ($atts['words']) :
+								$return .= wpautop(wp_trim_words(get_the_content(), $atts['words']));
+							else:
+								$return .= wpautop(get_the_content());
+							endif;
+						$return .= "</dd>";
+					$return .= "</dl>";
+				$return .= "</li>";
 
 			endwhile;
 
-			$return .= "</dl>";
+			$return .= "</ol>";
 
 		endif;
 
-	endif; wp_reset_query();
+	endif;
+
+	wp_reset_postdata();
 
 	return $return;
 }
 
 add_shortcode( 'question', '_s_question' );
+
+/**
+ * Register shortcode.
+ *
+ * @link https://codex.wordpress.org/Shortcode_API
+ */
+
+function _s_cta( $atts, $content = null ) {
+   return '<div class="cta">' . do_shortcode($content) . '</div>';
+}
+add_shortcode("cta", "_s_cta");

@@ -7,8 +7,7 @@
 		clear: both;
 	}
 	@include susy-breakpoint($breakpoint__medium) {
-		float: right;
-		margin-top: 0.75em;
+		margin-top: 1em;
 	}
 
 	ul {
@@ -18,6 +17,9 @@
 		padding-left: 0;
 		@include susy-breakpoint(max-width $breakpoint__medium) {
 			padding: 0.75em 0;
+		}
+		@include susy-breakpoint($breakpoint__medium) {
+			text-align: right;
 		}
 
 		ul {
@@ -37,6 +39,7 @@
 				position: absolute;
 				display: none;
 				padding: 0.75em;
+				text-align: left;
 				background-color: $color__background;
 			}
 
@@ -87,9 +90,15 @@
 		float: none;
 		position: inherit;
 		@include susy-breakpoint($breakpoint__medium) {
-			float: left;
+			display: inline-block;
 			position: relative;
 			margin-left: 0.75em;
+		}
+
+		&:first-of-type {
+			@include susy-breakpoint($breakpoint__medium) {
+				margin-left: 0;
+			}
 		}
 
 		&:hover > a,
@@ -137,7 +146,7 @@
 
 .menu-toggle {
 	float: right;
-	margin-top: -3.5em;
+	margin-top: -3em;
 	@include susy-breakpoint($breakpoint__medium) {
 		display: none;
 	}

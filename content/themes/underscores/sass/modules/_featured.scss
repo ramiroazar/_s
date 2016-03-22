@@ -182,6 +182,10 @@
                 padding: 1.5em gutters();
                 background-color: $color__background;
 
+                @if $module__featured-caption-text-alignment != left {
+                  text-align: $module__featured-caption-text-alignment;
+                }
+
                 @if $module__featured-caption-alignment == center {
                   float: none;
                   margin: 0 auto;

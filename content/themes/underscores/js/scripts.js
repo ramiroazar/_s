@@ -130,7 +130,9 @@ jQuery(document).ready(function($) {
     });
   }
 
-  setCurrentSrc();
+  $(window).load(function() {
+    setCurrentSrc();
+  });
 
   $(window).resize(function () {
     setCurrentSrc();

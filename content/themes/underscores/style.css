@@ -1730,14 +1730,14 @@ Copyright (c) 2015 Daniel Eden
   clear: both;
 }
 
-#masthead .site-branding .site-title, #masthead .site-branding .site-description, .menu-toggle span, .wpcf7 .screen-reader-response, .wpcf7 label, .slider ul li a .slider ul li a span, .featured.section .slider ul li a span, .introduction.section article .entry-footer .toggle span, .map.section .section-header .section-title, .reviews.section .slider ul li a span, .gallery.section .section-header .section-title, .gallery.section article .entry-header .entry-title, .gallery.section article .entry-header .entry-meta, .gallery.section article .entry-footer .more-link, .gallery.section article .entry-footer .cat-links, .gallery.section article .entry-footer .edit-link {
+#masthead .site-branding .site-title, #masthead .site-branding .site-description, .menu-toggle span, .wpcf7 .screen-reader-response, .wpcf7 label, .slider ul li a .slider ul li a span, .featured.section .slider ul li a span, .introduction.section article .entry-footer .toggle span, .map.section .section-header .section-title, .reviews.section .slider ul li a span, .gallery.section article .entry-header .entry-title, .gallery.section article .entry-header .entry-meta, .gallery.section article .entry-footer .cat-links, .gallery.section article .entry-footer .edit-link {
   clip: rect(1px, 1px, 1px, 1px);
   position: absolute !important;
   height: 1px;
   width: 1px;
   overflow: hidden;
 }
-#masthead .site-branding .site-title:focus, #masthead .site-branding .site-description:focus, .menu-toggle span:focus, .wpcf7 .screen-reader-response:focus, .wpcf7 label:focus, .slider ul li a .slider ul li a span:focus, .featured.section .slider ul li a span:focus, .introduction.section article .entry-footer .toggle span:focus, .map.section .section-header .section-title:focus, .reviews.section .slider ul li a span:focus, .gallery.section .section-header .section-title:focus, .gallery.section article .entry-header .entry-title:focus, .gallery.section article .entry-header .entry-meta:focus, .gallery.section article .entry-footer .more-link:focus, .gallery.section article .entry-footer .cat-links:focus, .gallery.section article .entry-footer .edit-link:focus {
+#masthead .site-branding .site-title:focus, #masthead .site-branding .site-description:focus, .menu-toggle span:focus, .wpcf7 .screen-reader-response:focus, .wpcf7 label:focus, .slider ul li a .slider ul li a span:focus, .featured.section .slider ul li a span:focus, .introduction.section article .entry-footer .toggle span:focus, .map.section .section-header .section-title:focus, .reviews.section .slider ul li a span:focus, .gallery.section article .entry-header .entry-title:focus, .gallery.section article .entry-header .entry-meta:focus, .gallery.section article .entry-footer .cat-links:focus, .gallery.section article .entry-footer .edit-link:focus {
   background-color: black;
   border-radius: 3px;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
@@ -1790,10 +1790,10 @@ p {
   transform: translateY(-100%);
 }
 #masthead + #content {
-  margin-top: 4.5em;
+  margin-top: 5.5em;
 }
 #masthead + #content #featured {
-  margin-top: -4.5em;
+  margin-top: -5.5em;
 }
 #masthead > div {
   position: relative;
@@ -1804,24 +1804,14 @@ p {
 }
 #masthead .site-branding .site-logo img {
   vertical-align: bottom;
-  max-height: 3em;
+  max-height: 4em;
 }
 #masthead .site-branding .site-description {
   margin: 0;
 }
 #masthead .site-contact {
-  float: right;
-  margin-top: 0.75em;
-}
-@media (max-width: 64em) {
-  #masthead .site-contact {
-    margin-right: 3.5em;
-  }
-}
-@media (min-width: 64em) {
-  #masthead .site-contact {
-    margin-left: 2.85714%;
-  }
+  text-align: right;
+  padding-top: 0.75em;
 }
 
 @media (min-width: 64em) {
@@ -1881,8 +1871,7 @@ a:hover, a:active {
 }
 @media (min-width: 64em) {
   .main-navigation {
-    float: right;
-    margin-top: 0.75em;
+    margin-top: 1em;
   }
 }
 .main-navigation ul {
@@ -1894,6 +1883,11 @@ a:hover, a:active {
 @media (max-width: 64em) {
   .main-navigation ul {
     padding: 0.75em 0;
+  }
+}
+@media (min-width: 64em) {
+  .main-navigation ul {
+    text-align: right;
   }
 }
 .main-navigation ul ul {
@@ -1915,6 +1909,7 @@ a:hover, a:active {
     position: absolute;
     display: none;
     padding: 0.75em;
+    text-align: left;
     background-color: white;
   }
 }
@@ -1954,9 +1949,14 @@ a:hover, a:active {
 }
 @media (min-width: 64em) {
   .main-navigation li {
-    float: left;
+    display: inline-block;
     position: relative;
     margin-left: 0.75em;
+  }
+}
+@media (min-width: 64em) {
+  .main-navigation li:first-of-type {
+    margin-left: 0;
   }
 }
 .main-navigation a {
@@ -1990,7 +1990,7 @@ a:hover, a:active {
 
 .menu-toggle {
   float: right;
-  margin-top: -3.5em;
+  margin-top: -3em;
 }
 @media (min-width: 64em) {
   .menu-toggle {
@@ -2486,6 +2486,12 @@ html[xmlns] .slider .slides {
 .introduction.section {
   overflow: auto;
 }
+.introduction.section article .entry-summary {
+  display: block;
+}
+.introduction.section article .entry-summary.toggled {
+  display: none;
+}
 .introduction.section article .entry-summary:after {
   content: " ";
   display: block;
@@ -2655,13 +2661,15 @@ body.home .services.section article .entry-header .entry-title {
 }
 
 .gallery.section {
+  overflow: hidden;
+  margin: 0;
+  text-align: center;
+}
+.gallery.section article {
   margin: 0;
 }
 .gallery.section article .entry-content {
   margin-top: 0;
-}
-.gallery.section article .entry-content > *:not(.gallery) {
-  display: none;
 }
 .gallery.section article .entry-content .gallery {
   margin: 0;
@@ -2847,6 +2855,9 @@ body.home .services.section article .entry-header .entry-title {
 }
 .contact-detail.address:before {
   content: "\f041";
+}
+.contact-detail.abn:before {
+  content: "\f0b1";
 }
 .contact-detail.facebook:before {
   content: "\f09a";

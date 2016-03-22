@@ -29,6 +29,7 @@ get_header(); ?>
 								'terms'    => 'featured',
 							),
 						),
+						'order' => 'ASC'
 				  );
 				?>
 
