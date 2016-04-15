@@ -10,5 +10,4 @@ define( 'DB_NAME', 'local_db_name' );
 define( 'DB_USER', 'local_db_user' );
 define( 'DB_PASSWORD', 'local_db_password' );
 define( 'DB_HOST', 'localhost' ); // Probably 'localhost'
-define( 'UPLOADS', '../shared/content/uploads' );
 // define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/local_project_name/content' );
