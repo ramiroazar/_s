@@ -14,7 +14,7 @@ get_header(); ?>
 			'tax_query' => array(
 				array(
 					'taxonomy' => 'post_format',
-					'terms' => array('post-format-gallery'),
+					'terms' => array('post-format-quote'),
 					'field' => 'slug',
 				),
 			),
