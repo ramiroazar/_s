@@ -83,3 +83,13 @@ require get_stylesheet_directory() . '/inc/schema.php';
  * Google Tag Manager.
  */
 require get_stylesheet_directory() . '/inc/google-tag-manager.php';
+
+/**
+ * Contact Form 7 Template
+ */
+require get_stylesheet_directory() . '/inc/contact-form-template.php';
+
+/**
+ * Theme configuration
+ */
+require get_stylesheet_directory() . '/inc/configuration.php';
