@@ -36,6 +36,7 @@ function _s_configuration_child() {
 		activate_plugin( 'contact-form-7/wp-contact-form-7.php' );
 		activate_plugin( 'really-simple-captcha/really-simple-captcha.php' );
 		activate_plugin( 'contact-form-7-honeypot/honeypot.php' );
+		activate_plugin( 'wordpress-seo/wp-seo.php' );
 	}
 
 	/**
