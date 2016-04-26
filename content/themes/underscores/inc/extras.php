@@ -131,3 +131,22 @@ add_filter( 'wp_get_attachment_image_attributes', '_s_filter_gallery_img_atts', 
 	function modify_read_more_link() {
 		return '<a class="more-link" href="' . get_permalink() . '">More</a>';
 	}
+
+/**
+ * Register custom Yoast SEO variables
+ *
+ * @link https://github.com/Yoast/wordpress-seo/issues/1980
+ * @link https://github.com/Yoast/wordpress-seo/issues/1782
+ */
+
+	function _s_wpseo_register_extra_replacements() {
+		foreach (_s_shortcode_init_contact() as $key => $value) {
+			wpseo_register_var_replacement(
+				'%%contact' . $key . '%%',
+				function ($key) {
+					return do_shortcode( '[contact type="' . str_replace('contact', '', $key) . '" markup="false"]' );
+				}
+			);
+		}
+	}
+	add_action('wpseo_register_extra_replacements', '_s_wpseo_register_extra_replacements');

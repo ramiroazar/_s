@@ -83,12 +83,12 @@ function _s_shortcode_init_contact($atts) {
 
 	 // Build array of contact details stored in database
 	$contact = array();
+	$contact['name'] = get_bloginfo('name');
+	$contact['description']= get_bloginfo('description');
 	$contact['phone'] = get_theme_mod('phone');
 	$contact['mobile'] = get_theme_mod('mobile');
 	$contact['fax'] = get_theme_mod('fax');
 	$contact['email'] = get_theme_mod('email'); // get_bloginfo('admin_email');
-	$contact['name'] = get_bloginfo('name');
-	$contact['description']= get_bloginfo('description');
 	$contact['address'] = get_theme_mod('address');
 	$contact['map'] = get_theme_mod('map');
 	$contact['abn'] = get_theme_mod('abn');
@@ -101,10 +101,10 @@ function _s_shortcode_init_contact($atts) {
 	$contact['linkedin']	= get_theme_mod('linkedin');
 	$contact = array_filter($contact);
 
-	 // Reset and setup variables
-	 $output = '';
+	// Reset and setup variables
+	$output = '';
 
-	 // If type declared
+	// If type declared
 	if ($atts['type']) :
 		// If declared type is set
 		if (isset($contact[$atts['type']])) :
@@ -232,11 +232,11 @@ function _s_shortcode_init_contact($atts) {
 	// Else if type not declared
 	else:
 		// Output array
-		$output .= implode(",", $contact);
+		$output = $contact;
 	endif;
 
 	// Return output
-	 return $output;
+	return $output;
 
 }
 add_shortcode("contact", "_s_shortcode_init_contact");
