@@ -15,6 +15,14 @@ function _s_customize_register_child( $wp_customize ) {
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
+	// Site Identity
+
+	$wp_customize->add_setting('logo');
+	$wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, 'logo', array(
+		'label' => 'Site Logo',
+		'section' => 'title_tagline',
+	) ) );
+
 	// Administration
 
 	$wp_customize->add_section( '_s_administration', array(

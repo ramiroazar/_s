@@ -85,11 +85,11 @@ require get_stylesheet_directory() . '/inc/schema.php';
 require get_stylesheet_directory() . '/inc/google-tag-manager.php';
 
 /**
- * Contact Form 7 Template
+ * Contact Form 7 Template.
  */
 require get_stylesheet_directory() . '/inc/contact-form-template.php';
 
 /**
- * Theme configuration
+ * Theme configuration.
  */
 require get_stylesheet_directory() . '/inc/configuration.php';

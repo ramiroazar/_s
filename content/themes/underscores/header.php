@@ -32,7 +32,7 @@
 	<header id="masthead" class="site-header" role="banner">
 		<div>
 			<div class="site-branding">
-				<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo esc_url( home_url( '/' ) ); ?>/wp/wp-admin/images/wordpress-logo.svg" alt="<?php bloginfo('name'); ?> Logo" /></a>
+				<?php echo wp_get_attachment_image(get_theme_mod('logo'), 'medium'); ?>
 				<?php
 				if ( is_front_page() || is_home() ) : ?>
 					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
