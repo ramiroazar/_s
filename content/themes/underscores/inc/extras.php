@@ -150,3 +150,21 @@ add_filter( 'wp_get_attachment_image_attributes', '_s_filter_gallery_img_atts', 
 		}
 	}
 	add_action('wpseo_register_extra_replacements', '_s_wpseo_register_extra_replacements');
+
+/**
+ * Theme color meta
+ *
+ * @link https://developers.google.com/web/updates/2014/11/Support-for-theme-color-in-Chrome-39-for-Android
+ * @link https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/theme-color
+ */
+
+function _s_theme_color_meta() {
+
+	if (get_theme_mod('theme_color')) {
+		$theme_color_meta = '<meta name="theme-color" content="' . get_theme_mod('theme_color') . '">';
+	}
+
+	echo $theme_color_meta;
+}
+
+add_action('wp_head','_s_theme_color_meta');

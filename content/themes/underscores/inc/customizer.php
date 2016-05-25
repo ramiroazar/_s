@@ -23,6 +23,12 @@ function _s_customize_register_child( $wp_customize ) {
 		'section' => 'title_tagline',
 	) ) );
 
+	$wp_customize->add_setting('theme_color');
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'theme_color', array(
+		'label' => 'Theme Color',
+		'section' => 'title_tagline',
+	) ) );
+
 	// Administration
 
 	$wp_customize->add_section( '_s_administration', array(
