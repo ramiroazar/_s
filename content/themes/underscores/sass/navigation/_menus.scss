@@ -5,6 +5,8 @@
 	width: auto;
 	@include susy-breakpoint(max-width $breakpoint__medium) {
 		clear: both;
+		max-height: calc(100vh - 5.5em);
+		overflow-y: auto;
 	}
 	@include susy-breakpoint($breakpoint__medium) {
 		margin-top: 1em;
@@ -145,6 +147,8 @@
 }
 
 .menu-toggle {
+	position: absolute;
+	right: 0;
 	float: right;
 	margin-top: -3em;
 	@include susy-breakpoint($breakpoint__medium) {

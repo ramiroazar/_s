@@ -1867,6 +1867,8 @@ a:hover, a:active {
 @media (max-width: 64em) {
   .main-navigation {
     clear: both;
+    max-height: calc(100vh - 5.5em);
+    overflow-y: auto;
   }
 }
 @media (min-width: 64em) {
@@ -1989,6 +1991,8 @@ a:hover, a:active {
 }
 
 .menu-toggle {
+  position: absolute;
+  right: 0;
   float: right;
   margin-top: -3em;
 }
