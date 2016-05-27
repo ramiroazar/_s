@@ -17,19 +17,6 @@ $susy: (
 	)
 );
 
-$susy-full: (
-	container: 100%,
-	container-position: center,
-	columns: 12,
-	gutters: 1/2,
-	output: float,
-	global-box-sizing: border-box,
-	debug: (
-		color: $color__debugging,
-		output: background,
-	),
-);
-
 /*--------------------------------------------------------------
 # Magnific Popup
 --------------------------------------------------------------*/
