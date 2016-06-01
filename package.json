@@ -1,13 +1,13 @@
 {
   "name": "_s",
   "devDependencies": {
-    "browser-sync" : "latest",
     "gulp" : "latest",
-    "gulp-autoprefixer" : "latest",
-    "gulp-compass" : "latest",
+    "gulp-util" : "latest",
     "gulp-concat" : "latest",
+    "gulp-uglify" : "latest",
+    "gulp-compass" : "latest",
+    "gulp-autoprefixer" : "latest",
     "gulp-cssnano" : "latest",
-    "gulp-minify-css" : "latest",
-    "gulp-uglify" : "latest"
+    "browser-sync" : "latest"
   }
 }
