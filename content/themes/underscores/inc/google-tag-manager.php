@@ -16,4 +16,4 @@ function _s_google_tag_manager() {
   endif;
 }
 
-add_action( 'wp_head', '_s_google_tag_manager' );
+add_action( 'wp_body', '_s_google_tag_manager' );
