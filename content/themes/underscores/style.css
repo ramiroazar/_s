@@ -1922,6 +1922,7 @@ a:hover, a:active {
 @media (min-width: 64em) {
   .main-navigation ul ul li {
     float: none;
+    display: block;
     margin-left: 0;
   }
 }

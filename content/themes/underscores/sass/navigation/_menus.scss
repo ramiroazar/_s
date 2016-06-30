@@ -53,6 +53,7 @@
 			li {
 				@include susy-breakpoint($breakpoint__medium) {
 					float: none;
+					display: block;
 					margin-left: 0;
 				}
 
