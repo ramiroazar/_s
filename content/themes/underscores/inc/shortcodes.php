@@ -348,3 +348,21 @@ function _s_cta( $atts, $content = null ) {
    return '<div class="cta">' . do_shortcode($content) . '</div>';
 }
 add_shortcode("cta", "_s_cta");
+
+/**
+ * Register shortcode.
+ *
+ * @link https://codex.wordpress.org/Shortcode_API
+ */
+
+function _s_column( $atts, $content = null ) {
+
+    $atts = shortcode_atts( array(
+        'span' => null,
+        'last' => null,
+        'breakpoint' => null,
+    ), $atts );
+
+   return '<div class="column' . ($atts['span'] ? ' column-span-' . $atts['span'] : '') . ($atts['last'] ? ' column-last' : '') . ($atts['breakpoint'] ? ' column-breakpoint-' . $atts['breakpoint'] : '') . '">' . do_shortcode($content) . '</div>';
+}
+add_shortcode('column', '_s_column');

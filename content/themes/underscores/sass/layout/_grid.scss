@@ -1,0 +1,44 @@
+.column {
+
+  @for $i from 1 through susy-get(columns) {
+    &.column-breakpoint-xsmall.column-span-#{$i} {
+      @include susy-breakpoint($breakpoint__xsmall) {
+        @include span($i);
+      }
+
+      &.column-last {
+        @include susy-breakpoint($breakpoint__xsmall) {
+          @include last;
+        }
+      }
+    }
+  }
+
+  @for $i from 1 through susy-get(columns) {
+    &.column-breakpoint-small.column-span-#{$i} {
+      @include susy-breakpoint($breakpoint__small) {
+        @include span($i);
+      }
+
+      &.column-last {
+        @include susy-breakpoint($breakpoint__small) {
+          @include last;
+        }
+      }
+    }
+  }
+
+  @for $i from 1 through susy-get(columns) {
+    &.column-breakpoint-medium.column-span-#{$i} {
+      @include susy-breakpoint($breakpoint__medium) {
+        @include span($i);
+      }
+
+      &.column-last {
+        @include susy-breakpoint($breakpoint__medium) {
+          @include last;
+        }
+      }
+    }
+  }
+}
